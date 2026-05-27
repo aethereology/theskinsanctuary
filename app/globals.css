@@ -613,7 +613,31 @@ hr.rule { border: 0; border-top: 1px solid var(--tss-border-soft); margin: 48px 
 .ts__inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 22px 28px; }
 .ts__item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--tss-ink); letter-spacing: .02em; }
 .ts__ic { color: var(--tss-forest); display: inline-flex; }
-@media (max-width: 720px) { .ts__inner { grid-template-columns: 1fr 1fr; gap: 12px 24px; } }
+@media (max-width: 720px) {
+  .ts { overflow: hidden; }
+  .ts .ts__inner {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 14px 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .ts .ts__inner::-webkit-scrollbar { display: none; }
+  .ts__item {
+    flex: 0 0 auto;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid rgba(61, 44, 36, 0.12);
+    border-radius: var(--tss-radius-pill);
+    background: rgba(255, 253, 252, 0.35);
+    font-size: 12px;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+  .ts__ic { flex: 0 0 auto; }
+}
 
 /* Service card grid (editorial) */
 .scg__head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 64px; align-items: end; }
