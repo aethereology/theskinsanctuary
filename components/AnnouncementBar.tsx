@@ -1,6 +1,8 @@
 "use client";
 
 // components/AnnouncementBar.tsx — dismissible promo bar.
+// The whole message is a single tappable link to the Welcome Facial page;
+// the close button sits pinned at the right edge, out of the text flow.
 import { useState } from "react";
 import Link from "next/link";
 
@@ -10,12 +12,13 @@ export function AnnouncementBar() {
   return (
     <div className="anno">
       <div className="container anno__inner">
-        <span className="anno__msg">
+        <Link href="/welcome-facial" className="anno__msg">
           <span className="anno__dot" aria-hidden="true" />
-          New clients: book the <strong>&nbsp;$35 Welcome Facial</strong>
-          {" — "}
-          <Link href="/welcome-facial">Learn more →</Link>
-        </span>
+          <span className="anno__text">
+            New clients — book the <strong>$35 Welcome Facial</strong>
+          </span>
+          <span className="anno__arrow" aria-hidden="true">→</span>
+        </Link>
         <button className="anno__close" aria-label="Dismiss announcement" onClick={() => setOpen(false)}>
           ×
         </button>
