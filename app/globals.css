@@ -455,8 +455,16 @@ hr.rule { border: 0; border-top: 1px solid var(--tss-border-soft); margin: 48px 
   .hdr__nav { display: none; }
   .hdr__burger { display: inline-flex; }
   .hdr__inner { padding: 14px 20px; gap: 14px; }
+  .hdr__mark .wm { gap: 2px; }
+  .hdr__mark .wm__eb { font-size: 8px; letter-spacing: .28em; }
+  .hdr__mark .wm__main { font-size: 24px; }
   /* Solid bar on mobile — backdrop blur is unreliable across mobile browsers. */
-  .hdr, .hdr--scrolled { background: var(--tss-canvas); }
+  .hdr,
+  .hdr.hdr--scrolled {
+    background: var(--tss-canvas);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
 
 .mm { position: fixed; inset: 0; background: var(--tss-canvas); padding: 24px 24px 32px; z-index: 50; display: flex; flex-direction: column; animation: mmIn 240ms var(--tss-ease-out); }
@@ -806,6 +814,7 @@ hr.rule { border: 0; border-top: 1px solid var(--tss-border-soft); margin: 48px 
 @media (max-width: 600px) {
   :root { --sec-pad: 64px; }
   .container { padding: 0 18px; }
+  .hdr__inner { padding: 12px 18px; }
   /* Keep oversized display type from clipping on phones. */
   .display--xxl { font-size: clamp(34px, 10.5vw, 52px); line-height: 1.0; }
   .display--xl  { font-size: clamp(32px, 8.5vw, 46px); }
@@ -818,6 +827,7 @@ hr.rule { border: 0; border-top: 1px solid var(--tss-border-soft); margin: 48px 
 }
 @media (max-width: 400px) {
   .container { padding: 0 14px; }
+  .hdr__inner { padding: 12px 14px; gap: 10px; }
   .hdr__mark .wm__main { font-size: 22px; }
   .hdr__cta .btn--sm { padding: 0 12px; }
   .display--xxl { font-size: clamp(30px, 11vw, 44px); }
