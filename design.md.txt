@@ -1,0 +1,610 @@
+# design.md
+
+## Executive summary
+
+Build The Skin Sanctuary Co as a warm, editorial, boutique esthetics website for Chesapeake, Virginia, with one dominant conversion goal: get the visitor to book through Square. The visual tone should feel calm, polished, feminine, welcoming, and lightly luxurious without becoming overly clinical or overly trendy.
+
+This should not feel like a generic spa website. It should feel like Monica’s space: intimate, detail-oriented, relaxed, and result-aware. The strongest internal differentiators from the supplied materials are:
+- a highly welcoming client experience
+- strong client trust and repeat intent
+- Korean lash lift and tint as a standout service
+- a live, entry-level lead offer: the $35 Welcome Facial
+- a simple, clean current brand expression with warm neutrals and a dark booking button
+
+## Source hierarchy
+
+Use these sources in this order when design decisions conflict:
+1. User-supplied Square service-menu screenshot
+2. User-supplied Google Business Profile excerpt and review text
+3. Public Linktree / booking / social endpoints
+4. User-supplied Instagram and camera-roll assets when delivered
+
+## Verified business snapshot
+
+| Field | Value | Source note |
+|---|---|---|
+| Business name | The Skin Sanctuary Co | User-provided |
+| Domain | theskinsanctuary.co | User-provided |
+| Address | 1009 Greenbrier Pkwy, Chesapeake, VA 23320 | User-provided |
+| Phone | 619-458-2483 | User-provided |
+| Esthetician | Monica Talbot | User-provided |
+| License note | Licensed in VA | User-provided |
+| Hours | Mon–Thu 10 AM–5 PM, Fri 10 AM–4 PM, Sat–Sun closed | User-provided |
+| Booking | Square Appointments | User-provided booking link |
+| Active offer | $35 Welcome Facial | User-provided + public Linktree confirmation |
+| Review proof | 5.0 stars, 12 Google reviews | User-provided GBP excerpt; verify at launch |
+| Product brands | Unspecified | Placeholder |
+| Images | 8–15 photos pending from user | Placeholder |
+
+## Assumptions and unresolved items
+
+| Item | Current handling |
+|---|---|
+| Product brands unknown | Use placeholder copy such as “Professional skincare products selected for your treatment goals.” Do not name brands yet. |
+| One waxing item cut off in Square screenshot | Omit from public menu until Monica confirms name, price, and duration. |
+| Address has no suite number in supplied data | Publish exactly as supplied unless Monica confirms a suite/studio number. |
+| Welcome Facial details beyond price | Promote the offer and CTA, but avoid inventing duration or exact steps until Square confirms them. |
+| Brow wax durations seem unusually long in screenshot | Transcribe exactly as shown for launch draft, but re-verify with Monica before publishing. |
+
+## Brand positioning
+
+**Core positioning:**  
+Personalized facials, lashes, brows, and waxing in a welcoming Chesapeake studio.
+
+**Brand promise:**  
+A calm beauty space where clients feel cared for, comfortable, and intentionally polished.
+
+**Voice:**  
+Warm, polished, low-pressure, encouraging, detail-oriented, lightly luxurious, never sterile.
+
+**Do say:**  
+glow, refreshed, tailored, polished, comfortable, welcoming, personalized, low-maintenance beauty, confidence, sanctuary
+
+**Do not say:**  
+aggressive “medical spa” language, exaggerated transformation claims, trendy slang overload, jargon-heavy skincare copy, fake luxury clichés
+
+## Site goals
+
+### Primary goal
+Drive appointment bookings through Square.
+
+### Secondary goals
+- Promote the $35 Welcome Facial for new-client conversion
+- Establish Monica’s credibility and warmth
+- Surface high-trust review proof
+- Support local SEO for Chesapeake beauty-service searches
+- Make contact, hours, and directions frictionless on mobile
+
+## Site map
+
+```mermaid
+graph TD
+    A[Home] --> B[Services and Pricing]
+    A --> C[Welcome Facial]
+    A --> D[About Monica]
+    A --> E[Reviews]
+    A --> F[Contact]
+    A --> G[Policies]
+
+    B --> H[Square Booking]
+    C --> H
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+```
+
+## Page flow
+
+```mermaid
+flowchart LR
+    IG[Instagram / Linktree] --> C[Welcome Facial]
+    GBP[Google Business Profile] --> A[Home]
+    Search[Local Search] --> A
+    A --> B[Services and Pricing]
+    A --> D[About Monica]
+    A --> E[Reviews]
+    A --> F[Contact]
+    B --> H[Book on Square]
+    C --> H
+    E --> H
+    F --> H
+    G[Policies] --> H
+```
+
+## Recommended navigation
+
+### Primary nav
+- Services
+- About
+- Reviews
+- Contact
+- Book Now
+
+### Utility / footer nav
+- Welcome Facial
+- Policies
+- Privacy
+- Instagram
+- Call / Text
+- Directions
+
+### Navigation behavior
+- Keep nav short and obvious.
+- “Book Now” is always visible in header on desktop.
+- On mobile, replace a crowded nav with a menu drawer plus a persistent bottom booking bar.
+
+## Global content strategy
+
+### Homepage intent
+Immediate conversion and trust: this page must answer who Monica is, where the studio is, what she offers, why clients trust her, and how to book.
+
+### Services page intent
+Remove booking hesitation by showing clear prices, durations, and a clean category structure.
+
+### Welcome Facial intent
+Capture first-time visitors from Instagram, Google, Linktree, and referral traffic with a low-commitment offer and simple CTA path.
+
+### About page intent
+Turn Monica from “a provider name” into a trusted person with a clear care philosophy.
+
+### Reviews page intent
+Stack proof and reduce doubt.
+
+### Contact page intent
+Make directions, hours, and booking frictionless.
+
+### Policies page intent
+Set expectations and protect the schedule without sounding harsh.
+
+## Home page wireframe
+
+### Desktop structure
+1. Announcement bar: “New clients: book the $35 Welcome Facial”
+2. Header with wordmark, nav, Book Now button
+3. Hero split layout  
+   - Left: eyebrow text, H1, supporting copy, two CTAs  
+   - Right: hero image or Monica/treatment detail image
+4. Trust strip  
+   - Licensed in VA  
+   - Chesapeake, VA  
+   - 5.0-star client rating  
+   - Facials • Lashes • Brows • Waxing
+5. Signature services section  
+   - 4 service cards
+6. Welcome Facial promo block  
+   - short pitch + CTA
+7. Featured service block  
+   - Korean Lash Lift & Tint highlight
+8. About Monica teaser  
+   - portrait + short bio + About CTA
+9. Results / gallery strip  
+   - 6–9 images
+10. Review highlight cards  
+11. Visit info block  
+   - address, phone, hours, map/visual
+12. FAQ + policy teaser accordion
+13. Footer
+
+### Mobile structure
+- Same content order
+- Hero becomes stacked
+- Trust strip becomes 2x2 grid
+- Service cards stack vertically
+- Gallery becomes swipeable or 2-column grid
+- Bottom sticky booking bar always present after first scroll
+
+## Services page wireframe
+
+1. Hero with concise intro and jump links:
+   - Facials
+   - Waxing
+   - Brows
+   - Lashes
+   - Packages
+2. Service tables by category
+3. Short descriptive intro above each category
+4. Welcome Facial callout inserted after facials
+5. “What to know before you come” section  
+   - lashes  
+   - brows  
+   - waxing  
+   - facials
+6. FAQ accordion
+7. Final CTA banner to Square
+
+## Welcome Facial page wireframe
+
+1. Minimal hero
+2. Offer headline
+3. New-client value proposition
+4. Why start here
+5. What to expect
+6. Review snippet cluster
+7. CTA block
+8. Small FAQ
+9. Link back to full services
+
+## About page wireframe
+
+1. Monica portrait + intro
+2. “Meet Monica Talbot” content block
+3. Credentials strip  
+   - Licensed in VA  
+   - Chesapeake studio  
+   - Facials, lashes, brows, waxing
+4. Treatment philosophy section
+5. “Why clients return” section using review themes
+6. Gallery strip
+7. CTA banner
+
+## Reviews page wireframe
+
+1. Hero with rating summary
+2. Featured quote cards
+3. Review grid
+4. “Popular for” themes  
+   - welcoming environment  
+   - attention to detail  
+   - lash lift results  
+   - relaxing facials
+5. CTA block to book
+6. Secondary CTA to leave a Google review
+
+## Contact page wireframe
+
+1. Hero with address and phone
+2. Hours table
+3. Booking CTA
+4. Call / text CTA
+5. Directions CTA
+6. Lazy-loaded map or static map image
+7. FAQ section
+8. Policies teaser
+9. Footer
+
+## Policies page wireframe
+
+1. Friendly intro
+2. Cancellation policy
+3. Late policy
+4. No-show policy
+5. Card-on-file / deposit note
+6. “Questions? Contact us” CTA
+
+## Homepage hero copy
+
+### Eyebrow text
+Chesapeake, Virginia
+
+### H1
+Facials, lashes, brows, and waxing in Chesapeake, VA.
+
+### Supporting copy
+Personalized beauty and skincare services by Monica Talbot, a Virginia-licensed esthetician creating a calm, welcoming space for glowing skin and low-maintenance beauty.
+
+### Primary CTA
+Book Now
+
+### Secondary CTA
+View Services
+
+### Promo line
+New here? Start with the $35 Welcome Facial.
+
+## Suggested CTA set
+
+Use these labels consistently:
+- Book Now
+- View Services
+- Meet Monica
+- Read Reviews
+- Get Directions
+- Call / Text
+- Book the Welcome Facial
+- View Full Pricing
+- Leave a Review
+
+## SEO architecture
+
+| Page | Slug | SEO title | Meta description | Suggested H1 | Suggested H2s |
+|---|---|---|---|---|---|
+| Home | / | The Skin Sanctuary Co \| Chesapeake Esthetician | Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA. Book with Monica Talbot at The Skin Sanctuary Co. | Facials, lashes, brows, and waxing in Chesapeake, VA. | Signature services; New client offer; Meet Monica; Client love; Visit the studio |
+| Services | /services | Services and Pricing \| The Skin Sanctuary Co | View facials, brow services, Korean lash lifts, waxing, pricing, and appointment times at The Skin Sanctuary Co in Chesapeake, VA. | Services and pricing | Facials; Waxing; Brows; Lashes; Packages; Before you book |
+| Welcome Facial | /welcome-facial | $35 Welcome Facial \| The Skin Sanctuary Co | New to The Skin Sanctuary Co? Start with the $35 Welcome Facial and book your first visit in Chesapeake, VA. | Start here with the $35 Welcome Facial. | Why new clients love it; What to expect; Before your visit; Book your first appointment |
+| About | /about | Meet Monica Talbot \| The Skin Sanctuary Co | Meet Monica Talbot, a Virginia-licensed esthetician offering facials, lashes, brows, and waxing in Chesapeake, VA. | Meet Monica Talbot | Monica’s approach; A welcoming studio; What clients love; Book your visit |
+| Reviews | /reviews | Client Reviews \| The Skin Sanctuary Co | See what clients are saying about The Skin Sanctuary Co in Chesapeake, VA, from lash lifts to facials, brows, and the relaxing studio experience. | Client reviews | Why clients come back; Lash lift favorites; Facial feedback; Ready to book |
+| Contact | /contact | Contact and Hours \| The Skin Sanctuary Co | Find The Skin Sanctuary Co at 1009 Greenbrier Pkwy in Chesapeake, VA. Get hours, contact details, and booking information. | Visit The Skin Sanctuary Co | Hours; Location; Contact Monica; Booking and policies |
+| Policies | /policies | Booking Policies \| The Skin Sanctuary Co | Review cancellation, late, and no-show policies before your appointment at The Skin Sanctuary Co. | Booking policies | Cancellations; Arrivals; No-shows; Questions |
+
+## Content blocks
+
+### AnnouncementBar
+Purpose: surface the Welcome Facial everywhere without overpowering the site  
+Content: “New clients: book the $35 Welcome Facial”  
+Link target: /welcome-facial or Square booking CTA
+
+### TrustStrip
+Items:
+- Licensed in VA
+- Chesapeake, VA
+- 5.0-star client rating
+- Facials • Lashes • Brows • Waxing
+
+### ServiceCardGrid
+Cards:
+- Facials
+- Brows
+- Lashes
+- Waxing
+
+### FeaturedServiceHighlight
+Use Korean Lash Lift & Tint as the signature featured block.
+
+### ReviewProof
+Mix 3–6 short quotes with one rating summary.
+
+### VisitBlock
+Always show:
+- address
+- phone
+- hours
+- book CTA
+- directions CTA
+
+### FAQAccordion
+Questions to include:
+- Do I need to book ahead?
+- Where are you located?
+- What should I know before my appointment?
+- What is your cancellation policy?
+
+## Service menu table
+
+### Facials
+
+| Service | Price | Duration | Notes |
+|---|---:|---:|---|
+| Behind the Scenes | $100 | 1 hr | Back facial; descriptive copy available from screenshot |
+| Skin-n-out | $55 | 35 mins | Quick glow facial; descriptive copy available from screenshot |
+| Welcome Facial | $35 | TBD | Active offer; details pending confirmation |
+
+### Waxing
+
+| Service | Price | Duration | Notes |
+|---|---:|---:|---|
+| Bikini | $50 | 50 mins | |
+| Brazilian | $55 | 50 mins | |
+| Full Arms | $45 | 30 mins | |
+| Full Leg | $65 | 30 mins | |
+| Half Arms | $25 | 30 mins | |
+| Half Legs | $45 | 30 mins | |
+| Unspecified waxing service | TBD | TBD | One title is cut off in the supplied screenshot; do not publish until confirmed |
+
+### Brows
+
+| Service | Price | Duration | Notes |
+|---|---:|---:|---|
+| Brow Babe Trio | $125 | 50 mins | wax + lamination + tint |
+| Lamination | $75 | 45 mins | |
+| Tint | $35 | 45 mins | |
+| Wax | $25 | 1 hr | Transcribed exactly from screenshot; verify duration before launch |
+| Wax & Lami | $85 | 1 hr | Transcribed exactly from screenshot; verify duration before launch |
+| Wax & Tint | $55 | 1 hr | Transcribed exactly from screenshot; verify duration before launch |
+
+### Lashes
+
+| Service | Price | Duration | Notes |
+|---|---:|---:|---|
+| Korean Lash Lift & Tint | $130 | 1 hr 10 mins | Use as featured signature service |
+| Lash Removal | $35 | 30 mins | |
+
+### Packages / Other
+
+| Service | Price | Duration | Notes |
+|---|---:|---:|---|
+| Soft Girl Summer | $255 | 2 hrs | Signature Brow Babe + Korean Lash Lift in one visit |
+
+## Hours table
+
+| Day | Hours |
+|---|---|
+| Monday | 10 AM–5 PM |
+| Tuesday | 10 AM–5 PM |
+| Wednesday | 10 AM–5 PM |
+| Thursday | 10 AM–5 PM |
+| Friday | 10 AM–4 PM |
+| Saturday | Closed |
+| Sunday | Closed |
+
+## Review quotes table
+
+Use short excerpts only. Re-verify total review count/rating before launch because Google review counts change.
+
+| Reviewer | Excerpt | Theme | Recommended placement |
+|---|---|---|---|
+| Lesley Martinez | “This lift gives me the perfect natural glam…” | Lash results | Homepage + Reviews |
+| Angelica Shucet | “Monica was so sweet and had amazing attention to detail.” | Personality + detail | Homepage + About |
+| Jessica Conley | “The suite feels like a luxurious oasis!” | Environment | Homepage + Reviews |
+| Jhasmelly Ventura | “Super sweet and welcoming environment.” | Warmth | About + Reviews |
+| Melanie Clore | “The environment she works in is amazing and so relaxing…” | Relaxing space | Homepage + Reviews |
+| nicole | “You get pampered by a bestie…” | Friendly experience | Reviews |
+| makaira kennedy | “Seriously THE BEST!! Monica is so talented…” | Talent + trust | Reviews |
+| Emilee Quinn | “Such a nice, welcoming environment.” | Comfort | Homepage |
+| Gabi Center | “I am OBSESSED with the results every time.” | Repeat trust | Reviews |
+| Candy Robertson | “The facial was just what I needed…” | Facial result | Services + Reviews |
+
+## Photography direction
+
+### Overall approach
+Use real, warm, clean studio imagery. Avoid generic stock whenever possible.
+
+### Image priorities
+1. Monica portrait
+2. Treatment-room environmental shot
+3. Facial treatment in progress
+4. Korean lash lift close-up result
+5. Brow lamination / tint close-up
+6. Brow wax result
+7. Facial glow-after portrait
+8. Flat-lay or detail shot of tools / linens / ambiance
+9. Exterior or arrival cue
+10. One image specific to the Welcome Facial promo
+11. Additional client-results images for gallery strip
+12. Optional Google-review user photos if rights/quality allow
+
+### Framing notes
+- Favor vertical crops for mobile and portrait modules.
+- Favor close crops for lashes, brows, skin texture, and facial massage details.
+- Keep waxing imagery tasteful and non-explicit.
+- Use one “space” image per page cluster to keep the site from feeling all close-ups.
+
+### Editing notes
+- Keep tones warm and neutral.
+- Avoid oversmoothing skin.
+- Preserve realistic texture.
+- Maintain consistent white balance across the set.
+
+## Color palette
+
+Palette should reference the current Square screenshot: warm oat background, taupe header/footer, deep green booking CTA, dark brown text.
+
+| Token | Hex | Use |
+|---|---|---|
+| Canvas | #F4EEE8 | Main page background |
+| Warm Taupe | #D7C8BC | Header/footer backgrounds, soft blocks |
+| Mushroom | #B8A391 | Secondary surfaces, borders |
+| Cocoa Ink | #3D2C24 | Headings, primary text |
+| Forest CTA | #1F3229 | Primary buttons, active states |
+| Sage Mist | #D8E0D7 | Subtle accents, cards, quote backgrounds |
+| Soft White | #FFFDFC | Elevated cards on dark sections |
+
+## Typography
+
+| Role | Recommendation | Notes |
+|---|---|---|
+| Display serif | Cormorant Garamond | Elegant, editorial, soft luxury feel |
+| UI / body sans | Inter | Clean, readable, modern |
+| Optional accent | Use letterspacing instead of a third font | Keep the system simple |
+
+### Type scale
+- H1: 48–72 px desktop, 36–44 px mobile
+- H2: 32–44 px desktop, 28–34 px mobile
+- H3: 22–28 px
+- Body: 16–18 px
+- Fine print: 14 px minimum
+
+## Accessibility notes
+
+- Maintain strong contrast for all body text and buttons.
+- Do not place taupe text on oat backgrounds unless contrast is tested.
+- Use visible focus states that fit the brand.
+- Make every CTA keyboard reachable.
+- Ensure all interactive elements meet minimum touch-target expectations.
+- Decorative photos or flourishes should use empty alt text.
+- Informative photos should have concise, purpose-based alt text.
+- Service tables must remain readable on mobile; convert to cards or stacked rows if needed.
+- Avoid autoplay motion.
+- Respect `prefers-reduced-motion`.
+- Use one H1 per page.
+- Ensure accordions and menus announce expanded/collapsed states.
+
+## Responsive layout specs
+
+### Breakpoints
+- Mobile: 375–767 px
+- Tablet: 768–1023 px
+- Desktop: 1024–1439 px
+- Wide desktop: 1440 px+
+
+### Grid
+- Mobile: 4-column conceptual grid, 16 px gutters
+- Tablet: 8-column grid, 24 px gutters
+- Desktop: 12-column grid, 24–32 px gutters
+- Max content width: 1200–1280 px
+
+### Spacing system
+Base spacing unit: 8 px  
+Primary section padding:
+- Mobile: 56–72 px
+- Tablet: 72–88 px
+- Desktop: 88–120 px
+
+### Homepage responsive rules
+- Hero image stacks below text on mobile
+- Trust strip becomes 2 columns on mobile
+- Services become 1 column on mobile, 2 on tablet, 4 on desktop
+- Review cards become swipeable on small screens
+- Service pricing tables collapse to stacked cards below 768 px
+
+## Sticky booking CTA behavior
+
+### Desktop
+- Header is sticky after scroll.
+- Primary Book Now button remains visible at all times.
+- On service pages, add a small secondary sticky utility row with “Book Now” and “Call / Text” only after the hero leaves the viewport.
+
+### Mobile
+- Persistent bottom bar appears after first scroll.
+- Primary action: Book Now
+- Secondary action: Call / Text
+- On the Welcome Facial page, primary action label changes to “Book $35 Facial”
+- Respect safe-area inset on iPhone devices
+- Keep bar height compact and thumb-friendly
+
+## Analytics and SEO tags
+
+### Required measurement
+- GA4 pageviews
+- outbound booking click
+- call click
+- directions click
+- review-link click
+- welcome-facial promo click
+- FAQ expand
+- gallery image open
+
+### Required technical SEO items
+- unique `<title>` on every page
+- `<meta name="description">` on every page
+- canonical URL on every indexable page
+- Open Graph tags
+- Twitter/X summary large image tags
+- robots meta defaulting to index/follow on live pages
+- sitemap.xml
+- robots.txt
+- JSON-LD LocalBusiness / BeautySalon schema
+- favicon set
+- webmanifest / theme color
+- Search Console verification slot
+
+## Asset list
+
+| Asset | Needed format | Recommended usage |
+|---|---|---|
+| Wordmark logo | SVG preferred, transparent PNG fallback | Header, footer, OG image |
+| Monica portrait | JPG / WebP | About, homepage teaser |
+| Hero image | JPG / WebP | Homepage hero |
+| Facial image | JPG / WebP | Services + homepage |
+| Lash result 1 | JPG / WebP | Featured service + gallery |
+| Lash result 2 | JPG / WebP | Reviews / gallery |
+| Brow result 1 | JPG / WebP | Services + gallery |
+| Brow result 2 | JPG / WebP | Services + gallery |
+| Studio environment | JPG / WebP | Homepage / contact |
+| Detail flat-lay | JPG / WebP | Section divider blocks |
+| Exterior / arrival cue | JPG / WebP | Contact page |
+| OG share card image | 1200x630 PNG/JPG | Social sharing |
+| Favicon set | ICO/SVG/PNG | Browser / device icons |
+
+## Content still needed before final publish
+
+- Confirm product brands used
+- Confirm the cut-off waxing item
+- Confirm whether a suite number exists
+- Confirm Welcome Facial inclusions / duration
+- Provide final image set
+- Provide preferred review-response or review-request page/link if not using current Google link directly
+
+## Final design direction in one sentence
+
+A warm, editorial, high-trust local beauty site that feels like stepping into a calm studio and makes booking impossibly easy.

@@ -1,0 +1,1182 @@
+# claude.md
+
+## Executive summary
+
+Build a static-first, mobile-first website for The Skin Sanctuary Co that prioritizes booking conversion, local clarity, and trust. The design reference is warm neutral luxury with deeply readable typography, minimal navigation, and constant booking access.
+
+The site should feel polished but personal. Use Monica Talbot’s warmth, detail orientation, and relaxing studio environment as the emotional center of the copy and UI.
+
+## Source of truth
+
+Use this order of truth:
+1. User-supplied Square screenshot for service names, prices, durations, and visible descriptions
+2. User-supplied Google Business Profile excerpt for address, hours, review count, rating, and review quotes
+3. Public Linktree and booking/social links for service taxonomy and live offer confirmation
+4. User-supplied image assets
+
+Do **not** invent product brands.
+Do **not** fill in the partially cut-off waxing item.
+Do **not** publish an exact Welcome Facial duration until confirmed.
+
+## Recommended implementation model
+
+- Static site or hybrid-rendered site is ideal
+- No CMS required for v1
+- Store business data in a single JSON or TS config object
+- Reuse data to populate service tables, hours, contact, schema, and metadata
+- Keep booking flow external through Square
+
+## Global business data
+
+```json
+{
+  "business": {
+    "name": "The Skin Sanctuary Co",
+    "siteUrl": "https://theskinsanctuary.co",
+    "phoneDisplay": "619-458-2483",
+    "phoneHref": "tel:+16194582483",
+    "address": {
+      "street": "1009 Greenbrier Pkwy",
+      "city": "Chesapeake",
+      "region": "VA",
+      "postalCode": "23320",
+      "country": "US"
+    },
+    "esthetician": {
+      "name": "Monica Talbot",
+      "licenseNote": "Licensed in VA"
+    },
+    "hours": {
+      "monday": "10 AM–5 PM",
+      "tuesday": "10 AM–5 PM",
+      "wednesday": "10 AM–5 PM",
+      "thursday": "10 AM–5 PM",
+      "friday": "10 AM–4 PM",
+      "saturday": "Closed",
+      "sunday": "Closed"
+    },
+    "bookingUrl": "https://book.squareup.com/appointments/m81s4l6y20r3qn/location/LJ42QHKWZRHE6/bookings",
+    "instagramUrl": "https://www.instagram.com/theskinsanctuary_co",
+    "googleProfileUrl": "https://share.google/HkviCFNpwJN3Lmkhd",
+    "offer": {
+      "name": "Welcome Facial",
+      "price": 35,
+      "currency": "USD",
+      "status": "active",
+      "duration": null
+    },
+    "reviewSummary": {
+      "ratingValue": 5.0,
+      "reviewCount": 12,
+      "sourceNote": "User-provided Google Business Profile excerpt; verify at launch."
+    }
+  }
+}
+```
+
+## Service data
+
+```json
+{
+  "services": [
+    {
+      "category": "Facials",
+      "items": [
+        {
+          "name": "Behind the Scenes",
+          "price": 100,
+          "duration": "1 hr",
+          "description": "A back facial designed to help clear blemishes, exfoliate, and deeply hydrate for smoother, revitalized skin."
+        },
+        {
+          "name": "Skin-n-out",
+          "price": 55,
+          "duration": "35 mins",
+          "description": "A quick glow facial with double cleanse, skin analysis, exfoliation or mask, toner, moisturizer, and SPF."
+        },
+        {
+          "name": "Welcome Facial",
+          "price": 35,
+          "duration": null,
+          "description": "Active new-client offer. Exact duration and inclusions pending confirmation."
+        }
+      ]
+    },
+    {
+      "category": "Waxing",
+      "items": [
+        { "name": "Bikini", "price": 50, "duration": "50 mins" },
+        { "name": "Brazilian", "price": 55, "duration": "50 mins" },
+        { "name": "Full Arms", "price": 45, "duration": "30 mins" },
+        { "name": "Full Leg", "price": 65, "duration": "30 mins" },
+        { "name": "Half Arms", "price": 25, "duration": "30 mins" },
+        { "name": "Half Legs", "price": 45, "duration": "30 mins" }
+      ],
+      "notes": [
+        "One additional waxing item appears partially cut off in the supplied screenshot and is intentionally omitted pending confirmation."
+      ]
+    },
+    {
+      "category": "Brows",
+      "items": [
+        { "name": "Brow Babe Trio", "price": 125, "duration": "50 mins", "subtitle": "Wax | Lamination | Tint" },
+        { "name": "Lamination", "price": 75, "duration": "45 mins" },
+        { "name": "Tint", "price": 35, "duration": "45 mins" },
+        { "name": "Wax", "price": 25, "duration": "1 hr", "note": "Duration transcribed exactly from screenshot; verify before launch." },
+        { "name": "Wax & Lami", "price": 85, "duration": "1 hr", "note": "Duration transcribed exactly from screenshot; verify before launch." },
+        { "name": "Wax & Tint", "price": 55, "duration": "1 hr", "note": "Duration transcribed exactly from screenshot; verify before launch." }
+      ]
+    },
+    {
+      "category": "Lashes",
+      "items": [
+        {
+          "name": "Korean Lash Lift & Tint",
+          "price": 130,
+          "duration": "1 hr 10 mins",
+          "description": "A Korean-method lash lift and tint designed for longer-lasting results and a healthier lift."
+        },
+        {
+          "name": "Lash Removal",
+          "price": 35,
+          "duration": "30 mins"
+        }
+      ]
+    },
+    {
+      "category": "Packages",
+      "items": [
+        {
+          "name": "Soft Girl Summer",
+          "price": 255,
+          "duration": "2 hrs",
+          "description": "Signature Brow Babe plus a Korean Lash Lift in one appointment."
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Review data
+
+```json
+{
+  "reviews": [
+    {
+      "author": "Lesley Martinez",
+      "quote": "This lift gives me the perfect natural glam I need.",
+      "theme": "Natural lash result"
+    },
+    {
+      "author": "Angelica Shucet",
+      "quote": "Monica was so sweet and had amazing attention to detail.",
+      "theme": "Kindness and detail"
+    },
+    {
+      "author": "Jessica Conley",
+      "quote": "The suite feels like a luxurious oasis!",
+      "theme": "Environment"
+    },
+    {
+      "author": "Jhasmelly Ventura",
+      "quote": "Super sweet and welcoming environment.",
+      "theme": "Warm experience"
+    },
+    {
+      "author": "Melanie Clore",
+      "quote": "The environment she works in is amazing and so relaxing.",
+      "theme": "Relaxing studio"
+    },
+    {
+      "author": "Gabi Center",
+      "quote": "I am OBSESSED with the results every time.",
+      "theme": "Repeat trust"
+    },
+    {
+      "author": "Candy Robertson",
+      "quote": "The facial was just what I needed, and I left feeling refreshed and new.",
+      "theme": "Facial result"
+    }
+  ]
+}
+```
+
+## Site pages and components
+
+```json
+{
+  "pages": [
+    {
+      "slug": "/",
+      "name": "Home",
+      "template": "home",
+      "sections": [
+        "announcementBar",
+        "header",
+        "hero",
+        "trustStrip",
+        "serviceCardGrid",
+        "welcomeFacialPromo",
+        "featuredService",
+        "aboutTeaser",
+        "galleryStrip",
+        "reviewHighlights",
+        "visitBlock",
+        "faqTeaser",
+        "footer"
+      ]
+    },
+    {
+      "slug": "/services",
+      "name": "Services",
+      "template": "standard",
+      "sections": [
+        "pageHero",
+        "jumpNav",
+        "facialsTable",
+        "waxingTable",
+        "browsTable",
+        "lashesTable",
+        "packagesTable",
+        "prepCareAccordion",
+        "ctaBanner",
+        "footer"
+      ]
+    },
+    {
+      "slug": "/welcome-facial",
+      "name": "Welcome Facial",
+      "template": "landing",
+      "sections": [
+        "pageHero",
+        "offerSummary",
+        "benefits",
+        "expectations",
+        "reviewPairing",
+        "ctaBanner",
+        "faqMini",
+        "footer"
+      ]
+    },
+    {
+      "slug": "/about",
+      "name": "About Monica",
+      "template": "standard",
+      "sections": [
+        "pageHero",
+        "bioBlock",
+        "credentialsStrip",
+        "philosophyBlock",
+        "whyClientsReturn",
+        "galleryStrip",
+        "ctaBanner",
+        "footer"
+      ]
+    },
+    {
+      "slug": "/reviews",
+      "name": "Reviews",
+      "template": "standard",
+      "sections": [
+        "pageHero",
+        "ratingSummary",
+        "quoteGrid",
+        "themeGrid",
+        "ctaBanner",
+        "footer"
+      ]
+    },
+    {
+      "slug": "/contact",
+      "name": "Contact",
+      "template": "standard",
+      "sections": [
+        "pageHero",
+        "contactCards",
+        "hoursTable",
+        "mapBlock",
+        "faqTeaser",
+        "policiesTeaser",
+        "footer"
+      ]
+    },
+    {
+      "slug": "/policies",
+      "name": "Policies",
+      "template": "standard",
+      "sections": [
+        "pageHero",
+        "policyContent",
+        "contactPrompt",
+        "footer"
+      ]
+    }
+  ],
+  "components": [
+    "AnnouncementBar",
+    "Header",
+    "MobileMenu",
+    "Hero",
+    "TrustStrip",
+    "ServiceCardGrid",
+    "ServiceTable",
+    "ReviewCard",
+    "ReviewGrid",
+    "GalleryStrip",
+    "VisitBlock",
+    "HoursTable",
+    "StickyBookingBar",
+    "FAQAccordion",
+    "CTABanner",
+    "Footer"
+  ]
+}
+```
+
+## Final page copy
+
+### Home
+
+**SEO title:** The Skin Sanctuary Co | Chesapeake Esthetician  
+**Meta description:** Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA. Book with Monica Talbot at The Skin Sanctuary Co.  
+**H1:** Facials, lashes, brows, and waxing in Chesapeake, VA.
+
+**Announcement bar:**  
+New clients: book the $35 Welcome Facial.
+
+**Hero eyebrow:**  
+Chesapeake, Virginia
+
+**Hero supporting copy:**  
+Personalized beauty and skincare services by Monica Talbot, a Virginia-licensed esthetician creating a calm, welcoming space for glowing skin and low-maintenance beauty.
+
+**Primary CTA:**  
+Book Now
+
+**Secondary CTA:**  
+View Services
+
+**Trust strip items:**  
+Licensed in VA  
+5.0-star client rating  
+Facials • Lashes • Brows • Waxing  
+1009 Greenbrier Pkwy, Chesapeake, VA
+
+**Services intro heading:**  
+Your go-to spot for skin, lashes, brows, and waxing.
+
+**Services intro copy:**  
+Whether you want a quick refresh, a relaxing facial, a polished brow appointment, or a longer-lasting lash lift, every service is designed to feel thoughtful, comfortable, and tailored to you.
+
+**Service card copy**
+- **Facials** — From quick glow-ups to a full back facial, designed to leave you feeling refreshed and confident.
+- **Brows** — Waxing, tint, lamination, and combo services for clean shape and soft definition.
+- **Lashes** — A standout Korean lash lift and tint for a natural, low-maintenance look.
+- **Waxing** — Smooth, simple waxing services in a clean, welcoming setting.
+
+**Welcome Facial section heading:**  
+New here? Start with the $35 Welcome Facial.
+
+**Welcome Facial section copy:**  
+If it’s your first visit, the Welcome Facial is the easiest way to get to know Monica, experience the space, and treat your skin to a fresh start.
+
+**Featured service heading:**  
+A client favorite: Korean Lash Lift & Tint
+
+**Featured service copy:**  
+Loved by clients with straight or stubborn lashes, this service is designed to give you a natural, lifted look that lasts beautifully and keeps your routine easy.
+
+**About teaser heading:**  
+Meet Monica Talbot
+
+**About teaser copy:**  
+Monica is a Virginia-licensed esthetician and the heart behind The Skin Sanctuary Co. Her clients describe her as sweet, funny, welcoming, and incredibly attentive to detail. She has built a studio experience that feels relaxing, personal, and easy to come back to.
+
+**Review highlight heading:**  
+Why clients keep coming back
+
+**Review highlights:**
+- “Monica was so sweet and had amazing attention to detail.”
+- “The suite feels like a luxurious oasis!”
+- “I am OBSESSED with the results every time.”
+- “The facial was just what I needed…”
+
+**Visit section heading:**  
+Visit the studio
+
+**Visit copy:**  
+The Skin Sanctuary Co is located at 1009 Greenbrier Pkwy in Chesapeake, Virginia. Appointments are available Monday through Thursday from 10 AM to 5 PM and Friday from 10 AM to 4 PM.
+
+**Homepage FAQ**
+- **Do I need an appointment?**  
+  Yes. Booking ahead is the best way to reserve your service and preferred time.
+- **Where are you located?**  
+  1009 Greenbrier Pkwy, Chesapeake, VA 23320.
+- **Do you offer a first-time visit option?**  
+  Yes — the $35 Welcome Facial is active for new clients.
+- **What services do you offer?**  
+  Facials, lashes, brows, and waxing.
+
+### Services page
+
+**SEO title:** Services and Pricing | The Skin Sanctuary Co  
+**Meta description:** View facials, brow services, Korean lash lifts, waxing, pricing, and appointment times at The Skin Sanctuary Co in Chesapeake, VA.  
+**H1:** Services and pricing
+
+**Intro copy:**  
+Explore the current service menu at The Skin Sanctuary Co. All prices and appointment lengths below are transcribed from the latest supplied Square menu screenshot and should be rechecked with Monica before final publish if anything changes.
+
+**Facials intro:**  
+Relax, reset, and leave glowing.
+
+**Waxing intro:**  
+Simple, polished waxing services in a clean and welcoming environment.
+
+**Brows intro:**  
+From subtle cleanup to fuller, fluffier definition, brow services are designed to make your everyday routine easier.
+
+**Lashes intro:**  
+The Korean Lash Lift & Tint is the standout service here, especially for clients wanting a natural result without extensions.
+
+**Packages intro:**  
+Bundle your beauty favorites into one appointment.
+
+**Before-you-book heading:**  
+Before your appointment
+
+**Prep / care notes**
+- Arrive with clean skin and minimal eye makeup if you’re booked for lashes or brows.
+- If you are booking waxing, avoid strong exfoliants on the treatment area right before your visit.
+- If you are sensitive, planning ahead for redness or recovery time is always a good idea.
+- If you are unsure which facial to choose, book based on time and goals or contact Monica for guidance.
+
+**Services CTA banner:**  
+Ready to book? Reserve your appointment through Square.
+
+### Welcome Facial page
+
+**SEO title:** $35 Welcome Facial | The Skin Sanctuary Co  
+**Meta description:** New to The Skin Sanctuary Co? Start with the $35 Welcome Facial and book your first visit in Chesapeake, VA.  
+**H1:** Start here with the $35 Welcome Facial.
+
+**Intro copy:**  
+If you’ve been wanting to try The Skin Sanctuary Co, this is the perfect first appointment. The Welcome Facial gives new clients an easy way to experience Monica’s space, approach, and care at an introductory price.
+
+**Why start here heading:**  
+Why new clients love it
+
+**Bullet copy for cards**
+- Low-commitment first visit
+- A chance to experience the studio
+- Great for a refresh when you don’t know where to start
+- Easy entry point into facials and skin-focused self-care
+
+**What to expect heading:**  
+What to expect
+
+**What to expect copy:**  
+You can expect a warm, relaxed appointment experience with thoughtful care and a focus on making your first visit feel comfortable from the moment you arrive.
+
+**Welcome Facial review pairing:**  
+“The facial was just what I needed, and I left feeling refreshed and new.”
+
+**CTA copy:**  
+Book the Welcome Facial
+
+**Mini FAQ**
+- New clients only? — Yes, position this as the introductory offer.
+- Does booking happen on the website? — Booking is completed through Square.
+- Not sure which service to choose? — Start here or view the full service menu.
+
+### About page
+
+**SEO title:** Meet Monica Talbot | The Skin Sanctuary Co  
+**Meta description:** Meet Monica Talbot, a Virginia-licensed esthetician offering facials, lashes, brows, and waxing in Chesapeake, VA.  
+**H1:** Meet Monica Talbot
+
+**Intro copy:**  
+Monica Talbot is a Virginia-licensed esthetician and the owner of The Skin Sanctuary Co in Chesapeake. She offers facials, Korean lash lifts, brow services, and waxing in a space designed to feel calm, welcoming, and easy to return to.
+
+**Body copy:**  
+At The Skin Sanctuary Co, the goal is simple: help every client feel comfortable, cared for, and confident. Monica’s approach is personal and detail-oriented, with services that support both self-care and everyday beauty. Whether you’re coming in for a facial, a brow refresh, a lash lift, or waxing, the experience is meant to feel intentional from start to finish.
+
+Clients consistently mention Monica’s warmth, attention to detail, and the relaxing feel of her studio. That balance of professionalism and personality is what makes the experience memorable — polished results without a rushed or impersonal feel.
+
+**Credentials strip**
+- Virginia-licensed esthetician
+- Chesapeake, Virginia studio
+- Facials, lashes, brows, and waxing
+
+**Philosophy heading:**  
+Beauty appointments should feel personal, relaxing, and worth coming back for.
+
+**Why clients return heading:**  
+What clients love most
+
+**Supporting points**
+- A welcoming, friendly environment
+- Strong attention to detail
+- Natural-looking lash and brow results
+- A relaxing, calming studio experience
+
+**Closing CTA:**  
+Book your visit
+
+### Reviews page
+
+**SEO title:** Client Reviews | The Skin Sanctuary Co  
+**Meta description:** See what clients are saying about The Skin Sanctuary Co in Chesapeake, VA, from lash lifts to facials, brows, and the relaxing studio experience.  
+**H1:** Client reviews
+
+**Intro copy:**  
+Clients describe The Skin Sanctuary Co as welcoming, relaxing, detailed, and worth coming back to. Review count and rating should always be verified at launch, but the current source material shows a 5.0-star rating from 12 Google reviews.
+
+**Rating callout:**  
+5.0 stars on Google  
+12 reviews  
+Source note: user-provided Google Business Profile excerpt; verify before launch
+
+**Quote grid**
+- “Monica was so sweet and had amazing attention to detail.”
+- “The suite feels like a luxurious oasis!”
+- “Super sweet and welcoming environment.”
+- “Seriously THE BEST!!”
+- “I am OBSESSED with the results every time.”
+- “The facial was just what I needed…”
+
+**Theme grid labels**
+- Welcoming environment
+- Attention to detail
+- Lash-lift results
+- Relaxing facials
+- Repeat clients
+- Trusted recommendations
+
+**Review CTA 1:**  
+Book Now
+
+**Review CTA 2:**  
+Leave a Review
+
+### Contact page
+
+**SEO title:** Contact and Hours | The Skin Sanctuary Co  
+**Meta description:** Find The Skin Sanctuary Co at 1009 Greenbrier Pkwy in Chesapeake, VA. Get hours, contact details, and booking information.  
+**H1:** Visit The Skin Sanctuary Co
+
+**Intro copy:**  
+Find The Skin Sanctuary Co at 1009 Greenbrier Pkwy in Chesapeake, Virginia. Use the details below to book, call, or plan your visit.
+
+**Contact cards**
+- **Address**  
+  1009 Greenbrier Pkwy  
+  Chesapeake, VA 23320
+- **Phone**  
+  619-458-2483
+- **Hours**  
+  Monday–Thursday: 10 AM–5 PM  
+  Friday: 10 AM–4 PM  
+  Saturday–Sunday: Closed
+
+**Booking prompt:**  
+Appointments are booked through Square.
+
+**Directions prompt:**  
+Tap below for directions to the studio.
+
+**FAQ**
+- **How do I book?**  
+  Use the Square booking link.
+- **Can I call or text?**  
+  Yes — use the phone number listed above.
+- **When are you open?**  
+  Monday through Thursday from 10 AM to 5 PM, Friday from 10 AM to 4 PM.
+- **Do you accept walk-ins?**  
+  Position the business as appointment-based.
+
+### Policies page
+
+**SEO title:** Booking Policies | The Skin Sanctuary Co  
+**Meta description:** Review cancellation, late, and no-show policies before your appointment at The Skin Sanctuary Co.  
+**H1:** Booking policies
+
+**Intro copy:**  
+To respect Monica’s time and other clients, please review the appointment policies below before booking.
+
+**Cancellation policy heading:**  
+Cancellation policy
+
+**Cancellation policy copy:**  
+Appointments canceled or rescheduled with less than 24 hours’ notice may be subject to a fee equal to 50% of the scheduled service total.
+
+**Late policy heading:**  
+Late arrivals
+
+**Late policy copy:**  
+Please arrive on time for your appointment. If you are more than 10 minutes late, your service may need to be shortened or rescheduled so the next client is not affected.
+
+**No-show policy heading:**  
+No-shows
+
+**No-show policy copy:**  
+Clients who miss an appointment without notice may be charged 100% of the scheduled service total and may be required to prepay for future bookings.
+
+**Card-on-file note heading:**  
+Booking requirements
+
+**Card-on-file note copy:**  
+Some appointments may require a card on file or deposit to secure the booking.
+
+**Closing copy:**  
+If you have questions before your appointment, please call or text before booking.
+
+## Service menu tables for frontend
+
+### Facials
+
+| Service | Price | Duration | Description |
+|---|---:|---:|---|
+| Behind the Scenes | $100 | 1 hr | A back facial designed to help clear blemishes, exfoliate, and deeply hydrate for smoother, revitalized skin. |
+| Skin-n-out | $55 | 35 mins | A quick glow facial with double cleanse, skin analysis, exfoliation or mask, toner, moisturizer, and SPF. |
+| Welcome Facial | $35 | TBD | Active introductory offer for new clients; exact duration pending confirmation. |
+
+### Waxing
+
+| Service | Price | Duration |
+|---|---:|---:|
+| Bikini | $50 | 50 mins |
+| Brazilian | $55 | 50 mins |
+| Full Arms | $45 | 30 mins |
+| Full Leg | $65 | 30 mins |
+| Half Arms | $25 | 30 mins |
+| Half Legs | $45 | 30 mins |
+
+**Waxing note:**  
+One additional waxing entry is partially cut off in the supplied screenshot and should remain unpublished until Monica confirms it.
+
+### Brows
+
+| Service | Price | Duration | Notes |
+|---|---:|---:|---|
+| Brow Babe Trio | $125 | 50 mins | Wax + Lamination + Tint |
+| Lamination | $75 | 45 mins | |
+| Tint | $35 | 45 mins | |
+| Wax | $25 | 1 hr | Verify duration before launch |
+| Wax & Lami | $85 | 1 hr | Verify duration before launch |
+| Wax & Tint | $55 | 1 hr | Verify duration before launch |
+
+### Lashes
+
+| Service | Price | Duration | Description |
+|---|---:|---:|---|
+| Korean Lash Lift & Tint | $130 | 1 hr 10 mins | A Korean-method lash lift and tint designed for longer-lasting results and a healthier lift. |
+| Lash Removal | $35 | 30 mins | |
+
+### Packages / Other
+
+| Service | Price | Duration | Description |
+|---|---:|---:|---|
+| Soft Girl Summer | $255 | 2 hrs | Signature Brow Babe plus a Korean Lash Lift in one appointment. |
+
+## Hours table for frontend
+
+| Day | Hours |
+|---|---|
+| Monday | 10 AM–5 PM |
+| Tuesday | 10 AM–5 PM |
+| Wednesday | 10 AM–5 PM |
+| Thursday | 10 AM–5 PM |
+| Friday | 10 AM–4 PM |
+| Saturday | Closed |
+| Sunday | Closed |
+
+## Review quotes table for frontend
+
+| Author | Quote | Use |
+|---|---|---|
+| Lesley Martinez | “This lift gives me the perfect natural glam I need.” | Home / Reviews |
+| Angelica Shucet | “Monica was so sweet and had amazing attention to detail.” | Home / About |
+| Jessica Conley | “The suite feels like a luxurious oasis!” | Home / Reviews |
+| Jhasmelly Ventura | “Super sweet and welcoming environment.” | About / Reviews |
+| Melanie Clore | “The environment she works in is amazing and so relaxing.” | Home / Reviews |
+| nicole | “You get pampered by a bestie…” | Reviews |
+| makaira kennedy | “Seriously THE BEST!!” | Reviews |
+| Emilee Quinn | “Such a nice, welcoming environment.” | Home |
+| Gabi Center | “I am OBSESSED with the results every time.” | Reviews |
+| Candy Robertson | “The facial was just what I needed…” | Services / Reviews |
+
+## Component specs
+
+### Header
+- Wordmark at left
+- Nav links: Services, About, Reviews, Contact
+- Primary CTA: Book Now
+- Sticky on scroll
+- Mobile: hamburger + bottom booking bar stays separate
+
+### AnnouncementBar
+- Optional dismissible
+- Show on Home and Welcome Facial pages
+- Message: “New clients: book the $35 Welcome Facial”
+
+### Hero
+Props:
+- eyebrow
+- h1
+- body
+- primaryCta
+- secondaryCta
+- image
+- imageAlt
+
+### ServiceTable
+Props:
+- categoryTitle
+- intro
+- rows[]
+- notes[]
+
+Behavior:
+- Table on desktop
+- Stack cards on mobile
+
+### ReviewCard
+Props:
+- quote
+- author
+- theme
+- image optional
+
+### StickyBookingBar
+Props:
+- primaryLabel
+- primaryHref
+- secondaryLabel
+- secondaryHref
+
+Behavior:
+- Hidden on initial load
+- Appears after first meaningful scroll
+- Uses safe-area padding on mobile
+
+### FAQAccordion
+- Button per question
+- `aria-expanded`
+- `aria-controls`
+- Content region with unique IDs
+
+## Design tokens CSS
+
+```css
+:root {
+  --color-canvas: #F4EEE8;
+  --color-taupe: #D7C8BC;
+  --color-mushroom: #B8A391;
+  --color-ink: #3D2C24;
+  --color-forest: #1F3229;
+  --color-sage: #D8E0D7;
+  --color-white: #FFFDFC;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-soft: 0 10px 30px rgba(61, 44, 36, 0.08);
+
+  --container-max: 1200px;
+  --gutter: 24px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 88px;
+}
+```
+
+## Sticky booking bar snippet
+
+```html
+<div class="sticky-booking-bar" id="stickyBookingBar" hidden>
+  <a class="sticky-booking-bar__primary" href="https://book.squareup.com/appointments/m81s4l6y20r3qn/location/LJ42QHKWZRHE6/bookings" data-track="book_now_sticky">
+    Book Now
+  </a>
+  <a class="sticky-booking-bar__secondary" href="tel:+16194582483" data-track="call_sticky">
+    Call / Text
+  </a>
+</div>
+```
+
+```css
+.sticky-booking-bar {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 253, 252, 0.96);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+.sticky-booking-bar__primary,
+.sticky-booking-bar__secondary {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.sticky-booking-bar__primary {
+  background: var(--color-forest);
+  color: var(--color-white);
+  padding: 0 18px;
+}
+
+.sticky-booking-bar__secondary {
+  color: var(--color-ink);
+  border: 1px solid var(--color-mushroom);
+  background: transparent;
+  padding: 0 16px;
+}
+
+@media (min-width: 1024px) {
+  .sticky-booking-bar {
+    left: auto;
+    right: 24px;
+    width: 360px;
+  }
+}
+```
+
+```js
+const stickyBar = document.getElementById('stickyBookingBar');
+
+const onScrollToggleStickyBar = () => {
+  if (!stickyBar) return;
+  if (window.scrollY > 180) {
+    stickyBar.hidden = false;
+  } else {
+    stickyBar.hidden = true;
+  }
+};
+
+window.addEventListener('scroll', onScrollToggleStickyBar, { passive: true });
+onScrollToggleStickyBar();
+```
+
+## Outbound tracking helper
+
+```js
+function trackOutboundClick(label, destination) {
+  if (window.gtag) {
+    window.gtag('event', 'outbound_click', {
+      event_category: 'engagement',
+      event_label: label,
+      destination
+    });
+  }
+}
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('[data-track]');
+  if (!link) return;
+  trackOutboundClick(link.dataset.track, link.getAttribute('href') || '');
+});
+```
+
+## Booking button component spec
+
+```html
+<a
+  class="btn btn--primary"
+  href="https://book.squareup.com/appointments/m81s4l6y20r3qn/location/LJ42QHKWZRHE6/bookings"
+  data-track="book_now_primary"
+>
+  Book Now
+</a>
+```
+
+### Booking rules
+- Use the same booking URL sitewide
+- Keep the booking CTA as a first-class action in header, hero, services, review sections, contact section, and sticky mobile bar
+- Prefer one primary booking URL rather than multiple inconsistent destinations
+- If you later create campaign-specific landing pages, keep CTA text page-specific but destination identical unless Square offers service-specific deep links
+
+## Contact block snippet
+
+```html
+<section class="contact-block">
+  <div>
+    <h2>Visit The Skin Sanctuary Co</h2>
+    <p>1009 Greenbrier Pkwy<br>Chesapeake, VA 23320</p>
+    <p><a href="tel:+16194582483">619-458-2483</a></p>
+    <p>Mon–Thu 10 AM–5 PM<br>Fri 10 AM–4 PM<br>Sat–Sun Closed</p>
+  </div>
+
+  <div class="contact-block__actions">
+    <a class="btn btn--primary" href="https://book.squareup.com/appointments/m81s4l6y20r3qn/location/LJ42QHKWZRHE6/bookings" data-track="book_now_contact">Book Now</a>
+    <a class="btn btn--secondary" href="https://www.google.com/maps/search/?api=1&query=1009+Greenbrier+Pkwy+Chesapeake+VA+23320" data-track="directions_click">Get Directions</a>
+  </div>
+</section>
+```
+
+## Schema markup
+
+Use JSON-LD. Do **not** add review or aggregateRating schema if you want to stay fully conservative about self-serving LocalBusiness review markup. Show rating and testimonials visually in the UI instead.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "The Skin Sanctuary Co",
+  "url": "https://theskinsanctuary.co",
+  "telephone": "+1-619-458-2483",
+  "description": "The Skin Sanctuary Co offers facials, Korean lash lifts, brow services, and waxing in Chesapeake, Virginia.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1009 Greenbrier Pkwy",
+    "addressLocality": "Chesapeake",
+    "addressRegion": "VA",
+    "postalCode": "23320",
+    "addressCountry": "US"
+  },
+  "image": [
+    "https://theskinsanctuary.co/images/hero/hero-main.jpg",
+    "https://theskinsanctuary.co/images/about/monica-portrait.jpg"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/theskinsanctuary_co"
+  ],
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "10:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Tuesday",
+      "opens": "10:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Wednesday",
+      "opens": "10:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Thursday",
+      "opens": "10:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "10:00",
+      "closes": "16:00"
+    }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Monica Talbot"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Service Menu",
+    "itemListElement": [
+      {
+        "@type": "OfferCatalog",
+        "name": "Facials",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "Behind the Scenes"
+          },
+          {
+            "@type": "Service",
+            "name": "Skin-n-out"
+          },
+          {
+            "@type": "Service",
+            "name": "Welcome Facial"
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Brows",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "Brow Babe Trio"
+          },
+          {
+            "@type": "Service",
+            "name": "Lamination"
+          },
+          {
+            "@type": "Service",
+            "name": "Tint"
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Lashes",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "Korean Lash Lift & Tint"
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "name": "Waxing",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "Bikini"
+          },
+          {
+            "@type": "Service",
+            "name": "Brazilian"
+          }
+        ]
+      }
+    ]
+  }
+}
+</script>
+```
+
+## Meta tags template
+
+```html
+<title>The Skin Sanctuary Co | Chesapeake Esthetician</title>
+<meta name="description" content="Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA. Book with Monica Talbot at The Skin Sanctuary Co.">
+<link rel="canonical" href="https://theskinsanctuary.co/">
+
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#1F3229">
+<meta name="google-site-verification" content="PASTE_SEARCH_CONSOLE_TOKEN_HERE">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Skin Sanctuary Co | Chesapeake Esthetician">
+<meta property="og:description" content="Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA.">
+<meta property="og:url" content="https://theskinsanctuary.co/">
+<meta property="og:image" content="https://theskinsanctuary.co/images/og/the-skin-sanctuary-og.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Skin Sanctuary Co | Chesapeake Esthetician">
+<meta name="twitter:description" content="Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA.">
+<meta name="twitter:image" content="https://theskinsanctuary.co/images/og/the-skin-sanctuary-og.jpg">
+```
+
+## Analytics install placeholder
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+```
+
+## Review implementation rules
+
+- Show review quotes in visible testimonial components
+- Add a “Leave a Review” button that points to the Google review/profile link
+- Do not fabricate dates or reviewer details
+- Keep quotes short and attributable
+- Recheck rating count before publish
+- If Monica gets new reviews, update visible count manually or through a controlled content update process
+- Do not promise Google star snippets from schema
+
+## Product-brand placeholder copy
+
+Use one of these until Monica confirms exact brands:
+
+**Option A**  
+Professional skincare products selected to support your treatment goals.
+
+**Option B**  
+Thoughtfully chosen professional products tailored to your service and skin needs.
+
+**Option C**  
+Product line details coming soon.
+
+## Deployment checklist
+
+- Confirm final logo file
+- Upload and optimize all image assets
+- Export all images as WebP plus JPG fallback if needed
+- Create homepage OG image at 1200x630
+- Implement all approved page metadata
+- Add canonical tags to all live pages
+- Configure robots.txt
+- Generate sitemap.xml
+- Submit sitemap in Search Console
+- Verify domain in Search Console
+- Install GA4
+- Test outbound click tracking for booking, phone, and directions
+- Verify all hours and address details against Monica’s current business info
+- Verify Welcome Facial is still active on launch day
+- Verify the cut-off waxing item is either confirmed or intentionally omitted
+- Test booking link on iPhone and Android
+- Test `tel:` link behavior on mobile
+- Test keyboard navigation and visible focus
+- Test color contrast
+- Add alt text to all informative images
+- Use empty alt text for purely decorative images
+- Update Google Business Profile website field to the final domain
+- Add privacy page
+- Add 404 page
+- Redirect `www` to preferred canonical domain
+- Force HTTPS
+
+## QA checklist
+
+- One H1 per page
+- Booking CTA visible above the fold on homepage
+- Sticky booking bar visible on mobile after scroll
+- Service tables readable on mobile
+- All pages load with meaningful content even before non-essential JS
+- No broken images
+- No placeholder lorem ipsum
+- No product-brand claims unless confirmed
+- No mention of the unspecified waxing service
+- No duplicate brow entries displayed unless Monica explicitly wants them duplicated
+- Review count and rating checked at launch
+- Contact info identical in header/footer/contact/schema
+- Directions link resolves correctly
+- Instagram link resolves correctly
+- Structured data validates cleanly
+
+## Final implementation note
+
+The site should feel effortless to use: warm visuals, clear prices, high trust, and a booking path that is always one tap away.
