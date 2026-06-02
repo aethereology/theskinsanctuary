@@ -1,101 +1,54 @@
-import type { Metadata } from "next";
-import type { CSSProperties } from "react";
-import { credentials, loves } from "@/lib/data";
-import { GalleryStrip, CTABanner } from "@/components/sections";
+import Image from "next/image";
+import { Metadata } from "next";
+import { about } from "@/lib/data";
+import BookingButton from "@/components/BookingButton";
+import monicaImage from "@/assets/monica2.jpeg";
 
 export const metadata: Metadata = {
-  title: "Meet Monica Talbot",
-  description:
-    "Meet Monica Talbot, a Virginia-licensed esthetician offering facials, lashes, brows, and waxing in Chesapeake, VA.",
-  alternates: { canonical: "/about" },
+  title: "About Monica | The Skin Sanctuary Co",
+  description: "Meet Monica Talbot, the Virginia-licensed esthetician behind The Skin Sanctuary Co in Chesapeake, VA — a boutique studio built around soft, intentional, low-maintenance beauty.",
 };
-
-const delay = (ms: number): CSSProperties => ({ ["--reveal-delay" as string]: ms + "ms" });
 
 export default function AboutPage() {
   return (
-    <main>
-      <section className="aph">
-        <div className="container aph__inner">
-          <div className="aph__copy">
-            <div className="phero__num reveal">/ 04 — Meet your esthetician</div>
-            <h1 className="display display--xxl reveal" style={{ ...delay(80), marginTop: 14 }}>
-              Meet
-              <br />
-              <span className="italic">Monica Talbot.</span>
-            </h1>
-            <p className="lede reveal" style={{ ...delay(160), marginTop: 24 }}>
-              Monica is a Virginia-licensed esthetician and the owner of The Skin Sanctuary Co in
-              Chesapeake. She offers facials, Korean lash lifts, brow services, and waxing in a space
-              designed to feel calm, welcoming, and easy to return to.
-            </p>
-            <div className="aph__creds reveal" style={delay(220)}>
-              {credentials.map((c) => (
-                <span key={c}>{c}</span>
-              ))}
-            </div>
-          </div>
-          <div className="aph__photo reveal" style={delay(160)}>
-            <div className="photo photo--portrait photo--v1" data-cap="MONICA TALBOT" />
-            <div className="aph__sig">
-              <span className="display display--md italic">Monica.</span>
-            </div>
-          </div>
+    <>
+      <section className="pt-32 pb-16">
+        <div className="container max-w-3xl text-center">
+          <h1 className="font-serif text-5xl text-cocoa mb-6">About Monica</h1>
+          <p className="text-lg text-espresso">{about.credential}</p>
         </div>
       </section>
 
-      <section className="section band-canvas-soft">
-        <div className="container abp">
-          <div className="abp__pull reveal">
-            <div className="sec-num">/ Studio philosophy</div>
-            <p className="pull" style={{ marginTop: 14 }}>
-              Beauty appointments should feel personal, relaxing, and worth coming back for.
-            </p>
-          </div>
-          <div className="reveal" style={delay(120)}>
-            <p className="body" style={{ fontSize: 18 }}>
-              At The Skin Sanctuary Co, the goal is simple: help every client feel comfortable, cared
-              for, and confident. Monica&apos;s approach is personal and detail-oriented, with
-              services that support both self-care and everyday beauty.
-            </p>
-            <p className="body" style={{ marginTop: 18, fontSize: 18 }}>
-              Clients consistently mention Monica&apos;s warmth, attention to detail, and the relaxing
-              feel of her studio. That balance of professionalism and personality is what makes the
-              experience memorable — polished results without a rushed or impersonal feel.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
+      <section className="py-16 bg-ivory">
         <div className="container">
-          <div className="aw__head reveal">
-            <div className="sec-num">/ What clients love most</div>
-            <h2 className="display display--lg" style={{ marginTop: 10 }}>
-              Why clients return.
-            </h2>
-          </div>
-          <div className="aw__grid">
-            {loves.map(([t, p], i) => (
-              <div key={i} className="aw__c reveal" style={delay(i * 80)}>
-                <div className="aw__n">0{i + 1}</div>
-                <div>
-                  <h4 className="display display--md" style={{ margin: "0 0 6px" }}>
-                    {t}
-                  </h4>
-                  <p className="body" style={{ margin: 0, color: "var(--tss-fg-muted)" }}>
-                    {p}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-sm">
+              <Image
+                src={monicaImage}
+                alt="Monica Talbot, licensed esthetician and owner of The Skin Sanctuary Co"
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                placeholder="blur"
+                className="object-cover object-top"
+              />
+            </div>
+            <div>
+              <h2 className="font-serif text-2xl text-cocoa mb-6">The studio, and the hands behind it</h2>
+              <p className="text-espresso mb-6 leading-relaxed">{about.bio}</p>
+              <p className="text-espresso leading-relaxed">{about.personality}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <GalleryStrip />
-
-      <CTABanner title="Book a visit with Monica." sub="See you soon" />
-    </main>
+      <section className="py-20 bg-cocoa text-porcelain text-center">
+        <div className="container">
+          <h2 className="font-serif text-3xl text-porcelain mb-6">
+            Come see Monica in studio
+          </h2>
+          <BookingButton label="book an appointment" variant="light" trackingId="about_cta" />
+        </div>
+      </section>
+    </>
   );
 }

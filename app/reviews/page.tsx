@@ -1,79 +1,70 @@
-import type { Metadata } from "next";
-import type { CSSProperties } from "react";
-import { reviewsAll, business } from "@/lib/data";
-import { ReviewCard } from "@/components/atoms";
-import { Marquee, ThemesGrid, CTABanner } from "@/components/sections";
-import { BookButton } from "@/components/Booking";
+import Image from "next/image";
+import { Metadata } from "next";
+import { site } from "@/lib/site";
+import { reviews } from "@/lib/data";
+import ReviewCard from "@/components/ReviewCard";
+import BookingButton from "@/components/BookingButton";
+import reviewsHeroImage from "@/assets/reviewsimage2.png";
 
 export const metadata: Metadata = {
-  title: "Client Reviews",
-  description:
-    "See what clients are saying about The Skin Sanctuary Co in Chesapeake, VA, from lash lifts to facials, brows, and the relaxing studio experience.",
-  alternates: { canonical: "/reviews" },
+  title: "Reviews | The Skin Sanctuary Co",
+  description: "Real client reviews for The Skin Sanctuary Co in Chesapeake, VA — a 5.0-star studio for Korean lash lifts, brow work, and waxing with Monica Talbot.",
 };
-
-const delay = (ms: number): CSSProperties => ({ ["--reveal-delay" as string]: ms + "ms" });
 
 export default function ReviewsPage() {
   return (
-    <main>
-      <section className="rph">
-        <div className="container" style={{ textAlign: "center" }}>
-          <div className="phero__num reveal">/ 05 — Client reviews</div>
-          <h1 className="display display--xxl reveal" style={{ ...delay(80), marginTop: 14 }}>
-            <span className="italic">5.0 stars</span>
-            <br />
-            on Google.
-          </h1>
-          <p className="lede reveal" style={{ ...delay(160), margin: "24px auto 0", maxWidth: "60ch" }}>
-            Clients describe The Skin Sanctuary Co as welcoming, relaxing, detailed, and worth coming
-            back to.
-          </p>
-          <div className="rph__rating reveal" style={delay(220)}>
-            <span className="rph__n">5.0</span>
-            <div className="rph__r-meta">
-              <span className="stars" style={{ fontSize: 18, letterSpacing: "4px" }}>★★★★★</span>
-              <span className="small" style={{ marginTop: 2 }}>
-                12 Google reviews
-              </span>
+    <>
+      {/* Hero Section */}
+      <section className="relative flex items-center min-h-[80vh] pt-28 pb-20 overflow-hidden bg-linen">
+        {/* Full-bleed background image — woman sits on the right; mobile shifts focus right to keep her face in frame */}
+        <Image
+          src={reviewsHeroImage}
+          alt="A client relaxing with skincare in The Skin Sanctuary Co's calm, light-filled studio"
+          fill
+          priority
+          sizes="100vw"
+          placeholder="blur"
+          className="object-cover object-[82%_center] md:object-[center_top]"
+        />
+        {/* Scrim anchored on the left so the copy stays legible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-espresso/85 via-espresso/45 to-espresso/5" />
+        <div className="absolute inset-0 bg-gradient-to-b from-espresso/10 via-transparent to-espresso/35" />
+
+        <div className="container relative z-10">
+          <div className="max-w-xl text-left">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+              Kind words
+            </h1>
+            <div className="flex justify-start gap-2 mb-6">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="text-champagne text-2xl">★</span>
+              ))}
             </div>
+            <p className="text-lg text-porcelain/90 leading-relaxed">
+              A perfect {site.trust.rating} stars across {site.trust.reviewCount} client reviews — here's what they had to say.
+            </p>
           </div>
         </div>
       </section>
-      <Marquee />
-      <section className="section">
-        <div className="container">
-          <div className="rp__feat reveal">
-            <ReviewCard
-              large
-              quote="The suite feels like a luxurious oasis!"
-              author="Jessica Conley"
-              theme="Environment"
-            />
-          </div>
-          <div className="rp__grid">
-            {reviewsAll.map((r, i) => (
-              <div key={i} className="reveal" style={delay(i * 40)}>
-                <ReviewCard {...r} dark={i === 4} />
-              </div>
+
+      <section className="py-16">
+        <div className="container max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {reviews.map((review, idx) => (
+              <ReviewCard key={idx} quote={review.quote} />
             ))}
           </div>
         </div>
       </section>
 
-      <ThemesGrid />
-
-      <section className="section--tight">
-        <div className="container" style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
-          <BookButton className="btn btn--primary btn--lg">Book Now</BookButton>
-          <a className="btn btn--secondary btn--lg" href={business.googleProfileUrl} target="_blank" rel="noreferrer">
-            <span className="stars">★★★★★</span>
-            Leave a Review
-          </a>
+      <section className="py-20 bg-ivory text-center">
+        <div className="container">
+          <h2 className="font-serif text-3xl text-cocoa mb-6">
+            Ready to see for yourself?
+          </h2>
+          <BookingButton trackingId="reviews_cta" />
         </div>
       </section>
-
-      <CTABanner title="Want results like these?" sub="Reserve your visit" />
-    </main>
+    </>
   );
 }

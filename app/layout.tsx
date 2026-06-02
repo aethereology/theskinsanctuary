@@ -1,109 +1,73 @@
-import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import type { Metadata } from "next";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { business } from "@/lib/data";
-import { BookingProvider } from "@/components/Booking";
-import { AnnouncementBar } from "@/components/AnnouncementBar";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { StickyBookingBar } from "@/components/StickyBookingBar";
-import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { site } from "@/lib/site";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import StickyBookingBar from "@/components/StickyBookingBar";
+import JsonLd from "@/components/JsonLd";
 
 const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
   display: "swap",
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(business.siteUrl),
-  title: {
-    default: "The Skin Sanctuary Co | Chesapeake Esthetician",
-    template: "%s | The Skin Sanctuary Co",
-  },
-  description:
-    "Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA. Book with Monica Talbot at The Skin Sanctuary Co.",
-  alternates: { canonical: "/" },
-  robots: { index: true, follow: true, "max-image-preview": "large" } as Metadata["robots"],
-  openGraph: {
-    type: "website",
-    siteName: "The Skin Sanctuary Co",
-    title: "The Skin Sanctuary Co | Chesapeake Esthetician",
-    description:
-      "Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA.",
-    url: "/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Skin Sanctuary Co | Chesapeake Esthetician",
-    description:
-      "Personalized facials, Korean lash lifts, brows, and waxing in Chesapeake, VA.",
-  },
-};
-
-export const viewport: Viewport = {
-  themeColor: "#1F3229",
-  width: "device-width",
-  initialScale: 1,
-  viewportFit: "cover",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BeautySalon",
-  name: business.name,
-  url: business.siteUrl,
-  telephone: "+1-619-458-2483",
-  description:
-    "The Skin Sanctuary Co offers facials, Korean lash lifts, brow services, and waxing in Chesapeake, Virginia.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: business.street,
-    addressLocality: business.city,
-    addressRegion: business.region,
-    postalCode: business.postalCode,
-    addressCountry: "US",
-  },
-  sameAs: [business.instagramUrl],
-  priceRange: "$$",
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "10:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Tuesday", opens: "10:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "10:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday", opens: "10:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "10:00", closes: "16:00" },
+  metadataBase: new URL(site.baseUrl),
+  title: `${site.brand} | Beauty Studio, Shop & Blog in Chesapeake, VA`,
+  description: site.description,
+  keywords: [
+    "Korean lash lift",
+    "lash lift Chesapeake VA",
+    "brow lamination",
+    "esthetician Chesapeake VA",
+    "beauty studio",
+    "waxing services",
+    "lash aftercare",
+    "brow aftercare",
+    "beauty products",
   ],
-  founder: { "@type": "Person", name: "Monica Talbot" },
+  openGraph: {
+    title: `${site.brand} | Beauty Studio, Shop & Blog in Chesapeake, VA`,
+    description: site.description,
+    url: site.baseUrl,
+    siteName: site.brand,
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <BookingProvider>
-          <AnnouncementBar />
-          <Header />
-          {children}
-          <Footer />
-          <StickyBookingBar />
-          <RevealOnScroll />
-          <div className="float-monogram" aria-hidden="true">
-            tss
-          </div>
-        </BookingProvider>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${dmSans.variable} h-full`}
+    >
+      <head>
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <JsonLd />
+      </head>
+      <body className="min-h-full flex flex-col bg-porcelain text-espresso">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <StickyBookingBar />
       </body>
     </html>
   );

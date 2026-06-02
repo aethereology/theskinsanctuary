@@ -1,124 +1,78 @@
-import type { Metadata } from "next";
-import type { CSSProperties } from "react";
-import { business, contactFaq } from "@/lib/data";
-import { HoursDial } from "@/components/HoursDial";
-import { FAQAccordion } from "@/components/atoms";
-import { BookButton } from "@/components/Booking";
-import { PinIcon, PhoneIcon, InstagramIcon } from "@/components/icons";
+import { Metadata } from "next";
+import { site } from "@/lib/site";
+import BookingButton from "@/components/BookingButton";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact and Hours",
-  description:
-    "Find The Skin Sanctuary Co at 1009 Greenbrier Pkwy in Chesapeake, VA. Get hours, contact details, and booking information.",
-  alternates: { canonical: "/contact" },
+  title: "Contact & Booking | The Skin Sanctuary Co",
+  description: "Book with Monica Talbot at The Skin Sanctuary Co in Chesapeake, VA. Reserve your lash lift, brow service, or waxing appointment through Calendly, or call the studio directly.",
 };
-
-const delay = (ms: number): CSSProperties => ({ ["--reveal-delay" as string]: ms + "ms" });
 
 export default function ContactPage() {
   return (
-    <main>
-      <section className="cph">
-        <div className="container">
-          <div className="phero__num reveal">/ 06 — Contact and hours</div>
-          <h1 className="display display--xxl reveal" style={{ ...delay(80), marginTop: 14 }}>
-            Visit The
-            <br />
-            <span className="italic">Skin Sanctuary.</span>
-          </h1>
-          <p className="lede reveal" style={{ ...delay(160), marginTop: 24, maxWidth: "60ch" }}>
-            Find the studio at 1009 Greenbrier Pkwy in Chesapeake, Virginia. Use the details below to
-            book, call, or plan your visit.
+    <>
+      <section className="pt-32 pb-16">
+        <div className="container max-w-3xl text-center">
+          <h1 className="font-serif text-5xl text-cocoa mb-6">Let's get you booked</h1>
+          <p className="text-lg text-espresso max-w-xl mx-auto">
+            The fastest way to reserve your spot is through Calendly. Prefer to talk it through first? Monica is just a phone call away.
           </p>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container cp__grid">
-          <div className="cp__cards">
-            <div className="cp__c reveal">
-              <div className="eyebrow">Address</div>
-              <p className="display display--sm" style={{ marginTop: 10, lineHeight: 1.25 }}>
-                1009 Greenbrier Pkwy
-                <br />
-                Chesapeake, VA 23320
-              </p>
-              <a
-                className="btn btn--secondary btn--sm"
-                href={business.mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                style={{ marginTop: 16 }}
-              >
-                <PinIcon width={13} height={13} />
-                Get Directions
-              </a>
-            </div>
-            <div className="cp__c reveal" style={delay(80)}>
-              <div className="eyebrow">Phone</div>
-              <p className="display display--sm" style={{ marginTop: 10 }}>
-                <a href={business.phoneHref}>{business.phoneDisplay}</a>
-              </p>
-              <a className="btn btn--secondary btn--sm" href={business.phoneHref} style={{ marginTop: 16 }}>
-                <PhoneIcon width={13} height={13} />
-                Call / Text
-              </a>
-            </div>
-            <div className="cp__c cp__c--book reveal" style={delay(160)}>
-              <div className="eyebrow" style={{ color: "rgba(255,253,252,.65)" }}>
-                Booking
-              </div>
-              <p className="display display--md" style={{ marginTop: 10, color: "var(--tss-white)" }}>
-                Reserve through Square.
-              </p>
-              <p className="small" style={{ marginTop: 8, color: "rgba(255,253,252,.7)" }}>
-                Booking takes about 60 seconds.
-              </p>
-              <BookButton className="btn btn--white btn--sm">Book Now</BookButton>
-            </div>
-            <div className="cp__c reveal" style={delay(240)}>
-              <div className="eyebrow">Follow along</div>
-              <p className="display display--sm" style={{ marginTop: 10 }}>
-                <a href={business.instagramUrl} target="_blank" rel="noreferrer">
-                  @theskinsanctuary_co
-                </a>
-              </p>
-              <a
-                className="btn btn--secondary btn--sm"
-                href={business.instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                style={{ marginTop: 16 }}
-              >
-                <InstagramIcon width={13} height={13} />
-                Open Instagram
-              </a>
+      <section className="py-16">
+        <div className="container max-w-2xl">
+          <div className="bg-ivory rounded-lg p-8 mb-8">
+            <h2 className="font-serif text-2xl text-cocoa mb-6">Book Your Appointment</h2>
+            <p className="text-espresso mb-6">
+              Browse Monica's live availability and reserve your service in a few taps. You'll receive a confirmation right away, and your time is held the moment you book.
+            </p>
+            <BookingButton trackingId="contact_book" />
+          </div>
+
+          <div className="bg-surface rounded-lg p-8 mb-8">
+            <h2 className="font-serif text-2xl text-cocoa mb-6">Call Monica</h2>
+            <a
+              href={site.contact.phoneHref}
+              className="text-lg text-clay font-semibold hover:text-primary-dark transition-colors block mb-4"
+            >
+              {site.contact.phone.value}
+            </a>
+            <p className="text-espresso">
+              Curious which service is right for you? Call during studio hours and Monica will happily talk you through it.
+            </p>
+          </div>
+
+          <div className="bg-ivory rounded-lg p-8 mb-8">
+            <h2 className="font-serif text-2xl text-cocoa mb-6">Studio Hours</h2>
+            <div className="text-espresso space-y-2">
+              <p>Monday - Thursday: 10 AM - 5 PM</p>
+              <p>Friday: 10 AM - 4 PM</p>
+              <p>Saturday - Sunday: Closed</p>
             </div>
           </div>
-          <div className="cp__side">
-            <div className="reveal">
-              <HoursDial />
-            </div>
-            <div
-              className="cp__map photo photo--wide photo--v6 reveal"
-              data-cap="MAP · 1009 GREENBRIER PKWY"
-              style={delay(80)}
-            />
+
+          <div className="bg-surface rounded-lg p-8">
+            <h2 className="font-serif text-2xl text-cocoa mb-6">Connect on Instagram</h2>
+            <a
+              href={site.social.instagram.value}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-clay hover:text-primary-dark font-medium transition-colors"
+            >
+              @theskinsanctuary_co
+            </a>
           </div>
         </div>
       </section>
 
-      <section className="section--tight band-canvas-soft">
-        <div className="container" style={{ maxWidth: 820 }}>
-          <div className="sec-num reveal">/ Frequently asked</div>
-          <h2 className="display display--lg reveal" style={{ ...delay(80), marginTop: 10, marginBottom: 24 }}>
-            Quick answers.
-          </h2>
-          <div className="reveal" style={delay(160)}>
-            <FAQAccordion items={contactFaq} />
-          </div>
+      <section className="py-16 bg-ivory">
+        <div className="container max-w-2xl text-center">
+          <Link href="/policies" className="text-clay hover:text-primary-dark font-medium transition-colors">
+            Read our studio policies →
+          </Link>
         </div>
       </section>
-    </main>
+    </>
   );
 }

@@ -1,133 +1,104 @@
 "use client";
 
-// components/Header.tsx — sticky header with primary nav, mobile drawer, Book Now.
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Wordmark } from "@/components/Wordmark";
-import { useBooking } from "@/components/Booking";
-import { business } from "@/lib/data";
-import { BurgerIcon, CloseIcon, PhoneIcon } from "@/components/icons";
+import { site } from "@/lib/site";
+import { cn } from "@/lib/utils";
+import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
+import BookingButton from "./BookingButton";
 
-const NAV = [
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/reviews", label: "Reviews" },
-  { href: "/contact", label: "Contact" },
+const navigationLinks = [
+  { label: "Services", href: "/services" },
+  { label: "Shop", href: "/shop" },
+  { label: "Blog", href: "/blog" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "About", href: "/about" },
 ];
 
-const MENU = [
-  { href: "/", label: "Home" },
-  ...NAV,
-  { href: "/welcome-facial", label: "Welcome Facial" },
-  { href: "/policies", label: "Policies" },
-];
-
-export function Header() {
-  const pathname = usePathname();
-  const { open: openBooking } = useBooking();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 8);
-    on();
-    window.addEventListener("scroll", on, { passive: true });
-    return () => window.removeEventListener("scroll", on);
-  }, []);
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className={"hdr" + (scrolled ? " hdr--scrolled" : "")}>
-      <div className="container hdr__inner">
-        <Link href="/" className="hdr__mark" aria-label="The Skin Sanctuary Co — home">
-          <Wordmark size="md" />
+    <header className="fixed w-full top-0 z-50 bg-porcelain/95 backdrop-blur transition-all duration-300">
+      <nav className="container flex items-center justify-between py-4">
+        {/* Logo */}
+        <Link href="/" className="font-serif text-xl font-semibold text-cocoa">
+          {site.brand}
         </Link>
-        <nav className="hdr__nav" aria-label="Primary">
-          {NAV.map((l) => (
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8">
+          {navigationLinks.map((link) => (
             <Link
-              key={l.href}
-              href={l.href}
-              className={"hdr__lnk" + (pathname === l.href ? " is-active" : "")}
+              key={link.href}
+              href={link.href}
+              className="text-sm text-espresso hover:text-clay transition-colors"
             >
-              {l.label}
+              {link.label}
             </Link>
           ))}
-        </nav>
-        <div className="hdr__cta">
-          <button className="btn btn--primary btn--sm" onClick={openBooking}>
-            Book Now
-          </button>
-          <button className="hdr__burger" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
-            <BurgerIcon />
-          </button>
         </div>
-      </div>
-      {menuOpen && (
-        <MobileMenu
-          pathname={pathname}
-          onClose={() => setMenuOpen(false)}
-          onBook={() => {
-            setMenuOpen(false);
-            openBooking();
-          }}
-        />
+
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <BookingButton />
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={cn(
+            flowHoverButtonClasses,
+            "md:hidden p-2 rounded-md text-cocoa before:bg-cocoa hover:text-porcelain",
+          )}
+          aria-label="Toggle mobile menu"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={
+                mobileMenuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
+          </svg>
+        </button>
+      </nav>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-ivory border-t border-hairline">
+          <div className="container py-4 flex flex-col gap-4">
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-espresso hover:text-clay transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-4 border-t border-hairline">
+              <a
+                href={`tel:${site.contact.phoneHref}`}
+                className="block text-clay font-medium py-2 mb-4"
+              >
+                {site.contact.phone.value}
+              </a>
+              <BookingButton />
+            </div>
+          </div>
+        </div>
       )}
     </header>
-  );
-}
-
-function MobileMenu({
-  pathname,
-  onClose,
-  onBook,
-}: {
-  pathname: string;
-  onClose: () => void;
-  onBook: () => void;
-}) {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  return (
-    <div className="mm" role="dialog" aria-modal="true" aria-label="Menu">
-      <div className="mm__top">
-        <Wordmark size="sm" />
-        <button className="mm__close" aria-label="Close menu" onClick={onClose}>
-          <CloseIcon />
-        </button>
-      </div>
-      <nav className="mm__nav">
-        {MENU.map((l, i) => (
-          <Link
-            key={l.href}
-            href={l.href}
-            className={"mm__lnk" + (pathname === l.href ? " is-active" : "")}
-            style={{ transitionDelay: i * 40 + "ms" }}
-            onClick={onClose}
-          >
-            <span className="mm__lnk-n">0{i + 1}</span>
-            <span className="mm__lnk-l">{l.label}</span>
-          </Link>
-        ))}
-      </nav>
-      <div className="mm__cta">
-        <button className="btn btn--primary btn--block btn--lg" onClick={onBook}>
-          Book Now
-        </button>
-        <a href={business.phoneHref} className="btn btn--secondary btn--block">
-          <PhoneIcon width={14} height={14} />
-          Call / Text
-        </a>
-        <div className="mm__foot small">
-          1009 Greenbrier Pkwy, Chesapeake VA
-          <br />
-          Mon–Thu 10–5 · Fri 10–4
-        </div>
-      </div>
-    </div>
   );
 }

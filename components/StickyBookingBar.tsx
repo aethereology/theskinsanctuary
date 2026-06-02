@@ -1,36 +1,48 @@
-"use client";
+import { site } from "@/lib/site";
+import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
+import { cn } from "@/lib/utils";
+import BookingLink from "./BookingLink";
 
-// components/StickyBookingBar.tsx — appears after first scroll; label adapts on Welcome Facial.
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { useBooking } from "@/components/Booking";
-import { business } from "@/lib/data";
-import { PhoneIcon } from "@/components/icons";
-
-export function StickyBookingBar() {
-  const pathname = usePathname();
-  const { open } = useBooking();
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 180);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  if (!show) return null;
-  const label = pathname === "/welcome-facial" ? "Book $35 Facial" : "Book Now";
-
+export default function StickyBookingBar() {
   return (
-    <div className="sbb" role="region" aria-label="Booking actions">
-      <button className="sbb__p" onClick={open}>
-        {label}
-      </button>
-      <a className="sbb__s" href={business.phoneHref}>
-        <PhoneIcon width={16} height={16} />
-        Call
-      </a>
+    <div className="fixed bottom-0 left-0 right-0 md:hidden bg-clay text-white border-t border-primary-dark/40 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+      <div className="container flex items-center justify-between py-3 gap-3">
+        {/* Phone Link */}
+        <a
+          href={site.contact.phoneHref}
+          className={cn(
+            flowHoverButtonClasses,
+            "flex-1 py-3 px-3 text-porcelain before:bg-porcelain hover:text-clay rounded-full font-bold",
+          )}
+          data-track="sticky_phone_click"
+        >
+          <svg
+            className="w-5 h-5 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            />
+          </svg>
+          <span className="text-base">{site.contact.phone.value}</span>
+        </a>
+
+        {/* Book CTA */}
+        <BookingLink
+          className={cn(
+            flowHoverButtonClasses,
+            "flex-1 bg-white text-clay before:bg-clay hover:text-white font-bold uppercase text-xs px-4 py-3 rounded-full tracking-widest text-center",
+          )}
+          trackingId="sticky_book_my_lash_lift"
+        >
+          {site.cta.primary.label}
+        </BookingLink>
+      </div>
     </div>
   );
 }

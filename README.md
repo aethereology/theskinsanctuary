@@ -1,44 +1,36 @@
-# The Skin Sanctuary Co
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Warm, editorial marketing site for **The Skin Sanctuary Co** — a boutique esthetics studio in Chesapeake, VA (facials, Korean lash lifts, brows, and waxing by Monica Talbot). The site's single dominant goal is to drive appointment bookings through Square.
+## Getting Started
 
-Built with **Next.js (App Router)**, TypeScript, and `next/font`. Static-first and SEO-focused.
-
-## Stack & approach
-
-- **Next.js 14 App Router** — 7 statically prerendered routes, each with its own SEO metadata.
-- **Design system** — warm-oat palette, forest CTA, Cormorant Garamond + Inter, consolidated in `app/globals.css`.
-- **Minimal client JS** — pages and most sections are server components; only the interactive pieces (header/drawer, sticky booking bar, booking modal, announcement bar, hours dial, scroll reveals) ship JS.
-- **SEO** — per-page `<title>`/canonical/OG/Twitter tags, `BeautySalon` JSON-LD, `sitemap.xml`, and `robots.txt`.
-
-## Pages
-
-`/` · `/services` · `/welcome-facial` · `/about` · `/reviews` · `/contact` · `/policies`
-
-## Development
+First, run the development server:
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm start        # serve the production build
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Project structure
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```
-app/            routes, layout, globals.css, sitemap.ts, robots.ts
-components/     chrome, sections, atoms, booking modal, icons
-lib/data.ts     single source of truth (services, hours, reviews, contact)
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Content notes
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Business data, copy, and the service menu live in `lib/data.ts`. Before launch, confirm with Monica:
+## Learn More
 
-- Final image assets — imagery is currently warm placeholder blocks (swap the `.photo` elements).
-- The Welcome Facial duration (shown as "TBD").
-- One waxing service that was cut off in the source menu is intentionally omitted.
-- Review count/rating (currently 5.0 from 12 Google reviews).
+To learn more about Next.js, take a look at the following resources:
 
-Design briefs: `design.md.txt`, `claude.md.txt`.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

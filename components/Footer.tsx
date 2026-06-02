@@ -1,98 +1,79 @@
-// components/Footer.tsx — closing CTA, link columns, contact, base bar.
 import Link from "next/link";
-import { Wordmark } from "@/components/Wordmark";
-import { BookButton } from "@/components/Booking";
-import { business } from "@/lib/data";
-import { PinIcon, InstagramIcon } from "@/components/icons";
+import { site } from "@/lib/site";
+import BookingLink from "./BookingLink";
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="ftr">
-      <div className="container ftr__top">
-        <div className="ftr__hero reveal">
-          <div className="eyebrow" style={{ color: "rgba(61,44,36,.6)" }}>
-            Visit the studio
+    <footer className="bg-ivory border-t border-hairline mt-24">
+      <div className="container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          {/* Brand */}
+          <div>
+            <h3 className="font-serif text-lg font-semibold text-cocoa mb-2">
+              {site.brand}
+            </h3>
+            <p className="text-sm text-espresso mb-2">{site.tagline}</p>
+            <p className="text-sm text-espresso">{site.contact.city}</p>
           </div>
-          <h2 className="display display--xl italic" style={{ marginTop: 18, color: "var(--tss-ink)" }}>
-            See you soon.
-          </h2>
-          <p className="lede" style={{ marginTop: 18, color: "var(--tss-ink-70)", maxWidth: 480 }}>
-            Booking takes about a minute. Monica will take it from there.
-          </p>
-          <div className="ftr__hero-cta">
-            <BookButton className="btn btn--primary btn--lg">Book Now</BookButton>
-            <a className="btn btn--secondary btn--lg" href={business.mapsUrl} target="_blank" rel="noreferrer">
-              <PinIcon />
-              Get Directions
-            </a>
+
+          {/* Hours */}
+          <div>
+            <h4 className="font-semibold text-cocoa mb-4">Hours</h4>
+            <div className="text-sm text-espresso space-y-1">
+              <p>Mon-Thu: 10 AM - 5 PM</p>
+              <p>Fri: 10 AM - 4 PM</p>
+              <p>Sat-Sun: Closed</p>
+            </div>
+          </div>
+
+          {/* Contact & Links */}
+          <div>
+            <h4 className="font-semibold text-cocoa mb-4">Connect</h4>
+            <div className="space-y-2 text-sm">
+              <a
+                href={site.contact.phoneHref}
+                className="block text-clay hover:text-primary-dark transition-colors"
+              >
+                {site.contact.phone.value}
+              </a>
+              <a
+                href={site.social.instagram.value}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-clay hover:text-primary-dark transition-colors"
+              >
+                Instagram
+              </a>
+              <BookingLink
+                trackingId="footer_book"
+                className="block text-clay hover:text-primary-dark transition-colors"
+              >
+                Book on Calendly
+              </BookingLink>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="container ftr__cols">
-        <div className="ftr__col ftr__col--brand">
-          <Wordmark size="sm" />
-          <p className="small" style={{ maxWidth: 280, marginTop: 16 }}>
-            Personalized facials, lashes, brows, and waxing in a calm Chesapeake studio.
-          </p>
-          <a
-            className="small ftr__ig"
-            href={business.instagramUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ marginTop: 14, display: "inline-flex", alignItems: "center", gap: 6 }}
-          >
-            <InstagramIcon />
-            @theskinsanctuary_co
-          </a>
-        </div>
-        <div className="ftr__col">
-          <div className="ftr__h">Explore</div>
-          <Link href="/services">Services</Link>
-          <Link href="/welcome-facial">Welcome Facial</Link>
-          <Link href="/about">About Monica</Link>
-          <Link href="/reviews">Reviews</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/policies">Policies</Link>
-        </div>
-        <div className="ftr__col">
-          <div className="ftr__h">Visit</div>
-          <p className="small" style={{ margin: "0 0 6px" }}>
-            1009 Greenbrier Pkwy
-            <br />
-            Chesapeake, VA 23320
-          </p>
-          <a className="small" href={business.phoneHref}>
-            {business.phoneDisplay}
-          </a>
-          <p className="small" style={{ margin: "10px 0 0" }}>
-            Mon–Thu 10 AM–5 PM
-            <br />
-            Fri 10 AM–4 PM
-            <br />
-            Sat–Sun Closed
-          </p>
-        </div>
-        <div className="ftr__col">
-          <div className="ftr__h">Book</div>
-          <BookButton className="btn btn--primary btn--sm">Book Now</BookButton>
-          <a
-            className="small ftr__rev"
-            href={business.googleProfileUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 14 }}
-          >
-            <span className="stars">★★★★★</span>
-            <span style={{ color: "var(--tss-fg-muted)" }}>Leave a review</span>
-          </a>
-        </div>
-      </div>
-
-      <div className="ftr__base">
-        <div className="container ftr__base-inner small">
-          <span>© {new Date().getFullYear()} The Skin Sanctuary Co · All rights reserved</span>
-          <span>Designed for Monica Talbot · Licensed in Virginia</span>
+        {/* Footer Links & Copyright */}
+        <div className="border-t border-hairline pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-secondary">
+          <div className="flex gap-6">
+            <Link href="/shop" className="hover:text-clay transition-colors">
+              Shop
+            </Link>
+            <Link href="/blog" className="hover:text-clay transition-colors">
+              Blog
+            </Link>
+            <Link
+              href="/policies"
+              className="hover:text-clay transition-colors"
+            >
+              Policies
+            </Link>
+            <Link href="/contact" className="hover:text-clay transition-colors">
+              Contact
+            </Link>
+          </div>
+          <p>&copy; {new Date().getFullYear()} {site.brand}. All rights reserved.</p>
         </div>
       </div>
     </footer>
