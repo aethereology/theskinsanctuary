@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import logo from "@/assets/Logotssc.svg";
 import { cn } from "@/lib/utils";
 import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
 import BookingButton from "./BookingButton";
@@ -22,8 +24,13 @@ export default function Header() {
     <header className="fixed w-full top-0 z-50 bg-porcelain/95 backdrop-blur transition-all duration-300">
       <nav className="container flex items-center justify-between py-4">
         {/* Logo */}
-        <Link href="/" className="font-serif text-xl font-semibold text-cocoa">
-          {site.brand}
+        <Link href="/" aria-label={site.brand} className="flex items-center">
+          <Image
+            src={logo}
+            alt={site.brand}
+            priority
+            className="h-8 w-auto md:h-10"
+          />
         </Link>
 
         {/* Desktop Navigation */}
