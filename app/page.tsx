@@ -129,7 +129,7 @@ export default function Home() {
               />
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="font-serif text-4xl text-cocoa mb-6">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa mb-6">
                 Brows, beautifully redefined.
               </h2>
               <p className="text-espresso mb-6 leading-relaxed">
