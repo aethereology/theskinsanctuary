@@ -7,9 +7,10 @@ import SignatureServicesCarousel from "@/components/SignatureServicesCarousel";
 import ReviewCard from "@/components/ReviewCard";
 import BookingButton from "@/components/BookingButton";
 import Link from "next/link";
-import lashResultImage from "@/assets/lashresult.png";
+import lashResultImage from "@/assets/koreanlashliftfeatured.jpg";
 import browResultImage from "@/assets/browresultimage11.png";
-import monicaPortraitImage from "@/assets/monicaTalbot.png";
+import softGirlSummerImage from "@/assets/softgirlfeatured.jpg";
+import monicaPortraitImage from "@/assets/monica3.jpg";
 
 export const metadata: Metadata = {
   title: `${site.brand} | Beauty Studio, Shop & Blog in Chesapeake, VA`,
@@ -145,8 +146,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Menu Preview */}
+      {/* Soft Girl Summer Feature */}
       <section className="py-20 bg-ivory">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa mb-6">
+                Lashes lifted, brows polished, all at once.
+              </h2>
+              <p className="text-espresso mb-6 leading-relaxed">
+                Soft Girl Summer pairs Monica's signature brow transformation with a Korean lash lift in one unhurried appointment. The result is fuller, brushed-up brows and softly lifted lashes — a complete eye refresh that keeps your morning routine simple.
+              </p>
+              <div className="flex gap-2 mb-8">
+                <span className="inline-block px-3 py-1 bg-champagne/20 text-clay text-xs rounded-full">
+                  $255 package
+                </span>
+              </div>
+              <BookingButton label="book the soft girl summer" trackingId="soft_girl_summer_cta" />
+            </div>
+            <div className="relative aspect-square rounded-lg overflow-hidden">
+              <Image
+                src={softGirlSummerImage}
+                alt="Before and after brow and lash results from the Soft Girl Summer package"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Preview */}
+      <section className="py-20">
         <div className="container">
           <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa text-center mb-16">
             The full menu
