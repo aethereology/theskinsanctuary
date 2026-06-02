@@ -35,6 +35,8 @@ export default function Home() {
         {/* Scrim for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-espresso/85 via-espresso/45 to-espresso/5" />
         <div className="absolute inset-0 bg-gradient-to-b from-espresso/15 via-transparent to-espresso/45" />
+        {/* Mobile-only: dim the image further so the copy stays readable */}
+        <div className="absolute inset-0 md:hidden bg-espresso/35" />
 
         <div className="container relative z-10">
           <div className="max-w-2xl text-left">
