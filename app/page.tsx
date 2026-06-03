@@ -88,7 +88,7 @@ export default function Home() {
       <section className="py-20 bg-ivory">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="order-2 md:order-1">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa mb-6">
                 Your own lashes, beautifully lifted.
               </h2>
@@ -100,9 +100,13 @@ export default function Home() {
                   $130 service
                 </span>
               </div>
-              <BookingButton label="book my lash lift" trackingId="lash_lift_cta" />
+              <BookingButton
+                label="book my lash lift"
+                trackingId="lash_lift_cta"
+                href="https://calendly.com/monicaemm7/kll?back=1"
+              />
             </div>
-            <div className="relative aspect-square rounded-lg overflow-hidden">
+            <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
               <Image
                 src={lashResultImage}
                 alt="Close-up of a Korean lash lift and tint result"
@@ -119,7 +123,7 @@ export default function Home() {
       <section className="py-20">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square rounded-lg overflow-hidden order-2 md:order-1">
+            <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-1">
               <Image
                 src={browResultImage}
                 alt="Close-up of a brow lamination and lash result"
@@ -128,7 +132,7 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-            <div className="order-1 md:order-2">
+            <div className="order-2 md:order-2">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa mb-6">
                 Brows, beautifully redefined.
               </h2>
@@ -140,7 +144,11 @@ export default function Home() {
                   $125 service
                 </span>
               </div>
-              <BookingButton label="book my brow refresh" trackingId="brow_cta" />
+              <BookingButton
+                label="book my brow refresh"
+                trackingId="brow_cta"
+                href="https://calendly.com/monicaemm7/new-meeting?back=1"
+              />
             </div>
           </div>
         </div>
@@ -150,7 +158,7 @@ export default function Home() {
       <section className="py-20 bg-ivory">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="order-2 md:order-1">
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa mb-6">
                 Lashes lifted, brows polished, all at once.
               </h2>
@@ -162,9 +170,13 @@ export default function Home() {
                   $255 package
                 </span>
               </div>
-              <BookingButton label="book the soft girl summer" trackingId="soft_girl_summer_cta" />
+              <BookingButton
+                label="book the full glow-up"
+                trackingId="soft_girl_summer_cta"
+                href="https://calendly.com/monicaemm7/soft-girl-summer-255?back=1"
+              />
             </div>
-            <div className="relative aspect-square rounded-lg overflow-hidden">
+            <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
               <Image
                 src={softGirlSummerImage}
                 alt="Before and after brow and lash results from the Soft Girl Summer package"

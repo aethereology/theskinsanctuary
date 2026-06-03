@@ -6,6 +6,7 @@ interface ServiceCardProps {
   description?: string;
   featured?: boolean;
   ctaLabel?: string;
+  bookingUrl?: string;
 }
 
 export default function ServiceCard({
@@ -14,6 +15,7 @@ export default function ServiceCard({
   description,
   featured = false,
   ctaLabel,
+  bookingUrl,
 }: ServiceCardProps) {
   if (featured) {
     return (
@@ -25,7 +27,7 @@ export default function ServiceCard({
         )}
         {ctaLabel && (
           <div className="mt-auto">
-            <BookingButton label={ctaLabel} />
+            <BookingButton label={ctaLabel} href={bookingUrl} />
           </div>
         )}
       </div>

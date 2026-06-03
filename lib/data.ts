@@ -8,6 +8,7 @@ export interface Service {
   description?: string;
   featured?: boolean;
   ctaLabel?: string;
+  bookingUrl?: string;
 }
 
 export interface ServiceCategory {
@@ -61,6 +62,7 @@ export const services: ServiceCategory[] = [
           "Our signature lift, refined with the Korean method — a soft, upward curl and rich tint that lasts longer and treats your natural lashes more gently.",
         featured: true,
         ctaLabel: "book my lash lift",
+        bookingUrl: "https://calendly.com/monicaemm7/kll?back=1",
       },
       {
         name: "Brow Wax, Lami, Tint",
@@ -69,6 +71,7 @@ export const services: ServiceCategory[] = [
           "Shaping wax, lamination, and a custom tint in one sitting — fuller, brushed-up brows mapped to the architecture of your face.",
         featured: true,
         ctaLabel: "book my brow refresh",
+        bookingUrl: "https://calendly.com/monicaemm7/new-meeting?back=1",
       },
       {
         name: "Soft Girl Summer",
@@ -77,6 +80,7 @@ export const services: ServiceCategory[] = [
           "Our most-loved pairing: the signature brow transformation and a Korean lash lift in a single, unhurried appointment.",
         featured: true,
         ctaLabel: "book the full glow-up",
+        bookingUrl: "https://calendly.com/monicaemm7/soft-girl-summer-255?back=1",
       },
     ],
   },
