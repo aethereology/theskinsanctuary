@@ -43,7 +43,7 @@ export default function ReviewsPage() {
               </div>
               <BookingButton
                 label="Leave me a review"
-                href="https://share.google/LIMw8mVZt6bTXYE4Q"
+                href="https://www.google.com/search?client=safari&hs=wkLV&sca_esv=6253cd38f2fad33d&hl=en-us&cs=0&output=search&kgmid=/g/11nbqlgfqc&q=The+Skin+Sanctuary+Co&shem=dlvsc,epsd1,rimspwouoe&shndl=30&source=sh/x/loc/uni/m1/1&kgs=c65a82c198bd3a22&utm_source=dlvsc,epsd1,rimspwouoe,sh/x/loc/uni/m1/1"
                 trackingId="reviews_leave_a_review"
               />
             </div>

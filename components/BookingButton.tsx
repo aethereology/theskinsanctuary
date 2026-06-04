@@ -37,10 +37,11 @@ export default function BookingButton({
   const classes = cn(flowHoverButtonClasses, baseClasses, variantClasses[variant], className);
 
   // Internal routes (e.g. "view services") use client-side navigation and stay
-  // on the site. External booking links open the Calendly overlay on the page.
-  const isExternalBooking = /^https?:\/\//.test(href);
+  // on the site. Calendly booking links open the popup overlay.
+  const isExternalLink = /^https?:\/\//.test(href);
+  const isCalendlyLink = /^https?:\/\/(?:www\.)?calendly\.com/.test(href);
 
-  if (!isExternalBooking) {
+  if (!isExternalLink) {
     return (
       <Link
         href={href}
@@ -53,14 +54,29 @@ export default function BookingButton({
     );
   }
 
+  if (isCalendlyLink) {
+    return (
+      <BookingLink
+        href={href}
+        trackingId={trackingId}
+        aria-label={label}
+        className={classes}
+      >
+        {label}
+      </BookingLink>
+    );
+  }
+
   return (
-    <BookingLink
+    <a
       href={href}
-      trackingId={trackingId}
-      aria-label={label}
+      target="_blank"
+      rel="noopener noreferrer"
       className={classes}
+      data-track={trackingId}
+      aria-label={label}
     >
       {label}
-    </BookingLink>
+    </a>
   );
 }

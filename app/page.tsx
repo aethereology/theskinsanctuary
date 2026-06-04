@@ -7,8 +7,8 @@ import SignatureServicesCarousel from "@/components/SignatureServicesCarousel";
 import ReviewCard from "@/components/ReviewCard";
 import BookingButton from "@/components/BookingButton";
 import Link from "next/link";
-import lashResultImage from "@/assets/koreanlashliftfeatured.jpg";
-import browResultImage from "@/assets/brow21.jpg";
+import lashResultImage from "@/assets/lash22.jpg";
+import browResultImage from "@/assets/brow22.jpg";
 import softGirlSummerImage from "@/assets/softgirl21.jpg";
 import monicaPortraitImage from "@/assets/monica3.jpg";
 
