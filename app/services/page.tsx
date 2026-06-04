@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { Metadata } from "next";
 import { site } from "@/lib/site";
 import { services } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import BookingButton from "@/components/BookingButton";
+import servicesPageBg from "@/assets/servicespagebg.png";
 
 export const metadata: Metadata = {
   title: "Services & Pricing | The Skin Sanctuary Co",
@@ -16,10 +18,20 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-12">
-        <div className="container text-center">
-          <h1 className="font-serif text-5xl text-cocoa mb-4">Services &amp; pricing</h1>
-          <p className="text-lg text-espresso max-w-2xl mx-auto">
+      <section className="relative flex items-center min-h-[70vh] pt-28 pb-20 overflow-hidden bg-linen">
+        <Image
+          src={servicesPageBg}
+          alt="Soft beauty texture background for the services page header"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-espresso/80 via-espresso/45 to-espresso/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-espresso/10 via-transparent to-espresso/35" />
+
+        <div className="container relative z-10 text-center">
+          <h1 className="font-serif text-5xl text-white mb-4">Services &amp; pricing</h1>
+          <p className="text-lg text-porcelain/90 max-w-2xl mx-auto">
             Every service is performed personally by Monica, with transparent pricing and no upsells. Choose your time through Calendly whenever you're ready.
           </p>
         </div>
