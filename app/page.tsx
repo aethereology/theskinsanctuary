@@ -7,9 +7,9 @@ import SignatureServicesCarousel from "@/components/SignatureServicesCarousel";
 import ReviewCard from "@/components/ReviewCard";
 import BookingButton from "@/components/BookingButton";
 import Link from "next/link";
-import lashResultImage from "@/assets/lash21.jpg";
+import lashResultImage from "@/assets/koreanlashliftfeatured.jpg";
 import browResultImage from "@/assets/brow21.jpg";
-import softGirlSummerImage from "@/assets/softgirlfeatured.jpg";
+import softGirlSummerImage from "@/assets/softgirl21.jpg";
 import monicaPortraitImage from "@/assets/monica3.jpg";
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function Home() {
               Lashes lifted, brows defined, skin at ease — in one quietly luxurious studio.
             </h1>
             <p className="text-lg text-porcelain/90 leading-relaxed mb-8">
-              The Skin Sanctuary Co is Monica Talbot's boutique studio in Chesapeake, VA, devoted to Korean lash lifts, sculpted brows, and refined waxing. Every appointment is unhurried and entirely your own — the kind of low-maintenance beauty that still looks intentional.
+              The Skin Sanctuary is an esthetic bar located in the Greenbrier area of Chesapeake, VA. Our suite is known for the most requested service in the beauty industry; the Korean Lash Lift, as well as perfectly sculpted and sleek brows, and body waxing.
             </p>
 
             {/* Hero CTAs */}
@@ -319,7 +319,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {reviews.slice(0, 6).map((review, idx) => (
-              <ReviewCard key={idx} quote={review.quote} />
+              <ReviewCard key={idx} quote={review.quote} reviewer={review.reviewer} />
             ))}
           </div>
           <div className="text-center">

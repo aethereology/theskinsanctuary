@@ -165,28 +165,66 @@ export const services: ServiceCategory[] = [
 // Client testimonials — real client words, kept verbatim. Do not edit or invent.
 export const reviews: Review[] = [
   {
+    quote:
+      "Literally can’t praise Monica enough!!!!! I’ve never gotten a brow lamination & tint or an eyelash lift & tint before and she absolutely blew me away. I can’t stop staring at them!! I’m sooooo excited for my wedding in a few weeks and this made me feel so much more confident and prepared. She has me as a lifelong customer now!",
+    reviewer: "Grace S.",
+  },
+  {
+    quote:
+      "I am in love with my kll. I don't like wearing mascara daily or falsies. This lift gives me the perfect natural glam I need as a busy momma. Highly recommend 💕",
+    reviewer: "Lesley M.",
+  },
+  {
+    quote:
+      "Monica was so sweet and had amazing attention to detail. I have very straight eyelashes and she worked her magic to get them curled! I really appreciate her time and attention.",
+    reviewer: "Angelica S.",
+  },
+  {
     quote: "The suite feels like a luxurious oasis!",
+    reviewer: "Jessica C.",
   },
   {
-    quote: "Monica was so sweet and had amazing attention to detail.",
+    quote:
+      "I cannot recommend Monica enough! Been going to her since I moved to VA in July and have only had positive experiences — super sweet and welcoming environment.",
+    reviewer: "Jhasmelly V.",
   },
   {
-    quote: "Literally obsessed with the results.",
+    quote:
+      "I’ve been coming to Monica for just about 6 months now for services like a brow wax and Korean lash lift and tint. The environment she works in is amazing and so relaxing.",
+    reviewer: "Melanie C.",
   },
   {
-    quote: "Such a nice, welcoming environment.",
+    quote:
+      "I have very fine & short lashes which makes it hard for extensions to be put on (& stay on) but Monica did that 😏 She’s also the sweetest & the funniest, you get pampered by a bestie fs!!",
+    reviewer: "Nicole",
   },
   {
-    quote: "The facial was just what I needed, and I left feeling refreshed and new.",
+    quote:
+      "Seriously THE BEST!! Monica is so talented and the funniest person ever. So welcoming and has such great attention to detail. It's obvious she cares so much about her clients and their wellbeing. Bonus points if you get a KLL!!",
+    reviewer: "Makaira K.",
   },
   {
-    quote: "Seriously THE BEST!! Monica is so talented.",
+    quote: "Literally obsessed with the results, I will never get my lashes done by anyone else!!",
+    reviewer: "Vannessa F.",
   },
   {
-    quote: "My lashes still look perfect.",
+    quote:
+      "Highly recommend!!!! Such a nice, welcoming environment. I got a lash lift done for the first time ever, it was so quick and comfortable, and looks amazing!! It's been a few days and my lashes still look perfect!",
+    reviewer: "Emilee Q.",
   },
   {
-    quote: "I am OBSESSED with the results every time.",
+    quote:
+      "I have always had really straight, stubborn eyelashes until I met Monica!! I get a Korean lash lift & tint from her every 2 months or so and I am OBSESSED with the results every time.",
+    reviewer: "Gabi C.",
+  },
+  {
+    quote:
+      "Monica is amazing! The facial was just what I needed, and I left feeling refreshed and new. I am referring her to all my family and friends.",
+    reviewer: "Candy R.",
+  },
+  {
+    quote: "I got a facial done by Monica and it was so relaxing! I’ll definitely be going back!",
+    reviewer: "Vincent T.",
   },
 ];
 

@@ -35,10 +35,17 @@ export default function ReviewsPage() {
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight">
               Kind words
             </h1>
-            <div className="flex justify-start gap-2 mb-6">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-champagne text-2xl">★</span>
-              ))}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <div className="flex justify-start gap-2">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-champagne text-2xl">★</span>
+                ))}
+              </div>
+              <BookingButton
+                label="Leave me a review"
+                href="https://share.google/LIMw8mVZt6bTXYE4Q"
+                trackingId="reviews_leave_a_review"
+              />
             </div>
             <p className="text-lg text-porcelain/90 leading-relaxed">
               A perfect {site.trust.rating} stars across {site.trust.reviewCount} client reviews — here's what they had to say.
@@ -51,7 +58,7 @@ export default function ReviewsPage() {
         <div className="container max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {reviews.map((review, idx) => (
-              <ReviewCard key={idx} quote={review.quote} />
+              <ReviewCard key={idx} quote={review.quote} reviewer={review.reviewer} />
             ))}
           </div>
         </div>
