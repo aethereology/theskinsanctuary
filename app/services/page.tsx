@@ -32,7 +32,7 @@ export default function ServicesPage() {
         <div className="container relative z-10 text-center">
           <h1 className="font-serif text-5xl text-white mb-4">Services &amp; Pricing</h1>
           <p className="text-lg text-porcelain/90 max-w-2xl mx-auto">
-            Every service is performed intentionally and with transparency. The future you will wish you had booked sooner.
+            Every service is performed with intent and transparency. The future you will wish you had booked sooner.
           </p>
         </div>
       </section>

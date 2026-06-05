@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "4 min read",
     excerpt:
       "A simple, low-maintenance routine for protecting your lift, keeping lashes soft, and getting the best wear between appointments.",
-    image: "/images/lash-result-1.jpeg",
+    image: "/images/koreanlashliftfeatured.jpg",
     imageAlt: "Close-up of lifted lashes after a lash lift service",
     sections: [
       {

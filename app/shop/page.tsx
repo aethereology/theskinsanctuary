@@ -21,7 +21,7 @@ export default function ShopPage() {
             Sanctuary Shop
           </p>
           <h1 className="font-serif text-5xl text-cocoa mb-6">
-            Shop our products straight from Korea
+            Shop our products from Korea
           </h1>
           <p className="text-lg text-espresso">
             These products are for purchase only by licensed estheticians or
