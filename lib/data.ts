@@ -29,8 +29,14 @@ export interface Product {
   image: string;
   imageAlt: string;
   description: string;
-  details: string[];
-  bestFor: string;
+  details?: string[];
+  sections?: {
+    title: string;
+    price?: string;
+    description?: string;
+    details?: string[];
+    timing?: string[];
+  }[];
 }
 
 export interface BlogPost {
@@ -231,59 +237,71 @@ export const reviews: Review[] = [
 export const products: Product[] = [
   {
     name: "Early Balm Pro — Eyelash Premium Fixer",
-    price: "In-studio pickup",
+    price: "$45",
     image: "/images/earlybalmpro.jpg",
     imageAlt: "Tube of lash balm styled on a soft neutral surface",
     description:
-      "Early Balm Pro is a nourishing lash finishing balm designed to help keep lifted lashes looking soft, healthy, and polished after treatment. Its lightweight balm texture helps condition the lashes while supporting a clean, separated look — perfect for maintaining that fresh Korean lash lift finish between appointments.",
-    details: [
-      "Perfect for Korean lash lift aftercare",
-      "Keeps lashes flexible, hydrated, and beautifully groomed",
-      "Use daily between appointments for polished results",
-    ],
-    bestFor: "Korean lash lift aftercare, lash hydration, soft definition, daily lash maintenance",
+      "Early Balm Pro Korean Lash Lift is a specially formulated adhesive designed to lift and secure natural lashes onto a shield or rod of your choice. Its lightweight, flexible formula holds lashes firmly in place without affecting the performance of the lifting or setting solutions, helping create a smooth, flawless lash lift every time.",
   },
   {
     name: "Early Lift 1 & 2",
-    price: "In-studio pickup",
+    price: "$72",
     image: "/images/earlylift12.jpg",
     imageAlt: "Two professional lift solution bottles on a warm background",
     description:
-      "Early Lift 1 & 2 is Monica’s professional lash and brow lifting system used to soften, shape, and set lashes and brows during treatment. This two-step system supports a clean, controlled lift while helping create the smooth, polished results clients love from Korean lash lifts and brow lamination services.",
+      "Premium lash lift products crafted by a lash artist with 15 years of experience. Made in Korea with safe, high-quality ingredients and formulated for professional results artists will want to reach for again.",
     details: [
-      "Professional system for lash and brow lifting",
-      "Softens, shapes, and sets hairs for a polished finish",
-      "Used by Monica during Korean lash lift and brow lamination",
+      "Reliable curling without damage",
+      "Tube Type 10g packaging for clean, controlled dispensing",
     ],
-    bestFor: "Korean lash lifts, brow lamination, lifted lashes, shaped brows, professional treatment results",
+    sections: [
+      {
+        title: "Step 1: Softening Lotion",
+        price: "$36",
+        description:
+          "A neutral pH 7.5 perm solution with a pH similar to tears.",
+        details: [
+          "Safe and non-irritating",
+          "Efficient softening with thioglycolate (TGA) and cysteamine",
+          "Nourishing formula with keratin, collagen, and 11 natural extracts",
+          "Non-sticky, firm, elastic texture",
+        ],
+        timing: ["1st softening: 6-9 minutes", "Additional: 3-8 minutes"],
+      },
+      {
+        title: "Step 2: Setting Lotion",
+        price: "$36",
+        description:
+          "Lash clinic care designed to support the hair after softening.",
+        details: [
+          "Contains hydrolyzed collagen and hydrolyzed keratin",
+          "Helps restore damaged CMC (cell membrane complex)",
+        ],
+        timing: ["Leave on for 5 minutes after application"],
+      },
+    ],
   },
   {
-    name: "Siim Mondu Lash Shields",
-    price: "In-studio pickup",
+    name: "Early Dumpling Softening Rods",
+    price: "$32",
     image: "/images/siimmondulashshields.jpg",
-    imageAlt: "Soft silicone lash shields arranged with beauty tools",
+    imageAlt: "Soft silicone lash lift rods arranged with beauty tools",
     description:
-      "Siim Mondu Lash Shields are soft silicone shields used during Korean lash lift services to help shape the lashes into a natural, lifted curve. Their smooth, flexible design allows Monica to customize the lift pattern based on your natural lash length, eye shape, and desired result.",
+      "Thin, flexible, sticky 1mm flat shields used for Korean lash lift methods. Apply over the eyelids during Step 1, the softening step.",
     details: [
-      "Soft silicone shields for customized lash shaping",
-      "Helps create a clean, natural lifted curve",
-      "Used in salon for Korean lash lift precision",
+      "100% made in Korea with non-toxic silicone",
+      "Soft material may arrive with slight wrinkles or an uneven cut surface",
+      "Returns to its original state after use or when soaked in water",
+      "Do not wash with hot water",
     ],
-    bestFor: "Korean lash lift shaping, customized curl, natural-looking lift, lash service precision",
   },
   {
     name: "Lash & Brow Hydrating Serum",
-    price: "In-studio pickup",
-    image: "/images/lashandbrowhydratingserum.jpg",
-    imageAlt: "Hydrating serum bottle styled beside soft brow and lash imagery",
+    price: "$20",
+    image: "/images/lash-brow-hydrating-serum.jpg",
+    imageAlt: "Lash and brow hydrating serum tube on ivory satin",
     description:
-      "The Lash & Brow Hydrating Serum is a lightweight aftercare serum designed to keep lashes and brows feeling conditioned, soft, and healthy-looking. It’s ideal after a Korean lash lift, brow lamination, or brow styling service to help maintain a fresh, groomed finish.",
-    details: [
-      "Lightweight conditioning for lashes and brows",
-      "Helps maintain softness and healthy-looking hairs",
-      "Great for daily hydration after lift or lamination",
-    ],
-    bestFor: "lash lift aftercare, brow lamination aftercare, daily hydration, soft healthy-looking lashes and brows",
+      "Our Lash & Brow Hydrating Serum is a saturated aftercare serum designed to keep lashes and brows feeling conditioned, soft, and healthy-looking. It is ideal after a Korean lash lift, brow lamination, or even just to promote hair growth in areas of the face that can use it.",
   },
 ];
 
