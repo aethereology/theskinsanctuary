@@ -40,19 +40,28 @@ export default function BlogPage() {
       <section className="py-16">
         <div className="container">
           <article className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-16">
-            <Link
-              href={`/blog/${featuredPost.slug}`}
-              className="relative aspect-[4/3] rounded-lg overflow-hidden block"
-            >
-              <Image
-                src={featuredPost.image}
-                alt={featuredPost.imageAlt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </Link>
+            {featuredPost.image ? (
+              <Link
+                href={`/blog/${featuredPost.slug}`}
+                className="relative aspect-[4/3] rounded-lg overflow-hidden bg-ivory block"
+              >
+                <Image
+                  src={featuredPost.image}
+                  alt={featuredPost.imageAlt ?? featuredPost.title}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className={
+                    featuredPost.imageFit === "contain"
+                      ? "object-contain"
+                      : "object-cover"
+                  }
+                  style={{
+                    objectPosition: featuredPost.imagePosition ?? "center",
+                  }}
+                />
+              </Link>
+            ) : null}
             <div>
               <p className="text-xs font-medium text-clay uppercase tracking-widest mb-4">
                 {featuredPost.category} &middot; {formatDate(featuredPost.date)}{" "}
@@ -80,18 +89,25 @@ export default function BlogPage() {
                 key={post.slug}
                 className="bg-white rounded-lg border border-hairline/40 overflow-hidden shadow-sm"
               >
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="relative aspect-[4/3] block"
-                >
-                  <Image
-                    src={post.image}
-                    alt={post.imageAlt}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </Link>
+                {post.image ? (
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="relative aspect-[4/3] bg-ivory block"
+                  >
+                    <Image
+                      src={post.image}
+                      alt={post.imageAlt ?? post.title}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className={
+                        post.imageFit === "contain"
+                          ? "object-contain"
+                          : "object-cover"
+                      }
+                      style={{ objectPosition: post.imagePosition ?? "center" }}
+                    />
+                  </Link>
+                ) : null}
                 <div className="p-6">
                   <p className="text-xs font-medium text-clay uppercase tracking-widest mb-3">
                     {post.category} &middot; {formatDate(post.date)} &middot;{" "}

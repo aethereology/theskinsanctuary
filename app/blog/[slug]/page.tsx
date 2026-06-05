@@ -71,20 +71,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </section>
 
-        <section className="pb-16">
-          <div className="container max-w-5xl">
-            <div className="relative aspect-[16/9] rounded-lg overflow-hidden">
-              <Image
-                src={post.image}
-                alt={post.imageAlt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 960px, 100vw"
-                className="object-cover"
-              />
+        {post.image ? (
+          <section className="pb-16">
+            <div className="container max-w-5xl">
+              <div className="relative aspect-[16/9] rounded-lg overflow-hidden bg-ivory">
+                <Image
+                  src={post.image}
+                  alt={post.imageAlt ?? post.title}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 960px, 100vw"
+                  className={
+                    post.imageFit === "contain" ? "object-contain" : "object-cover"
+                  }
+                  style={{ objectPosition: post.imagePosition ?? "center" }}
+                />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
         <section className="pb-20">
           <div className="container max-w-3xl">

@@ -46,8 +46,10 @@ export interface BlogPost {
   category: string;
   readTime: string;
   excerpt: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
+  imageFit?: "cover" | "contain";
+  imagePosition?: string;
   sections: {
     heading: string;
     body: string;
@@ -342,8 +344,9 @@ export const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     excerpt:
       "What to avoid, when to brush, and how to keep laminated brows looking soft instead of overworked.",
-    image: "/images/browlaminationaftercareblog2.jpg",
-    imageAlt: "Finished brow lamination result with softly brushed brows",
+    image: "/images/browlaminationaftercareblog33.jpg",
+    imageAlt: "Monica showing a soft brow lamination result in the studio",
+    imagePosition: "center 25%",
     sections: [
       {
         heading: "Let the shape settle",
@@ -359,34 +362,6 @@ export const blogPosts: BlogPost[] = [
         heading: "Keep brows conditioned",
         body:
           "Lamination works best when brow hairs stay flexible. A light conditioning product helps the finish look plush between appointments.",
-      },
-    ],
-  },
-  {
-    slug: "what-to-keep-on-your-vanity",
-    title: "What to Keep on Your Vanity Between Appointments",
-    date: "2026-06-01",
-    category: "Studio notes",
-    readTime: "5 min read",
-    excerpt:
-      "A small aftercare shelf can do more than a crowded routine. Here are the products Monica reaches for most often.",
-    image: "/images/studio.jpeg",
-    imageAlt: "Quiet studio space at The Skin Sanctuary Co",
-    sections: [
-      {
-        heading: "Start with what you actually use",
-        body:
-          "The best routine is the one you can repeat. Keep a gentle cleanser, a soft towel, and one targeted aftercare product where you will see them.",
-      },
-      {
-        heading: "Match products to your services",
-        body:
-          "Lifted lashes, laminated brows, and freshly waxed skin all need different kinds of support. Choose products that protect the service you just received.",
-      },
-      {
-        heading: "Ask before adding more",
-        body:
-          "If you are unsure what fits your skin or service, bring it up at your appointment. Monica can point you toward a simple option without crowding your routine.",
       },
     ],
   },
