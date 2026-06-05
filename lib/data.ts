@@ -342,7 +342,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "3 min read",
     excerpt:
       "What to avoid, when to brush, and how to keep laminated brows looking soft instead of overworked.",
-    image: "/images/brow-result.jpeg",
+    image: "/images/browlaminationaftercareblog2.jpg",
     imageAlt: "Finished brow lamination result with softly brushed brows",
     sections: [
       {
