@@ -234,7 +234,7 @@ export default function Home() {
                 Studio Shop
               </p>
               <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-cocoa mb-5">
-                Aftercare products, curated by Monica
+                #1 Sold out Products
               </h2>
               <p className="text-espresso mb-8">
                 Shop lash, brow, and skin essentials made for the days between
