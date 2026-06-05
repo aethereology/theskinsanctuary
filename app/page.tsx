@@ -26,12 +26,12 @@ export default function Home() {
       <section className="relative flex items-center min-h-[88vh] pt-28 pb-20 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/images/hero-facial.png"
-          alt="A relaxing facial treatment in a warm spa room"
+          src="/images/homepageimagehero.jpg"
+          alt="A softly lit beauty studio scene with relaxing treatment details"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[68%_center] md:object-center"
+          className="object-cover object-[55%_center] md:object-center"
         />
         {/* Scrim for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-espresso/85 via-espresso/45 to-espresso/5" />
@@ -259,9 +259,6 @@ export default function Home() {
                       <h3 className="font-serif text-xl text-cocoa mb-1">
                         {product.name}
                       </h3>
-                      <p className="text-xs text-text-secondary">
-                        {product.bestFor}
-                      </p>
                     </div>
                   </Link>
                 ))}
