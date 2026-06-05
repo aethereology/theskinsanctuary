@@ -11,6 +11,7 @@ import lashResultImage from "@/assets/lash22.jpg";
 import browResultImage from "@/assets/brow22.jpg";
 import softGirlSummerImage from "@/assets/softgirl21.jpg";
 import monicaPortraitImage from "@/assets/monica3.jpg";
+import homepageHeroImage from "@/assets/homepageimagehero.jpg";
 
 export const metadata: Metadata = {
   title: `${site.brand} | Beauty Studio, Shop & Blog in Chesapeake, VA`,
@@ -26,7 +27,7 @@ export default function Home() {
       <section className="relative flex items-center min-h-[88vh] pt-28 pb-20 overflow-hidden">
         {/* Background image */}
         <Image
-          src="/images/homepageimagehero.jpg"
+          src={homepageHeroImage}
           alt="A softly lit beauty studio scene with relaxing treatment details"
           fill
           priority
