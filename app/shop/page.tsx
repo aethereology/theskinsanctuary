@@ -19,14 +19,14 @@ export default function ShopPage() {
       <section className="pt-32 pb-12">
         <div className="container max-w-3xl text-center">
           <p className="text-sm font-medium text-clay uppercase tracking-widest mb-4">
-            Studio Shop
+            Sanctuary Shop
           </p>
           <h1 className="font-serif text-5xl text-cocoa mb-6">
-            Shop the aftercare shelf
+            Shop our products straight from Korea
           </h1>
           <p className="text-lg text-espresso">
-            Keep your lashes, brows, and skin looking fresh between appointments
-            with Monica's curated in-studio products.
+            These products are for purchase only by licensed estheticians or
+            esthetician students. Valid credentials must be presented at or before pickup.
           </p>
         </div>
       </section>
@@ -81,12 +81,6 @@ export default function ShopPage() {
                     >
                       Request to buy
                     </a>
-                    <BookingButton
-                      label="add to appointment"
-                      variant="secondary"
-                      href="/contact"
-                      className="text-center"
-                    />
                   </div>
                 </div>
               </article>

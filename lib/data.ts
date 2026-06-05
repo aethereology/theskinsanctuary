@@ -102,11 +102,33 @@ export const services: ServiceCategory[] = [
     ],
   },
   {
+    category: "Lashes",
+    items: [
+      {
+        name: "Korean Lash Lift & Tint",
+        price: "$130",
+        description:
+          "Our signature lift, refined with the Korean method — a soft, upward curl and rich tint that lasts longer and treats your natural lashes more gently.",
+      },
+    ],
+  },
+  {
+    category: "Packages",
+    items: [
+      {
+        name: "Soft Girl Summer",
+        price: "$255",
+        description:
+          "The signature brow transformation and a Korean lash lift, together in one unhurried appointment.",
+      },
+    ],
+  },
+  {
     category: "Waxing",
     items: [
       {
         name: "Full Arm Wax",
-        price: "$50",
+        price: "$60",
       },
       {
         name: "Half Arm Wax",
@@ -135,28 +157,6 @@ export const services: ServiceCategory[] = [
       {
         name: "Brazilian Wax",
         price: "$55",
-      },
-    ],
-  },
-  {
-    category: "Lashes",
-    items: [
-      {
-        name: "Korean Lash Lift & Tint",
-        price: "$130",
-        description:
-          "Our signature lift, refined with the Korean method — a soft, upward curl and rich tint that lasts longer and treats your natural lashes more gently.",
-      },
-    ],
-  },
-  {
-    category: "Packages",
-    items: [
-      {
-        name: "Soft Girl Summer",
-        price: "$255",
-        description:
-          "The signature brow transformation and a Korean lash lift, together in one unhurried appointment.",
       },
     ],
   },
@@ -230,46 +230,60 @@ export const reviews: Review[] = [
 
 export const products: Product[] = [
   {
-    name: "Lash & Brow Conditioning Serum",
+    name: "Early Balm Pro — Eyelash Premium Fixer",
     price: "In-studio pickup",
-    image: "/images/product-1.jpeg",
-    imageAlt: "Close-up of lifted lashes, softly styled brows, and glowing skin",
+    image: "/images/earlybalmpro.jpg",
+    imageAlt: "Tube of lash balm styled on a soft neutral surface",
     description:
-      "A lightweight conditioning step for keeping lifted lashes and laminated brows soft between appointments.",
+      "Early Balm Pro is a nourishing lash finishing balm designed to help keep lifted lashes looking soft, healthy, and polished after treatment. Its lightweight balm texture helps condition the lashes while supporting a clean, separated look — perfect for maintaining that fresh Korean lash lift finish between appointments.",
     details: [
-      "Made for lash lifts and brow lamination aftercare",
-      "Best once the first 24 hours after service have passed",
-      "Available to request for pickup at your appointment",
+      "Perfect for Korean lash lift aftercare",
+      "Keeps lashes flexible, hydrated, and beautifully groomed",
+      "Use daily between appointments for polished results",
     ],
-    bestFor: "Lifted lashes and laminated brows",
+    bestFor: "Korean lash lift aftercare, lash hydration, soft definition, daily lash maintenance",
   },
   {
-    name: "Cooling Under-Eye Gel Masks",
+    name: "Early Lift 1 & 2",
     price: "In-studio pickup",
-    image: "/images/product-2.jpeg",
-    imageAlt: "Client wearing under-eye gel masks during a quiet beauty ritual",
+    image: "/images/earlylift12.jpg",
+    imageAlt: "Two professional lift solution bottles on a warm background",
     description:
-      "A cooling, hydrating reset for tired under-eyes before a night out or after a long week.",
+      "Early Lift 1 & 2 is Monica’s professional lash and brow lifting system used to soften, shape, and set lashes and brows during treatment. This two-step system supports a clean, controlled lift while helping create the smooth, polished results clients love from Korean lash lifts and brow lamination services.",
     details: [
-      "Comforting pre-event or post-travel refresh",
-      "Pairs well with a lash or brow appointment",
-      "Available to request for pickup at your appointment",
+      "Professional system for lash and brow lifting",
+      "Softens, shapes, and sets hairs for a polished finish",
+      "Used by Monica during Korean lash lift and brow lamination",
     ],
-    bestFor: "Hydrated, rested-looking under-eyes",
+    bestFor: "Korean lash lifts, brow lamination, lifted lashes, shaped brows, professional treatment results",
   },
   {
-    name: "Soft Set Brow Styling Balm",
+    name: "Siim Mondu Lash Shields",
     price: "In-studio pickup",
-    image: "/images/brow-detail.jpeg",
-    imageAlt: "Detailed view of softly brushed brows and lifted lashes",
+    image: "/images/siimmondulashshields.jpg",
+    imageAlt: "Soft silicone lash shields arranged with beauty tools",
     description:
-      "Flexible hold for brushed-up brows, made to keep shape without a stiff or crunchy finish.",
+      "Siim Mondu Lash Shields are soft silicone shields used during Korean lash lift services to help shape the lashes into a natural, lifted curve. Their smooth, flexible design allows Monica to customize the lift pattern based on your natural lash length, eye shape, and desired result.",
     details: [
-      "Helps maintain a polished brow shape between visits",
-      "Good for natural brows, tint, and lamination upkeep",
-      "Available to request for pickup at your appointment",
+      "Soft silicone shields for customized lash shaping",
+      "Helps create a clean, natural lifted curve",
+      "Used in salon for Korean lash lift precision",
     ],
-    bestFor: "Daily brow styling",
+    bestFor: "Korean lash lift shaping, customized curl, natural-looking lift, lash service precision",
+  },
+  {
+    name: "Lash & Brow Hydrating Serum",
+    price: "In-studio pickup",
+    image: "/images/lashandbrowhydratingserum.jpg",
+    imageAlt: "Hydrating serum bottle styled beside soft brow and lash imagery",
+    description:
+      "The Lash & Brow Hydrating Serum is a lightweight aftercare serum designed to keep lashes and brows feeling conditioned, soft, and healthy-looking. It’s ideal after a Korean lash lift, brow lamination, or brow styling service to help maintain a fresh, groomed finish.",
+    details: [
+      "Lightweight conditioning for lashes and brows",
+      "Helps maintain softness and healthy-looking hairs",
+      "Great for daily hydration after lift or lamination",
+    ],
+    bestFor: "lash lift aftercare, brow lamination aftercare, daily hydration, soft healthy-looking lashes and brows",
   },
 ];
 

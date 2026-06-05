@@ -30,9 +30,9 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-espresso/10 via-transparent to-espresso/35" />
 
         <div className="container relative z-10 text-center">
-          <h1 className="font-serif text-5xl text-white mb-4">Services &amp; pricing</h1>
+          <h1 className="font-serif text-5xl text-white mb-4">Services &amp; Pricing</h1>
           <p className="text-lg text-porcelain/90 max-w-2xl mx-auto">
-            Every service is performed personally by Monica, with transparent pricing and no upsells. Choose your time through Calendly whenever you're ready.
+            Every service is performed intentionally and with transparency. The future you will wish you had booked sooner.
           </p>
         </div>
       </section>
@@ -40,7 +40,7 @@ export default function ServicesPage() {
       {/* Signature Services */}
       <section className="py-16">
         <div className="container">
-          <h2 className="font-serif text-3xl text-cocoa mb-8">Signature Services</h2>
+          <h2 className="font-serif text-3xl text-cocoa mb-8">Sanctuary Signatures</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {signatureServices.map((service) => (
               <ServiceCard

@@ -33,7 +33,7 @@ export default function ReviewsPage() {
         <div className="container relative z-10">
           <div className="max-w-xl text-left">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-tight">
-              Kind words
+              Client Mail
             </h1>
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <div className="flex justify-start gap-2">
