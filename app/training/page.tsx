@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { site } from "@/lib/site";
 import { training } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import InternalBrowserLink from "@/components/InternalBrowserLink";
 import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
 import heroImage from "@/assets/traininghero1.jpg";
 import instructorImage from "@/assets/monica2.jpeg";
@@ -140,13 +141,14 @@ export default function TrainingPage() {
 
               {/* CTAs */}
               <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
-                <a
-                  href={training.inquiryAnchor}
+                <InternalBrowserLink
+                  href={training.inquiryUrl}
                   className={btnPrimary}
-                  data-track="training_hero_express_interest"
+                  trackingId="training_hero_express_interest"
+                  ariaLabel="Express interest in Korean Lash Lift training"
                 >
                   {training.cta.primary}
-                </a>
+                </InternalBrowserLink>
                 <a href="#what-youll-learn" className={btnSecondary}>
                   {training.cta.secondary}
                 </a>
@@ -419,15 +421,14 @@ export default function TrainingPage() {
             with Monica in {training.location}.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
+            <InternalBrowserLink
               href={training.inquiryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className={btnLight}
-              data-track="training_inquiry_instagram"
+              trackingId="training_inquiry_form"
+              ariaLabel="Express interest in Korean Lash Lift training"
             >
               {training.cta.inquiry}
-            </a>
+            </InternalBrowserLink>
             <a
               href={site.contact.phoneHref}
               className={cn(

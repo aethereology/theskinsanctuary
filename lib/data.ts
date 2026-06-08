@@ -443,11 +443,11 @@ export const training = {
   instructor: "Monica Talbot",
   // Primary CTA scrolls to the inquiry section; the inquiry section links out.
   inquiryAnchor: "#training-inquiry",
-  inquiryUrl: "https://www.instagram.com/theskinsanctuary_co",
+  inquiryUrl: "https://form.jotform.com/261064149493056",
   cta: {
     primary: "Express Interest",
     secondary: "View What You'll Learn",
-    inquiry: "DM Monica on Instagram",
+    inquiry: "Express Interest",
   },
   overview:
     "This Korean Lash Lift Training is built for students who want a detailed, hands-on learning experience. Monica walks you through the process step by step so you understand the technique, the product system, lash mapping decisions, and the business side of offering lash lift services.",
