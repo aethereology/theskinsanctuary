@@ -11,6 +11,7 @@ import BookingButton from "./BookingButton";
 
 const navigationLinks = [
   { label: "Services", href: "/services" },
+  { label: "Training", href: "/training" },
   { label: "Shop", href: "/shop" },
   { label: "Blog", href: "/blog" },
   { label: "Reviews", href: "/reviews" },

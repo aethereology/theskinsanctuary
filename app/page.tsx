@@ -237,8 +237,7 @@ export default function Home() {
                 #1 Sold out Products
               </h2>
               <p className="text-espresso mb-8">
-                Shop lash, brow, and skin essentials made for the days between
-                your appointments.
+                Shop Korean lash lift products or simply grab the essentials made for days between appointments.
               </p>
               <div className="space-y-4 mb-8">
                 {products.slice(0, 2).map((product) => (

@@ -429,6 +429,116 @@ export const about = {
     "Clients return as much for Monica as for the results. Warm, funny, and genuinely invested, she designs every appointment to feel calm, private, and unhurried — whether you're in for a lash lift, a brow transformation, or a waxing service.",
 };
 
+// Korean Lash Lift Training — sourced from the training flyer (source of truth).
+// CTA destination is configurable: until a form/QR link is provided, "Express
+// Interest" scrolls to the on-page inquiry section, which links to Instagram DM.
+export const training = {
+  eyebrow: "1:1 Training · Full Day",
+  title: "Korean Lash Lift Training",
+  subheadline:
+    "Experience an elevated lash lift masterclass. Learn every detail of the process and take the guesswork out of how to perfect a lash lift.",
+  format: "1:1 Training — full day",
+  investment: "$1,100",
+  location: "Greenbrier, Chesapeake",
+  instructor: "Monica Talbot",
+  // Primary CTA scrolls to the inquiry section; the inquiry section links out.
+  inquiryAnchor: "#training-inquiry",
+  inquiryUrl: "https://www.instagram.com/theskinsanctuary_co",
+  cta: {
+    primary: "Express Interest",
+    secondary: "View What You'll Learn",
+    inquiry: "DM Monica on Instagram",
+  },
+  overview:
+    "This Korean Lash Lift Training is built for students who want a detailed, hands-on learning experience. Monica walks you through the process step by step so you understand the technique, the product system, lash mapping decisions, and the business side of offering lash lift services.",
+  highlights: [
+    {
+      title: "Private 1:1 Training",
+      description: "A full-day training experience with focused, one-on-one guidance from Monica.",
+    },
+    {
+      title: "Hands-On Practice",
+      description: "Includes live model(s) for guided, real-time lash lift application.",
+    },
+    {
+      title: "Early Lift System",
+      description: "Learn the product system and how each step supports a healthy lift.",
+    },
+    {
+      title: "KLL Certificate",
+      description: "Receive a Korean Lash Lift certificate after completing the training.",
+    },
+  ],
+  curriculum: [
+    {
+      group: "Technique",
+      items: [
+        "Introduction to what a KLL is and how it differs from traditional lash lifts",
+        "Theory: Cysteamine vs TGA",
+        "How to choose the correct rod based on lash length and eye shape",
+      ],
+    },
+    {
+      group: "Practice",
+      items: [
+        "Product knowledge: the Early Lift System",
+        "Live model(s) — hands-on practice",
+      ],
+    },
+    {
+      group: "Business",
+      items: [
+        "Social media & business marketing",
+        "Receive a KLL Certificate",
+      ],
+    },
+  ],
+  whoFor: [
+    "Beauty professionals who want to add Korean Lash Lifts to their service menu",
+    "Lash artists who want to refine their lift technique",
+    "Estheticians who want hands-on product and rod selection guidance",
+    "Students who prefer private 1:1 training over a large group class",
+  ],
+  instructorBio:
+    "Monica Talbot is a Virginia-licensed esthetician and the owner of The Skin Sanctuary Co in Chesapeake, VA. Known for her detailed lash work, calm teaching style, and client-focused approach, Monica created this training to help students understand not just the steps of a Korean Lash Lift, but the decision-making behind beautiful, consistent results.",
+  productIntro:
+    "Training includes product knowledge around the Early Lift System, so students understand how each product supports the softening, setting, and healthy-looking results of a Korean lash lift.",
+  productHighlights: [
+    "Early Lift Step 1 — Softening Lotion",
+    "Early Lift Step 2 — Setting Lotion",
+    "Early Balm Pro — Premium Fixer",
+    "Lash & Brow Hydrating Serum",
+  ],
+  investmentNote:
+    "Training dates and availability are limited. Submit your interest to receive current scheduling details.",
+  faq: [
+    {
+      q: "How long is the training?",
+      a: "The Korean Lash Lift Training is a full-day 1:1 training experience.",
+    },
+    {
+      q: "How much is the training?",
+      a: "The training investment is $1,100.",
+    },
+    {
+      q: "Is this a group class?",
+      a: "This is 1:1 Training, which means it is designed as a private training experience with Monica.",
+    },
+    {
+      q: "Will I practice during training?",
+      a: "Yes. The training includes live model(s) for hands-on practice.",
+    },
+    {
+      q: "Do I receive a certificate?",
+      a: "Yes. Students receive a KLL Certificate after completing the training.",
+    },
+    {
+      q: "Where is the training located?",
+      a: "Training is offered in Greenbrier, Chesapeake.",
+    },
+  ],
+};
+
 // Policies
 export const policies = {
   cancellation:
