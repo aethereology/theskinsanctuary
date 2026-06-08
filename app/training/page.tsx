@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 import { training } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
-import heroImage from "@/assets/koreanlashliftfeatured.jpg";
+import heroImage from "@/assets/traininghero1.jpg";
 import instructorImage from "@/assets/monica2.jpeg";
 import productImage from "@/assets/earlylift12.jpg";
 
