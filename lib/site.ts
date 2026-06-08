@@ -73,7 +73,7 @@ export const site = {
   // Call-to-Action
   cta: {
     primary: {
-      label: "book my service",
+      label: "book my lash lift",
       href: "https://calendly.com/monicaemm7",
     },
     secondary: {
