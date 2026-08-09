@@ -1,11 +1,35 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
 import { cn } from "@/lib/utils";
 import BookingLink from "./BookingLink";
 
 export default function StickyBookingBar() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setIsVisible(window.scrollY > 96);
+    }
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 md:hidden bg-clay text-white border-t border-primary-dark/40 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+    <div
+      aria-hidden={!isVisible}
+      className={cn(
+        "fixed bottom-0 left-0 right-0 z-40 md:hidden bg-clay text-white border-t border-primary-dark/40 shadow-2xl pb-[env(safe-area-inset-bottom)] transition-[transform,opacity] duration-300 ease-out",
+        isVisible
+          ? "translate-y-0 opacity-100"
+          : "pointer-events-none translate-y-full opacity-0",
+      )}
+    >
       <div className="container flex items-center justify-between py-3 gap-3">
         {/* Phone Link */}
         <a
