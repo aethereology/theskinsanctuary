@@ -66,6 +66,7 @@ export default function ServicesPage() {
                   key={item.name}
                   name={item.name}
                   price={item.price}
+                  bookingUrl={item.bookingUrl}
                 />
               ))}
             </div>

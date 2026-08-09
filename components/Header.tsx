@@ -49,7 +49,7 @@ export default function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <BookingButton />
+          <BookingButton label="book my service" />
         </div>
 
         {/* Mobile Menu Button */}
@@ -102,7 +102,7 @@ export default function Header() {
               >
                 {site.contact.phone.value}
               </a>
-              <BookingButton />
+              <BookingButton label="book my service" />
             </div>
           </div>
         </div>

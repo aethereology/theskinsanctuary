@@ -98,14 +98,22 @@ export const services: ServiceCategory[] = [
       {
         name: "Brow Wax & Tint",
         price: "$55",
+        bookingUrl: "https://calendly.com/monicaemm7/brow-wax-tint?back=1",
       },
       {
         name: "Brow Lami & Wax",
-        price: "$75",
+        price: "$95",
+        bookingUrl: "https://calendly.com/monicaemm7/browlami?back=1",
+      },
+      {
+        name: "Brow Wax",
+        price: "$25",
+        bookingUrl: "https://calendly.com/monicaemm7/brow-wax?back=1",
       },
       {
         name: "Brow Wax, Lami, Tint",
         price: "$125",
+        bookingUrl: "https://calendly.com/monicaemm7/new-meeting?back=1",
       },
     ],
   },
@@ -117,6 +125,7 @@ export const services: ServiceCategory[] = [
         price: "$130",
         description:
           "Our signature lift, refined with the Korean method — a soft, upward curl and rich tint that lasts longer and treats your natural lashes more gently.",
+        bookingUrl: "https://calendly.com/monicaemm7/kll?back=1",
       },
     ],
   },
@@ -128,6 +137,7 @@ export const services: ServiceCategory[] = [
         price: "$255",
         description:
           "The signature brow transformation and a Korean lash lift, together in one unhurried appointment.",
+        bookingUrl: "https://calendly.com/monicaemm7/soft-girl-summer-255?back=1",
       },
     ],
   },
@@ -136,35 +146,48 @@ export const services: ServiceCategory[] = [
     items: [
       {
         name: "Full Arm Wax",
-        price: "$60",
+        price: "$65",
+        bookingUrl: "https://calendly.com/monicaemm7/half-arm-wax-30-clone?back=1",
       },
       {
         name: "Half Arm Wax",
         price: "$30",
+        bookingUrl: "https://calendly.com/monicaemm7/underarm-wax-30-clone?back=1",
       },
       {
         name: "Underarm Wax",
         price: "$30",
+        bookingUrl: "https://calendly.com/monicaemm7/underarm-wax?back=1",
       },
       {
         name: "Lip Wax",
         price: "$10",
+        bookingUrl: "https://calendly.com/monicaemm7/lip-wax?back=1",
       },
       {
         name: "Half Leg Wax",
         price: "$50",
+        bookingUrl: "https://calendly.com/monicaemm7/half-leg-wax?back=1",
       },
       {
         name: "Full Leg Wax",
         price: "$65",
+        bookingUrl: "https://calendly.com/monicaemm7/full-leg-wax?back=1",
       },
       {
         name: "Bikini Wax",
         price: "$50",
+        bookingUrl: "https://calendly.com/monicaemm7/brazilian-wax-?back=1",
       },
       {
         name: "Brazilian Wax",
-        price: "$55",
+        price: "$65",
+        bookingUrl: "https://calendly.com/monicaemm7/brazilian-wax?back=1",
+      },
+      {
+        name: "First-Time Client: Brazilian Wax",
+        price: "$50",
+        bookingUrl: "https://calendly.com/monicaemm7/brazilian-wax-newclient?back=1",
       },
     ],
   },

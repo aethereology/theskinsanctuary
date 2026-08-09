@@ -6,6 +6,7 @@ import BookingLink from "./BookingLink";
 
 interface BookingButtonProps {
   label?: string;
+  ariaLabel?: string;
   variant?: "primary" | "secondary" | "ghost" | "light" | "outline-light";
   trackingId?: string;
   href?: string;
@@ -14,6 +15,7 @@ interface BookingButtonProps {
 
 export default function BookingButton({
   label = site.cta.primary.label,
+  ariaLabel,
   variant = "primary",
   trackingId,
   href = site.booking.url,
@@ -47,7 +49,7 @@ export default function BookingButton({
         href={href}
         className={classes}
         data-track={trackingId}
-        aria-label={label}
+        aria-label={ariaLabel || label}
       >
         {label}
       </Link>
@@ -59,7 +61,7 @@ export default function BookingButton({
       <BookingLink
         href={href}
         trackingId={trackingId}
-        aria-label={label}
+        aria-label={ariaLabel || label}
         className={classes}
       >
         {label}
@@ -74,7 +76,7 @@ export default function BookingButton({
       rel="noopener noreferrer"
       className={classes}
       data-track={trackingId}
-      aria-label={label}
+      aria-label={ariaLabel || label}
     >
       {label}
     </a>

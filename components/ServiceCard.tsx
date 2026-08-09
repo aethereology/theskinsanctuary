@@ -35,11 +35,20 @@ export default function ServiceCard({
   }
 
   return (
-    <div className="flex justify-between items-center py-3 border-b border-hairline/40">
-      <div>
+    <div className="flex items-center justify-between gap-4 py-4 border-b border-hairline/40">
+      <div className="flex min-w-0 items-baseline gap-2 sm:gap-3">
         <h4 className="text-text font-medium text-sm">{name}</h4>
+        <p className="shrink-0 text-clay font-medium text-sm">{price}</p>
       </div>
-      <p className="text-clay font-medium text-sm">{price}</p>
+      {bookingUrl && (
+        <BookingButton
+          label="Book"
+          ariaLabel={`Book ${name}`}
+          href={bookingUrl}
+          trackingId={`service_${name.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}`}
+          className="shrink-0 px-4 py-2"
+        />
+      )}
     </div>
   );
 }
