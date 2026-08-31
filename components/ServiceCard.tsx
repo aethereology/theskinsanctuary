@@ -36,9 +36,16 @@ export default function ServiceCard({
 
   return (
     <div className="flex items-center justify-between gap-4 py-4 border-b border-hairline/40">
-      <div className="flex min-w-0 items-baseline gap-2 sm:gap-3">
-        <h4 className="text-text font-medium text-sm">{name}</h4>
-        <p className="shrink-0 text-clay font-medium text-sm">{price}</p>
+      <div className="min-w-0">
+        <div className="flex items-baseline gap-2 sm:gap-3">
+          <h4 className="text-text font-medium text-sm">{name}</h4>
+          <p className="shrink-0 text-clay font-medium text-sm">{price}</p>
+        </div>
+        {description && (
+          <p className="mt-1 max-w-xl text-xs leading-relaxed text-text-secondary">
+            {description}
+          </p>
+        )}
       </div>
       {bookingUrl && (
         <BookingButton

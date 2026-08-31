@@ -30,7 +30,7 @@ Primary template control points:
 - Phone href: tel:+16194582483
 - Instagram: https://www.instagram.com/theskinsanctuary_co
 - Booking platform: Calendly
-- Booking URL: https://calendly.com/monicaemm7
+- Booking URL: https://calendly.com/theskinsanctuary
 
 ### Critical privacy/display rule
 Do not show the full street address anywhere in public UI, page copy, footer, contact page, schema-visible copy, map blocks, or buttons.
@@ -59,7 +59,7 @@ Main sticky CTA text must be:
 - book my lash lift
 
 Sticky CTA href:
-- https://calendly.com/monicaemm7
+- https://calendly.com/theskinsanctuary
 
 Secondary always-visible action:
 - 619-458-2483
@@ -165,12 +165,12 @@ export const site = {
   },
   booking: {
     platform: "Calendly",
-    url: "https://calendly.com/monicaemm7",
+    url: "https://calendly.com/theskinsanctuary",
     confirmed: true,
   },
   pricing: { mode: "exact", published: true },
   cta: {
-    primary: { label: "book my lash lift", href: "https://calendly.com/monicaemm7" },
+    primary: { label: "book my lash lift", href: "https://calendly.com/theskinsanctuary" },
     secondary: { label: "view services", href: "/services" },
   },
 };
@@ -186,7 +186,7 @@ Desktop nav:
 - Brows -> /brows
 - Reviews -> /reviews
 - About -> /about
-- Book Now -> https://calendly.com/monicaemm7
+- Book Now -> https://calendly.com/theskinsanctuary
 
 Mobile nav:
 - Same links
@@ -306,7 +306,7 @@ Create or update `seed/services.json` or equivalent content file to match this d
         "description": "Leveling up your lift through the use of the Korean method, designed for longer-lasting results and a healthier lift.",
         "featured": true,
         "ctaLabel": "book my lash lift",
-        "bookingUrl": "https://calendly.com/monicaemm7"
+        "bookingUrl": "https://calendly.com/theskinsanctuary"
       },
       {
         "name": "Brow Wax, Lami, Tint",
@@ -314,7 +314,7 @@ Create or update `seed/services.json` or equivalent content file to match this d
         "description": "Wax, lamination, and tint for a complete brow refresh.",
         "featured": true,
         "ctaLabel": "book my brow refresh",
-        "bookingUrl": "https://calendly.com/monicaemm7"
+        "bookingUrl": "https://calendly.com/theskinsanctuary"
       },
       {
         "name": "Soft Girl Summer",
@@ -322,29 +322,41 @@ Create or update `seed/services.json` or equivalent content file to match this d
         "description": "The ultimate way to enter your soft girl era. Includes the signature brow babe plus a Korean lash lift, all during one appointment.",
         "featured": true,
         "ctaLabel": "book the full glow-up",
-        "bookingUrl": "https://calendly.com/monicaemm7"
+        "bookingUrl": "https://calendly.com/theskinsanctuary"
       }
+    ]
+  },
+  {
+    "category": "Back2School",
+    "description": "September 2026 only. No student status required.",
+    "promotional": true,
+    "expiresAt": "2026-10-01T00:00:00-04:00",
+    "items": [
+      { "name": "Korean Lash Lift & Tint", "price": "$110" },
+      { "name": "Brow Lami + Wax", "price": "$75", "description": "This special does not include a tint." },
+      { "name": "Brow Wax", "price": "$18" }
     ]
   },
   {
     "category": "Brows",
     "items": [
       { "name": "Brow Wax & Tint", "price": "$55" },
-      { "name": "Brow Lami & Wax", "price": "$75" },
+      { "name": "Brow Lami & Wax", "price": "$95" },
+      { "name": "Brow Wax", "price": "$25" },
       { "name": "Brow Wax, Lami, Tint", "price": "$125" }
     ]
   },
   {
     "category": "Waxing",
     "items": [
-      { "name": "Full Arm Wax", "price": "$50" },
+      { "name": "Full Arm Wax", "price": "$65" },
       { "name": "Half Arm Wax", "price": "$30" },
       { "name": "Underarm Wax", "price": "$30" },
       { "name": "Lip Wax", "price": "$10" },
       { "name": "Half Leg Wax", "price": "$50" },
       { "name": "Full Leg Wax", "price": "$65" },
       { "name": "Bikini Wax", "price": "$50" },
-      { "name": "Brazilian Wax", "price": "$55" }
+      { "name": "Brazilian Wax", "price": "$65" }
     ]
   },
   {
@@ -354,7 +366,9 @@ Create or update `seed/services.json` or equivalent content file to match this d
         "name": "Korean Lash Lift & Tint",
         "price": "$130",
         "description": "Leveling up your lift through the use of the Korean method, designed for longer-lasting results and a healthier lift."
-      }
+      },
+      { "name": "Lash Fill — Existing Clients", "price": "$95" },
+      { "name": "Patch Test", "price": "$0" }
     ]
   },
   {
@@ -480,7 +494,7 @@ Props:
 
 Defaults:
 - label: "book my lash lift"
-- href: "https://calendly.com/monicaemm7"
+- href: "https://calendly.com/theskinsanctuary"
 
 Use external link behavior:
 - Open in same tab unless design system currently opens external booking links in a new tab.
@@ -702,7 +716,7 @@ Before finishing, verify:
 - No Square links appear
 - No $35 Welcome Facial appears
 - Sticky CTA says exactly `book my lash lift`
-- Sticky CTA links to `https://calendly.com/monicaemm7`
+- Sticky CTA links to `https://calendly.com/theskinsanctuary`
 - Phone number is visible in header/footer/mobile sticky/contact areas
 - Services and prices match the Calendly menu exactly
 - Homepage prioritizes Korean Lash Lift & Tint

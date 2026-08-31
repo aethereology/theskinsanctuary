@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const signatureServices = services[0].items;
+  const signatureServices =
+    services.find((category) => category.category === "Signature Services")?.items ?? [];
+  const menuPreviewCategories = ["Brows", "Lashes"]
+    .map((categoryName) => services.find((category) => category.category === categoryName))
+    .filter((category): category is (typeof services)[number] => Boolean(category));
 
   return (
     <>
@@ -104,7 +108,7 @@ export default function Home() {
               <BookingButton
                 label="book my lash lift"
                 trackingId="lash_lift_cta"
-                href="https://calendly.com/monicaemm7/kll?back=1"
+                href="https://calendly.com/theskinsanctuary/kll?back=1"
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
@@ -148,7 +152,7 @@ export default function Home() {
               <BookingButton
                 label="book my brow refresh"
                 trackingId="brow_cta"
-                href="https://calendly.com/monicaemm7/new-meeting?back=1"
+                href="https://calendly.com/theskinsanctuary/new-meeting?back=1"
               />
             </div>
           </div>
@@ -174,7 +178,7 @@ export default function Home() {
               <BookingButton
                 label="book the full glow-up"
                 trackingId="soft_girl_summer_cta"
-                href="https://calendly.com/monicaemm7/soft-girl-summer-255?back=1"
+                href="https://calendly.com/theskinsanctuary/soft-girl-summer-255?back=1"
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
@@ -197,7 +201,7 @@ export default function Home() {
             The full menu
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            {services.slice(1, 3).map((category) => (
+            {menuPreviewCategories.map((category) => (
               <div key={category.category}>
                 <h3 className="font-semibold text-cocoa mb-4">
                   {category.category}
