@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { connection } from "next/server";
 import { site } from "@/lib/site";
-import { getVisibleServiceCategories } from "@/lib/data";
+import { getVisibleServiceCategories, type ServiceCategory } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import BookingButton from "@/components/BookingButton";
 import servicesPageBg from "@/assets/servicespagebg.png";
@@ -12,6 +12,38 @@ export const metadata: Metadata = {
   description:
     "Current pricing for Korean lash lifts, brow lamination, waxing, and signature packages at The Skin Sanctuary Co in Chesapeake, VA. Booked directly with Monica through Calendly.",
 };
+
+function ServiceCategorySection({ category }: { category: ServiceCategory }) {
+  return (
+    <section
+      id={category.promotional ? "back2school" : undefined}
+      className={`py-16 ${category.promotional ? "bg-champagne/15" : ""}`}
+    >
+      <div className="container max-w-3xl">
+        {category.promotional && (
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-clay">
+            Limited-time offer
+          </p>
+        )}
+        <h2 className="font-serif text-2xl text-cocoa mb-8">{category.category}</h2>
+        {category.description && (
+          <p className="-mt-5 mb-8 text-sm text-espresso">{category.description}</p>
+        )}
+        <div className="divide-y divide-hairline">
+          {category.items.map((item) => (
+            <ServiceCard
+              key={item.name}
+              name={item.name}
+              price={item.price}
+              description={item.description}
+              bookingUrl={item.bookingUrl}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default async function ServicesPage() {
   await connection();
@@ -44,6 +76,13 @@ export default async function ServicesPage() {
         </div>
       </section>
 
+      {/* Limited-Time Offers */}
+      {visibleServices
+        .filter((category) => category.promotional)
+        .map((category) => (
+          <ServiceCategorySection key={category.category} category={category} />
+        ))}
+
       {/* Signature Services */}
       <section className="py-16">
         <div className="container">
@@ -62,40 +101,12 @@ export default async function ServicesPage() {
 
       {/* Service Categories */}
       {visibleServices
-        .filter((category) => category.category !== "Signature Services")
+        .filter(
+          (category) =>
+            category.category !== "Signature Services" && !category.promotional,
+        )
         .map((category) => (
-          <section
-            key={category.category}
-            id={category.promotional ? "back2school" : undefined}
-            className={`py-16 ${category.promotional ? "bg-champagne/15" : ""}`}
-          >
-            <div className="container max-w-3xl">
-              {category.promotional && (
-                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-clay">
-                  Limited-time offer
-                </p>
-              )}
-              <h2 className="font-serif text-2xl text-cocoa mb-8">
-                {category.category}
-              </h2>
-              {category.description && (
-                <p className="-mt-5 mb-8 text-sm text-espresso">
-                  {category.description}
-                </p>
-              )}
-              <div className="divide-y divide-hairline">
-                {category.items.map((item) => (
-                  <ServiceCard
-                    key={item.name}
-                    name={item.name}
-                    price={item.price}
-                    description={item.description}
-                    bookingUrl={item.bookingUrl}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
+          <ServiceCategorySection key={category.category} category={category} />
         ))}
 
       {/* CTA */}
