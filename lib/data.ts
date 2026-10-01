@@ -494,16 +494,59 @@ export const about = {
     "Clients return as much for Monica as for the results. Warm, funny, and genuinely invested, she designs every appointment to feel calm, private, and unhurried — whether you're in for a lash lift, a brow transformation, or a waxing service.",
 };
 
+// Training masterclasses. Each course renders through components/TrainingCourse.tsx.
+export interface TrainingCourse {
+  slug: string;
+  path: string;
+  shortName: string;
+  eyebrow: string;
+  title: string;
+  heading: { line1: string; line2: string };
+  subheadline: string;
+  format: string;
+  formatShort: string;
+  chipLabel: string;
+  investment: string;
+  price: string;
+  location: string;
+  instructor: string;
+  inquiryAnchor: string;
+  inquiryUrl: string;
+  cta: { primary: string; secondary: string; inquiry: string };
+  overviewHeading: string;
+  overview: string;
+  highlights: { title: string; description: string }[];
+  curriculumIntro: string;
+  curriculum: { group: string; items: string[] }[];
+  whoFor: string[];
+  instructorBio: string;
+  product?: { heading: string; intro: string; highlights: string[]; imageAlt: string };
+  investmentNote: string;
+  inquiryHeading: string;
+  inquiryBody: string;
+  heroImageAlt: string;
+  schemaDescription: string;
+  trackingPrefix: string;
+  faq: { q: string; a: string }[];
+}
+
 // Korean Lash Lift Training — sourced from the training flyer (source of truth).
 // CTA destination is configurable: until a form/QR link is provided, "Express
 // Interest" scrolls to the on-page inquiry section, which links to Instagram DM.
-export const training = {
+export const training: TrainingCourse = {
+  slug: "korean-lash-lift",
+  path: "/training",
+  shortName: "Korean Lash Lift",
   eyebrow: "1:1 Training · Full Day",
   title: "Korean Lash Lift Training",
+  heading: { line1: "Korean Lash Lift", line2: "Training" },
   subheadline:
     "Experience an elevated lash lift masterclass. Learn every detail of the process and take the guesswork out of how to perfect a lash lift.",
   format: "1:1 Training — full day",
+  formatShort: "1:1 · Full day",
+  chipLabel: "full-day 1:1",
   investment: "$1,100",
+  price: "1100",
   location: "Greenbrier, Chesapeake",
   instructor: "Monica Talbot",
   // Primary CTA scrolls to the inquiry section; the inquiry section links out.
@@ -514,6 +557,7 @@ export const training = {
     secondary: "View What You'll Learn",
     inquiry: "Express Interest",
   },
+  overviewHeading: "A full-day 1:1 lash lift training designed to build confidence.",
   overview:
     "This Korean Lash Lift Training is built for students who want a detailed, hands-on learning experience. Monica walks you through the process step by step so you understand the technique, the product system, lash mapping decisions, and the business side of offering lash lift services.",
   highlights: [
@@ -534,6 +578,8 @@ export const training = {
       description: "Receive a Korean Lash Lift certificate after completing the training.",
     },
   ],
+  curriculumIntro:
+    "Every part of the process, broken down into technique, hands-on practice, and the business of offering lash lift services.",
   curriculum: [
     {
       group: "Technique",
@@ -566,16 +612,27 @@ export const training = {
   ],
   instructorBio:
     "Monica Talbot is a Virginia-licensed esthetician and the owner of The Skin Sanctuary Co in Chesapeake, VA. Known for her detailed lash work, calm teaching style, and client-focused approach, Monica created this training to help students understand not just the steps of a Korean Lash Lift, but the decision-making behind beautiful, consistent results.",
-  productIntro:
-    "Training includes product knowledge around the Early Lift System, so students understand how each product supports the softening, setting, and healthy-looking results of a Korean lash lift.",
-  productHighlights: [
-    "Early Lift Step 1 — Softening Lotion",
-    "Early Lift Step 2 — Setting Lotion",
-    "Early Balm Pro — Premium Fixer",
-    "Lash & Brow Hydrating Serum",
-  ],
+  product: {
+    heading: "The Early Lift System",
+    imageAlt: "Early Lift System products used in Korean Lash Lift Training",
+    intro:
+      "Training includes product knowledge around the Early Lift System, so students understand how each product supports the softening, setting, and healthy-looking results of a Korean lash lift.",
+    highlights: [
+      "Early Lift Step 1 — Softening Lotion",
+      "Early Lift Step 2 — Setting Lotion",
+      "Early Balm Pro — Premium Fixer",
+      "Lash & Brow Hydrating Serum",
+    ],
+  },
   investmentNote:
     "Training dates and availability are limited. Submit your interest to receive current scheduling details.",
+  inquiryHeading: "Interested in Korean Lash Lift Training?",
+  inquiryBody:
+    "Express interest or request more information about upcoming 1:1 training availability with Monica in Greenbrier, Chesapeake.",
+  heroImageAlt: "Close-up of a Korean lash lift result at The Skin Sanctuary Co",
+  schemaDescription:
+    "A full-day 1:1 Korean Lash Lift training covering technique, the Early Lift System, lash mapping, hands-on practice with live models, business guidance, and a KLL certificate.",
+  trackingPrefix: "training",
   faq: [
     {
       q: "How long is the training?",
@@ -603,6 +660,127 @@ export const training = {
     },
   ],
 };
+
+// Brow Lamination, Shaping & Tint Training — modeled on the lash lift masterclass.
+// Price confirmed by Monica ($950). Format, curriculum, and certificate wording
+// mirror the lash training; confirm details with Monica before heavy promotion.
+export const browTraining: TrainingCourse = {
+  slug: "brow-lamination",
+  path: "/training/brows",
+  shortName: "Brow Lamination",
+  eyebrow: "1:1 Training · Full Day",
+  title: "Brow Lamination, Shaping & Tint Training",
+  heading: { line1: "Brow Lamination", line2: "Shaping & Tint Training" },
+  subheadline:
+    "Experience an elevated brow masterclass. Learn how lamination, shaping, and tint work together to create soft, full, polished brows, and take the guesswork out of every step.",
+  format: "1:1 Training — full day",
+  formatShort: "1:1 · Full day",
+  chipLabel: "full-day 1:1",
+  investment: "$950",
+  price: "950",
+  location: "Greenbrier, Chesapeake",
+  instructor: "Monica Talbot",
+  inquiryAnchor: "#training-inquiry",
+  inquiryUrl: "https://form.jotform.com/261064149493056",
+  cta: {
+    primary: "Express Interest",
+    secondary: "View What You'll Learn",
+    inquiry: "Express Interest",
+  },
+  overviewHeading: "A full-day 1:1 brow training built around Monica's signature brow refresh.",
+  overview:
+    "This Brow Lamination, Shaping & Tint Training teaches the complete brow service Monica performs in her studio. You'll learn how to map and shape brows to suit each face, how to laminate for a lifted, brushed-up finish while keeping brows healthy, and how to choose and apply tint for soft, natural-looking definition, plus how to offer brow services as part of your business.",
+  highlights: [
+    {
+      title: "Private 1:1 Training",
+      description: "A full-day training experience with focused, one-on-one guidance from Monica.",
+    },
+    {
+      title: "Hands-On Practice",
+      description: "Includes live model(s) for guided, real-time lamination, shaping, and tint.",
+    },
+    {
+      title: "The Full Brow Service",
+      description: "Lamination, shaping, and tint taught together as one complete brow transformation.",
+    },
+    {
+      title: "Certificate",
+      description: "Receive a brow lamination certificate after completing the training.",
+    },
+  ],
+  curriculumIntro:
+    "Every part of the brow service, broken down into technique, hands-on practice, and the business of offering brow services.",
+  curriculum: [
+    {
+      group: "Technique",
+      items: [
+        "What brow lamination is and who it is right for",
+        "Brow mapping and shaping to suit each client's face",
+        "The lamination process, processing times, and keeping brows healthy",
+        "Tint selection and application for natural-looking definition",
+      ],
+    },
+    {
+      group: "Practice",
+      items: [
+        "Client consultation and aftercare guidance",
+        "Live model(s) — hands-on lamination, shaping, and tint",
+      ],
+    },
+    {
+      group: "Business",
+      items: [
+        "Social media & business marketing",
+        "Receive a brow lamination certificate",
+      ],
+    },
+  ],
+  whoFor: [
+    "Beauty professionals who want to add brow lamination to their service menu",
+    "Brow artists who want to refine their shaping and tint technique",
+    "Estheticians who want hands-on lamination and tint guidance",
+    "Students who prefer private 1:1 training over a large group class",
+  ],
+  instructorBio:
+    "Monica Talbot is a Virginia-licensed esthetician and the owner of The Skin Sanctuary Co in Chesapeake, VA. Her Brow Wax, Lami, Tint is the studio's signature brow transformation, and she created this training to share the shaping decisions, lamination technique, and tint choices behind soft, full, consistent brow results.",
+  investmentNote:
+    "Training dates and availability are limited. Submit your interest to receive current scheduling details.",
+  inquiryHeading: "Interested in Brow Lamination Training?",
+  inquiryBody:
+    "Express interest or request more information about upcoming 1:1 brow training availability with Monica in Greenbrier, Chesapeake.",
+  heroImageAlt: "Before and after brow lamination, shaping, and tint at The Skin Sanctuary Co",
+  schemaDescription:
+    "A full-day 1:1 brow training covering brow mapping and shaping, brow lamination, tint selection and application, hands-on practice with live models, business guidance, and a certificate.",
+  trackingPrefix: "brow_training",
+  faq: [
+    {
+      q: "How long is the training?",
+      a: "The Brow Lamination, Shaping & Tint Training is a full-day 1:1 training experience.",
+    },
+    {
+      q: "How much is the training?",
+      a: "The training investment is $950.",
+    },
+    {
+      q: "Is this a group class?",
+      a: "This is 1:1 Training, which means it is designed as a private training experience with Monica.",
+    },
+    {
+      q: "Will I practice during training?",
+      a: "Yes. The training includes live model(s) for hands-on practice.",
+    },
+    {
+      q: "Do I receive a certificate?",
+      a: "Yes. Students receive a brow lamination certificate after completing the training.",
+    },
+    {
+      q: "Where is the training located?",
+      a: "Training is offered in Greenbrier, Chesapeake.",
+    },
+  ],
+};
+
+export const trainingCourses: TrainingCourse[] = [training, browTraining];
 
 // Policies
 export const policies = {
