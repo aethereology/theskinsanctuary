@@ -4,6 +4,7 @@ import { connection } from "next/server";
 import { site } from "@/lib/site";
 import { getVisibleServiceCategories, type ServiceCategory } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
+import HalloweenSpecials from "@/components/HalloweenSpecials";
 import BookingButton from "@/components/BookingButton";
 import servicesPageBg from "@/assets/servicespagebg.png";
 
@@ -80,7 +81,7 @@ export default async function ServicesPage() {
       {visibleServices
         .filter((category) => category.promotional)
         .map((category) => (
-          <ServiceCategorySection key={category.category} category={category} />
+          <HalloweenSpecials key={category.category} category={category} />
         ))}
 
       {/* Signature Services */}
