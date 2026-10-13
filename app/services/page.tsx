@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 function ServiceCategorySection({ category }: { category: ServiceCategory }) {
   return (
     <section
-      id={category.promotional ? "back2school" : undefined}
+      id={category.promotional ? "specials" : undefined}
       className={`py-16 ${category.promotional ? "bg-champagne/15" : ""}`}
     >
       <div className="container max-w-3xl">
