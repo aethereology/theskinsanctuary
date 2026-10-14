@@ -26,8 +26,8 @@ Primary template control points:
 - Credential: Licensed Esthetician in Virginia
 - Public location display: Chesapeake, VA
 - Do not display the street address anywhere on the public website.
-- Phone: 619-458-2483
-- Phone href: tel:+16194582483
+- Phone: 757-679-1991
+- Phone href: tel:+17576791991
 - Instagram: https://www.instagram.com/theskinsanctuary_co
 - Booking platform: Calendly
 - Booking URL: https://calendly.com/theskinsanctuary
@@ -39,7 +39,7 @@ Only display:
 - Chesapeake, VA
 
 Do show the phone number prominently across the site:
-- 619-458-2483
+- 757-679-1991
 
 Do not include:
 - Full address
@@ -62,7 +62,7 @@ Sticky CTA href:
 - https://calendly.com/theskinsanctuary
 
 Secondary always-visible action:
-- 619-458-2483
+- 757-679-1991
 
 ## Service menu source of truth
 Use only this current Calendly menu. Do not include old Square services or the old $35 Welcome Facial.
@@ -149,7 +149,7 @@ export const site = {
     "The Skin Sanctuary Co is Monica Talbot's boutique beauty studio in Chesapeake, VA, specializing in Korean lash lifts, brow transformations, and waxing services.",
   serviceAreas: ["Chesapeake, VA"],
   contact: {
-    phone: { value: "619-458-2483", confirmed: true },
+    phone: { value: "757-679-1991", confirmed: true },
     email: { value: null, confirmed: false },
     address: { value: null, confirmed: false },
     hours: {
@@ -190,7 +190,7 @@ Desktop nav:
 
 Mobile nav:
 - Same links
-- Include visible phone link: 619-458-2483
+- Include visible phone link: 757-679-1991
 - Sticky bottom CTA: book my lash lift
 
 Header behavior:
@@ -202,7 +202,7 @@ Header behavior:
 
 Homepage section order:
 1. Hero focused on Korean Lash Lift & Tint
-2. Trust strip: Licensed in VA, Chesapeake, VA, 5.0-star client rating, Korean Lash Lifts, Brows, Waxing, 619-458-2483
+2. Trust strip: Licensed in VA, Chesapeake, VA, 5.0-star client rating, Korean Lash Lifts, Brows, Waxing, 757-679-1991
 3. Signature services: Korean Lash Lift & Tint, Brow Wax, Lami, Tint, Soft Girl Summer
 4. Lash Lift landing preview with review proof
 5. Brow transformation preview
@@ -242,7 +242,7 @@ Secondary CTA:
 view services
 
 Phone line:
-Questions? Call 619-458-2483
+Questions? Call 757-679-1991
 
 Hero proof points:
 - Licensed in VA
@@ -505,7 +505,7 @@ Mobile-first sticky bottom bar.
 
 Must include:
 - Primary button: book my lash lift -> Calendly
-- Secondary phone link: 619-458-2483 -> tel:+16194582483
+- Secondary phone link: 757-679-1991 -> tel:+17576791991
 
 Desktop behavior:
 - Optional subtle floating CTA after scroll.
@@ -538,7 +538,7 @@ Items:
 - Korean Lash Lifts
 - Brows
 - Waxing
-- 619-458-2483
+- 757-679-1991
 
 ### `LocationDisplay`
 Return only `Chesapeake, VA`.
@@ -587,7 +587,7 @@ Use LocalBusiness/BeautySalon schema carefully.
 Do include:
 - name: The Skin Sanctuary Co
 - url: https://theskinsanctuary.co
-- telephone: +16194582483
+- telephone: +17576791991
 - areaServed: Chesapeake, VA
 - founder/employee/person: Monica Talbot if schema supports it
 - openingHoursSpecification
@@ -658,7 +658,7 @@ Replace with:
 - Chesapeake, VA
 - Calendly
 - Book my lash lift
-- 619-458-2483
+- 757-679-1991
 
 ## Image implementation
 
@@ -679,7 +679,7 @@ Do not use client names with images unless permission is confirmed.
 Footer must include:
 - The Skin Sanctuary Co
 - Chesapeake, VA
-- 619-458-2483 as a tel link
+- 757-679-1991 as a tel link
 - Instagram link
 - Calendly booking link
 - Hours

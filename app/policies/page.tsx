@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { policies } from "@/lib/data";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Studio Policies | The Skin Sanctuary Co",
@@ -40,8 +41,8 @@ export default function PoliciesPage() {
         <div className="mt-12 p-6 bg-champagne/10 rounded-lg text-center">
           <p className="text-espresso">
             Have questions about our policies? Please call{" "}
-            <a href="tel:+16194582483" className="text-clay font-semibold hover:text-primary-dark">
-              619-458-2483
+            <a href={site.contact.phoneHref} className="text-clay font-semibold hover:text-primary-dark">
+              {site.contact.phone.value}
             </a>
           </p>
         </div>

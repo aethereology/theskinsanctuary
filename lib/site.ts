@@ -19,10 +19,10 @@ export const site = {
   // Contact Information
   contact: {
     phone: {
-      value: "619-458-2483",
+      value: "757-679-1991",
       confirmed: true,
     },
-    phoneHref: "tel:+16194582483",
+    phoneHref: "tel:+17576791991",
     email: {
       value: null,
       confirmed: false,
