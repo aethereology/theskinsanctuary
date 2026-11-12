@@ -146,7 +146,7 @@ export default function Home() {
               </p>
               <div className="flex gap-2 mb-8">
                 <span className="inline-block px-3 py-1 bg-champagne/20 text-clay text-xs rounded-full">
-                  $125 service
+                  $130 service
                 </span>
               </div>
               <BookingButton
@@ -159,7 +159,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Soft Girl Summer Feature */}
+      {/* The Skin Sanctuary Soft Girl Feature */}
       <section className="py-20 bg-ivory">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -168,7 +168,7 @@ export default function Home() {
                 Lashes lifted, brows polished, all at once.
               </h2>
               <p className="text-espresso mb-6 leading-relaxed">
-                Soft Girl Summer pairs Monica's signature brow transformation with a Korean lash lift in one unhurried appointment. The result is fuller, brushed-up brows and softly lifted lashes — a complete eye refresh that keeps your morning routine simple.
+                The Skin Sanctuary Soft Girl pairs Monica's signature brow transformation with a Korean lash lift in one unhurried appointment. The result is fuller, brushed-up brows and softly lifted lashes — a complete eye refresh that keeps your morning routine simple.
               </p>
               <div className="flex gap-2 mb-8">
                 <span className="inline-block px-3 py-1 bg-champagne/20 text-clay text-xs rounded-full">
@@ -177,14 +177,14 @@ export default function Home() {
               </div>
               <BookingButton
                 label="book the full glow-up"
-                trackingId="soft_girl_summer_cta"
+                trackingId="soft_girl_cta"
                 href="https://calendly.com/theskinsanctuary"
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
               <Image
                 src={softGirlSummerImage}
-                alt="Before and after brow and lash results from the Soft Girl Summer package"
+                alt="Before and after brow and lash results from the The Skin Sanctuary Soft Girl package"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
