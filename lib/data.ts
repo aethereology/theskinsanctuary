@@ -2,6 +2,8 @@
  * The Skin Sanctuary Co — Services, Reviews, and Data
  */
 
+import { calendlyServiceUrls } from "./service-booking";
+
 export interface Service {
   name: string;
   price: string;
@@ -61,7 +63,7 @@ export interface BlogPost {
 // Current service menu: supplied Calendly screenshots dated 2026-11-12.
 // The site owner confirmed https://calendly.com/theskinsanctuary as the
 // booking destination. Do not invent event-specific booking slugs.
-const SERVICE_BOOKING_URL = "https://calendly.com/theskinsanctuary";
+// Per-service booking URLs live in lib/service-booking.ts.
 
 const koreanLashLift: Service = {
   name: "Korean Lash Lift & Tint",
@@ -70,7 +72,7 @@ const koreanLashLift: Service = {
     "A customizable Korean-method lift and tint that enhances the look of your natural lashes.",
   featured: true,
   ctaLabel: "book my lash lift",
-  bookingUrl: SERVICE_BOOKING_URL,
+  bookingUrl: calendlyServiceUrls.koreanLashLift,
 };
 
 const browTransformation: Service = {
@@ -80,7 +82,7 @@ const browTransformation: Service = {
     "Brow wax, lamination, and tint together for a fuller, defined brow look.",
   featured: true,
   ctaLabel: "book my brow refresh",
-  bookingUrl: SERVICE_BOOKING_URL,
+  bookingUrl: calendlyServiceUrls.browWaxLamiTint,
 };
 
 const softGirlPackage: Service = {
@@ -90,7 +92,7 @@ const softGirlPackage: Service = {
     "The signature brow lamination, wax, and tint plus a Korean lash lift and tint in one appointment.",
   featured: true,
   ctaLabel: "book the full glow-up",
-  bookingUrl: SERVICE_BOOKING_URL,
+  bookingUrl: calendlyServiceUrls.softGirlPackage,
 };
 
 export const services: ServiceCategory[] = [
@@ -109,14 +111,14 @@ export const services: ServiceCategory[] = [
         price: "$95",
         description:
           "For existing lash extension clients only. Please book only when The Skin Sanctuary Co has specifically instructed you to schedule a fill.",
-        bookingUrl: SERVICE_BOOKING_URL,
+        bookingUrl: calendlyServiceUrls.lashFillExistingClients,
       },
       {
         name: "Patch Test",
         price: "$0",
         description:
           "A complimentary patch-test appointment.",
-        bookingUrl: SERVICE_BOOKING_URL,
+        bookingUrl: calendlyServiceUrls.patchTest,
       },
     ],
   },
@@ -129,38 +131,38 @@ export const services: ServiceCategory[] = [
       {
         name: "Brow Lami + Wax",
         price: "$95",
-        bookingUrl: SERVICE_BOOKING_URL,
+        bookingUrl: calendlyServiceUrls.browLamiWax,
       },
       {
         name: "Brow Wax + Tint",
         price: "$55",
         description: "A customized brow tint and precisely mapped wax.",
-        bookingUrl: SERVICE_BOOKING_URL,
+        bookingUrl: calendlyServiceUrls.browWaxTint,
       },
       {
         name: "Brow Wax",
         price: "$25",
-        bookingUrl: SERVICE_BOOKING_URL,
+        bookingUrl: calendlyServiceUrls.browWax,
       },
     ],
   },
   {
     category: "Waxing",
     items: [
-      { name: "Full Leg Wax", price: "$90", bookingUrl: SERVICE_BOOKING_URL },
-      { name: "Half Leg Wax", price: "$50", bookingUrl: SERVICE_BOOKING_URL },
-      { name: "Full Arm Wax", price: "$60", bookingUrl: SERVICE_BOOKING_URL },
-      { name: "Half Arm Wax", price: "$35", bookingUrl: SERVICE_BOOKING_URL },
-      { name: "Underarm Wax", price: "$30", bookingUrl: SERVICE_BOOKING_URL },
-      { name: "Lip Wax", price: "$10", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Full Leg Wax", price: "$90", bookingUrl: calendlyServiceUrls.fullLegWax },
+      { name: "Half Leg Wax", price: "$50", bookingUrl: calendlyServiceUrls.halfLegWax },
+      { name: "Full Arm Wax", price: "$60", bookingUrl: calendlyServiceUrls.fullArmWax },
+      { name: "Half Arm Wax", price: "$35", bookingUrl: calendlyServiceUrls.halfArmWax },
+      { name: "Underarm Wax", price: "$30", bookingUrl: calendlyServiceUrls.underarmWax },
+      { name: "Lip Wax", price: "$10", bookingUrl: calendlyServiceUrls.lipWax },
       {
         name: "Bikini Wax",
         price: "$55",
         description:
           "Waxing the bikini area typically covered by traditional underwear, excluding the buttocks.",
-        bookingUrl: SERVICE_BOOKING_URL,
+        bookingUrl: calendlyServiceUrls.bikiniWax,
       },
-      { name: "Brazilian Wax", price: "$65", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Brazilian Wax", price: "$65", bookingUrl: calendlyServiceUrls.brazilianWax },
     ],
   },
   {

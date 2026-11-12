@@ -69,7 +69,7 @@ export default function ReviewsPage() {
           <h2 className="font-serif text-3xl text-cocoa mb-6">
             Ready to see for yourself?
           </h2>
-          <BookingButton trackingId="reviews_cta" />
+          <BookingButton label="book an appointment" href={site.booking.url} trackingId="reviews_cta" />
         </div>
       </section>
     </>

@@ -104,7 +104,7 @@ export default function ServicesPage() {
       <section className="py-24 bg-ivory">
         <div className="container text-center">
           <h2 className="font-serif text-5xl sm:text-6xl text-cocoa mb-8 font-bold leading-tight">Ready to book?</h2>
-          <BookingButton trackingId="services_book_cta" />
+          <BookingButton label="browse appointments" href={site.booking.url} trackingId="services_book_cta" />
         </div>
       </section>
     </>

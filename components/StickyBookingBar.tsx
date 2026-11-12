@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
+import { calendlyServiceUrls } from "@/lib/service-booking";
 import { flowHoverButtonClasses } from "@/components/ui/flow-hover-button";
 import { cn } from "@/lib/utils";
 import BookingLink from "./BookingLink";
@@ -62,6 +63,7 @@ export default function StickyBookingBar() {
             flowHoverButtonClasses,
             "flex-1 bg-white text-clay before:bg-clay hover:text-white font-bold uppercase text-xs px-4 py-3 rounded-full tracking-widest text-center",
           )}
+          href={calendlyServiceUrls.koreanLashLift}
           trackingId="sticky_book_my_lash_lift"
         >
           book my lash lift

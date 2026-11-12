@@ -18,7 +18,7 @@ export default function BookingButton({
   ariaLabel,
   variant = "primary",
   trackingId,
-  href = site.booking.url,
+  href = site.cta.primary.href,
   className = "",
 }: BookingButtonProps) {
   const baseClasses =
@@ -38,6 +38,8 @@ export default function BookingButton({
 
   const classes = cn(flowHoverButtonClasses, baseClasses, variantClasses[variant], className);
 
+  // A button labeled "book my lash lift" defaults to that exact event.
+  // General appointments explicitly pass site.booking.url.
   // Internal routes (e.g. "view services") use client-side navigation and stay
   // on the site. Calendly booking links open the popup overlay.
   const isExternalLink = /^https?:\/\//.test(href);

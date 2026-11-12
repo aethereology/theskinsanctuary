@@ -1,3 +1,5 @@
+import { calendlyServiceUrls } from "./service-booking";
+
 /**
  * The Skin Sanctuary Co — Site Configuration
  * Single source of truth for brand, contact, booking, and CTA information
@@ -74,7 +76,7 @@ export const site = {
   cta: {
     primary: {
       label: "book my lash lift",
-      href: "https://calendly.com/theskinsanctuary",
+      href: calendlyServiceUrls.koreanLashLift,
     },
     secondary: {
       label: "view services",
