@@ -134,7 +134,7 @@ export default function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <BookingButton label="book my service" />
+          <BookingButton label="book my service" href={site.booking.url} />
         </div>
 
         {/* Mobile Menu Button */}
@@ -210,7 +210,7 @@ export default function Header() {
               >
                 {site.contact.phone.value}
               </a>
-              <BookingButton label="book my service" />
+              <BookingButton label="book my service" href={site.booking.url} />
             </div>
           </div>
         </div>
