@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Metadata } from "next";
 import { about } from "@/lib/data";
+import { site } from "@/lib/site";
 import BookingButton from "@/components/BookingButton";
 import monicaImage from "@/assets/monica2.jpeg";
 
@@ -46,7 +47,7 @@ export default function AboutPage() {
           <h2 className="font-serif text-3xl text-porcelain mb-6">
             Come see Monica in studio
           </h2>
-          <BookingButton label="book an appointment" variant="light" trackingId="about_cta" />
+          <BookingButton label="book an appointment" href={site.booking.url} variant="light" trackingId="about_cta" />
         </div>
       </section>
     </>
