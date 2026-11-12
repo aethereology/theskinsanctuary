@@ -62,9 +62,9 @@ export default function StickyBookingBar() {
             flowHoverButtonClasses,
             "flex-1 bg-white text-clay before:bg-clay hover:text-white font-bold uppercase text-xs px-4 py-3 rounded-full tracking-widest text-center",
           )}
-          trackingId="sticky_book_my_service"
+          trackingId="sticky_book_my_lash_lift"
         >
-          book my service
+          book my lash lift
         </BookingLink>
       </div>
     </div>
