@@ -25,9 +25,9 @@ export default function ServiceCard({
         {description && (
           <p className="text-text-secondary text-sm mb-6 leading-relaxed">{description}</p>
         )}
-        {ctaLabel && (
+        {ctaLabel && bookingUrl && (
           <div className="mt-auto">
-            <BookingButton label={ctaLabel} href={bookingUrl} />
+            <BookingButton label={ctaLabel} ariaLabel={`Book ${name} on Calendly`} trackingId={`signature_${name.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "")}`} href={bookingUrl} />
           </div>
         )}
       </div>
