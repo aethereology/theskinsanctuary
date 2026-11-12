@@ -60,7 +60,7 @@ export const site = {
   // Booking
   booking: {
     platform: "Calendly",
-    url: "https://calendly.com/theskinsanctuary",
+    url: "https://calendly.com/monicaemm7",
     confirmed: true,
   },
 
@@ -74,7 +74,7 @@ export const site = {
   cta: {
     primary: {
       label: "book my lash lift",
-      href: "https://calendly.com/theskinsanctuary",
+      href: "https://calendly.com/monicaemm7",
     },
     secondary: {
       label: "view services",
