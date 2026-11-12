@@ -27,7 +27,7 @@ export default function ContactPage() {
             <p className="text-espresso mb-6">
               Browse Monica's live availability and reserve your service in a few taps. You'll receive a confirmation right away, and your time is held the moment you book.
             </p>
-            <BookingButton trackingId="contact_book" />
+            <BookingButton label="browse appointments" href={site.booking.url} trackingId="contact_book" />
           </div>
 
           <div className="bg-surface rounded-lg p-8 mb-8">
