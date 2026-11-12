@@ -108,7 +108,7 @@ export default function Home() {
               <BookingButton
                 label="book my lash lift"
                 trackingId="lash_lift_cta"
-                href="https://calendly.com/monicaemm7"
+                href="https://calendly.com/theskinsanctuary"
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
@@ -152,7 +152,7 @@ export default function Home() {
               <BookingButton
                 label="book my brow refresh"
                 trackingId="brow_cta"
-                href="https://calendly.com/monicaemm7"
+                href="https://calendly.com/theskinsanctuary"
               />
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function Home() {
               <BookingButton
                 label="book the full glow-up"
                 trackingId="soft_girl_summer_cta"
-                href="https://calendly.com/monicaemm7"
+                href="https://calendly.com/theskinsanctuary"
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
