@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { connection } from "next/server";
 import { site } from "@/lib/site";
 import { getVisibleServiceCategories, type ServiceCategory } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
-import HalloweenSpecials from "@/components/HalloweenSpecials";
 import BookingButton from "@/components/BookingButton";
 import servicesPageBg from "@/assets/servicespagebg.png";
 
@@ -46,10 +44,9 @@ function ServiceCategorySection({ category }: { category: ServiceCategory }) {
   );
 }
 
-export default async function ServicesPage() {
-  await connection();
+export default function ServicesPage() {
 
-  const visibleServices = getVisibleServiceCategories(new Date());
+  const visibleServices = getVisibleServiceCategories();
   const signatureServices =
     visibleServices.find((category) => category.category === "Signature Services")?.items ?? [];
 
@@ -76,13 +73,6 @@ export default async function ServicesPage() {
           </p>
         </div>
       </section>
-
-      {/* Limited-Time Offers */}
-      {visibleServices
-        .filter((category) => category.promotional)
-        .map((category) => (
-          <HalloweenSpecials key={category.category} category={category} />
-        ))}
 
       {/* Signature Services */}
       <section className="py-16">

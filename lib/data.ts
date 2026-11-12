@@ -58,183 +58,119 @@ export interface BlogPost {
   }[];
 }
 
-// Services data from Calendly menu
+// Current service menu: supplied Calendly screenshots dated 2026-11-12.
+// The site owner confirmed https://calendly.com/theskinsanctuary as the
+// booking destination. Do not invent event-specific booking slugs.
+const SERVICE_BOOKING_URL = "https://calendly.com/theskinsanctuary";
+
+const koreanLashLift: Service = {
+  name: "Korean Lash Lift & Tint",
+  price: "$130",
+  description:
+    "A customizable Korean-method lift and tint that enhances the look of your natural lashes.",
+  featured: true,
+  ctaLabel: "book my lash lift",
+  bookingUrl: SERVICE_BOOKING_URL,
+};
+
+const browTransformation: Service = {
+  name: "Brow Wax, Lami, Tint",
+  price: "$130",
+  description:
+    "Brow wax, lamination, and tint together for a fuller, defined brow look.",
+  featured: true,
+  ctaLabel: "book my brow refresh",
+  bookingUrl: SERVICE_BOOKING_URL,
+};
+
+const softGirlPackage: Service = {
+  name: "The Skin Sanctuary Soft Girl",
+  price: "$255",
+  description:
+    "The signature brow lamination, wax, and tint plus a Korean lash lift and tint in one appointment.",
+  featured: true,
+  ctaLabel: "book the full glow-up",
+  bookingUrl: SERVICE_BOOKING_URL,
+};
+
 export const services: ServiceCategory[] = [
   {
     category: "Signature Services",
     description:
-      "The lash and brow work Monica is known for — designed for a polished look that asks very little of your morning.",
-    items: [
-      {
-        name: "Korean Lash Lift & Tint",
-        price: "$130",
-        description:
-          "Our signature lift, refined with the Korean method — a soft, upward curl and rich tint that lasts longer and treats your natural lashes more gently.",
-        featured: true,
-        ctaLabel: "book my lash lift",
-        bookingUrl: "https://calendly.com/theskinsanctuary/kll?back=1",
-      },
-      {
-        name: "Brow Wax, Lami, Tint",
-        price: "$125",
-        description:
-          "Shaping wax, lamination, and a custom tint in one sitting — fuller, brushed-up brows mapped to the architecture of your face.",
-        featured: true,
-        ctaLabel: "book my brow refresh",
-        bookingUrl: "https://calendly.com/theskinsanctuary/new-meeting?back=1",
-      },
-      {
-        name: "Soft Girl Summer",
-        price: "$255",
-        description:
-          "Our most-loved pairing: the signature brow transformation and a Korean lash lift in a single, unhurried appointment.",
-        featured: true,
-        ctaLabel: "book the full glow-up",
-        bookingUrl: "https://calendly.com/theskinsanctuary/soft-girl-summer-255?back=1",
-      },
-    ],
+      "Monica's signature lash and brow transformations, designed for an effortlessly polished look.",
+    items: [koreanLashLift, browTransformation, softGirlPackage],
   },
   {
-    category: "SpookySanctuary Specials",
-    description: "Spooky savings available through October 31, 2026.",
-    promotional: true,
-    expiresAt: "2026-11-01T00:00:00-04:00",
+    category: "Lashes",
     items: [
+      koreanLashLift,
       {
-        name: "Korean Lash Lift & Tint",
-        price: "$115",
-        description: "New bookings only. Not valid for existing appointments.",
-        bookingUrl: "https://calendly.com/theskinsanctuary/kllspooky-deal?back=1",
+        name: "Lash Fill — Existing Clients",
+        price: "$95",
+        description:
+          "For existing lash extension clients only. Please book only when The Skin Sanctuary Co has specifically instructed you to schedule a fill.",
+        bookingUrl: SERVICE_BOOKING_URL,
       },
       {
-        name: "Brow Wax + Lami",
-        price: "$85",
-        description: "Tint is not included. Add a tint for $35.",
-        bookingUrl: "https://calendly.com/theskinsanctuary/back2school-browlamiwax?back=1",
-      },
-      {
-        name: "Boo-zilian Wax",
-        price: "$55",
-        description: "Brazilian wax, regularly $65.",
-        bookingUrl: "https://calendly.com/theskinsanctuary/back2school-brow-wax?back=1",
+        name: "Patch Test",
+        price: "$0",
+        description:
+          "A complimentary patch-test appointment.",
+        bookingUrl: SERVICE_BOOKING_URL,
       },
     ],
   },
   {
     category: "Brows",
+    description:
+      "Please tell Monica if you use retinol, tretinoin, or Accutane (isotretinoin); these may affect whether waxing is appropriate.",
     items: [
+      browTransformation,
       {
-        name: "Brow Wax & Tint",
-        price: "$55",
-        bookingUrl: "https://calendly.com/theskinsanctuary/brow-wax-tint?back=1",
+        name: "Brow Lami + Wax",
+        price: "$95",
+        bookingUrl: SERVICE_BOOKING_URL,
       },
       {
-        name: "Brow Lami & Wax",
-        price: "$95",
-        bookingUrl: "https://calendly.com/theskinsanctuary/browlami?back=1",
+        name: "Brow Wax + Tint",
+        price: "$55",
+        description: "A customized brow tint and precisely mapped wax.",
+        bookingUrl: SERVICE_BOOKING_URL,
       },
       {
         name: "Brow Wax",
         price: "$25",
-        bookingUrl: "https://calendly.com/theskinsanctuary/brow-wax?back=1",
-      },
-      {
-        name: "Brow Wax, Lami, Tint",
-        price: "$125",
-        bookingUrl: "https://calendly.com/theskinsanctuary/new-meeting?back=1",
-      },
-    ],
-  },
-  {
-    category: "Lashes",
-    items: [
-      {
-        name: "Korean Lash Lift & Tint",
-        price: "$130",
-        description:
-          "Our signature lift, refined with the Korean method — a soft, upward curl and rich tint that lasts longer and treats your natural lashes more gently.",
-        bookingUrl: "https://calendly.com/theskinsanctuary/kll?back=1",
-      },
-      {
-        name: "Lash Fill — Existing Clients",
-        price: "$95",
-        description:
-          "For existing lash extension clients only. Please book only when instructed by The Skin Sanctuary Co.",
-        bookingUrl: "https://calendly.com/theskinsanctuary/lash-fill-existing-clients-95?back=1",
-      },
-      {
-        name: "Patch Test",
-        price: "$0",
-        bookingUrl: "https://calendly.com/theskinsanctuary/patch-test-0?back=1",
-      },
-    ],
-  },
-  {
-    category: "Packages",
-    items: [
-      {
-        name: "Soft Girl Summer",
-        price: "$255",
-        description:
-          "The signature brow transformation and a Korean lash lift, together in one unhurried appointment.",
-        bookingUrl: "https://calendly.com/theskinsanctuary/soft-girl-summer-255?back=1",
+        bookingUrl: SERVICE_BOOKING_URL,
       },
     ],
   },
   {
     category: "Waxing",
     items: [
-      {
-        name: "Full Arm Wax",
-        price: "$65",
-        bookingUrl: "https://calendly.com/theskinsanctuary/half-arm-wax-30-clone?back=1",
-      },
-      {
-        name: "Half Arm Wax",
-        price: "$30",
-        bookingUrl: "https://calendly.com/theskinsanctuary/underarm-wax-30-clone?back=1",
-      },
-      {
-        name: "Underarm Wax",
-        price: "$30",
-        bookingUrl: "https://calendly.com/theskinsanctuary/underarm-wax?back=1",
-      },
-      {
-        name: "Lip Wax",
-        price: "$10",
-        bookingUrl: "https://calendly.com/theskinsanctuary/lip-wax?back=1",
-      },
-      {
-        name: "Half Leg Wax",
-        price: "$50",
-        bookingUrl: "https://calendly.com/theskinsanctuary/half-leg-wax?back=1",
-      },
-      {
-        name: "Full Leg Wax",
-        price: "$65",
-        bookingUrl: "https://calendly.com/theskinsanctuary/full-leg-wax?back=1",
-      },
+      { name: "Full Leg Wax", price: "$90", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Half Leg Wax", price: "$50", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Full Arm Wax", price: "$60", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Half Arm Wax", price: "$35", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Underarm Wax", price: "$30", bookingUrl: SERVICE_BOOKING_URL },
+      { name: "Lip Wax", price: "$10", bookingUrl: SERVICE_BOOKING_URL },
       {
         name: "Bikini Wax",
-        price: "$50",
-        bookingUrl: "https://calendly.com/theskinsanctuary/brazilian-wax-?back=1",
+        price: "$55",
+        description:
+          "Waxing the bikini area typically covered by traditional underwear, excluding the buttocks.",
+        bookingUrl: SERVICE_BOOKING_URL,
       },
-      {
-        name: "Brazilian Wax",
-        price: "$65",
-        bookingUrl: "https://calendly.com/theskinsanctuary/brazilian-wax?back=1",
-      },
+      { name: "Brazilian Wax", price: "$65", bookingUrl: SERVICE_BOOKING_URL },
     ],
+  },
+  {
+    category: "Packages",
+    items: [softGirlPackage],
   },
 ];
 
-export function getVisibleServiceCategories(
-  referenceTime: Date = new Date(),
-): ServiceCategory[] {
-  return services.filter(
-    (category) =>
-      !category.expiresAt || referenceTime.getTime() < new Date(category.expiresAt).getTime(),
-  );
+export function getVisibleServiceCategories(): ServiceCategory[] {
+  return services;
 }
 
 // Client testimonials — real client words, kept verbatim. Do not edit or invent.
@@ -463,7 +399,7 @@ export const serviceContent = {
     headline: "Brows, beautifully redefined.",
     description:
       "Shape, lift, and define in a single appointment. Monica combines precise waxing, lamination, and a custom tint for fuller, brushed-up brows — and a morning routine that all but disappears.",
-    price: "$125",
+    price: "$130",
     benefits: [
       "Fuller, brushed-up brows",
       "Shape that holds for weeks",
