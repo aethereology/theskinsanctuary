@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Metadata } from "next";
 import { site } from "@/lib/site";
+import { calendlyServiceUrls } from "@/lib/service-booking";
 import { services, reviews, about, products, blogPosts } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import SignatureServicesCarousel from "@/components/SignatureServicesCarousel";
@@ -55,7 +56,7 @@ export default function Home() {
 
             {/* Hero CTAs */}
             <div className="flex flex-col sm:flex-row items-start justify-start gap-4 mb-8">
-              <BookingButton trackingId="hero_book_my_lash_lift" />
+              <BookingButton trackingId="hero_book_my_lash_lift" href={calendlyServiceUrls.koreanLashLift} />
               <BookingButton label="view services" variant="outline-light" href="/services" />
             </div>
 
@@ -108,7 +109,7 @@ export default function Home() {
               <BookingButton
                 label="book my lash lift"
                 trackingId="lash_lift_cta"
-                href="https://calendly.com/theskinsanctuary"
+                href={calendlyServiceUrls.koreanLashLift}
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
@@ -152,7 +153,7 @@ export default function Home() {
               <BookingButton
                 label="book my brow refresh"
                 trackingId="brow_cta"
-                href="https://calendly.com/theskinsanctuary"
+                href={calendlyServiceUrls.browWaxLamiTint}
               />
             </div>
           </div>
@@ -178,7 +179,7 @@ export default function Home() {
               <BookingButton
                 label="book the full glow-up"
                 trackingId="soft_girl_cta"
-                href="https://calendly.com/theskinsanctuary"
+                href={calendlyServiceUrls.softGirlPackage}
               />
             </div>
             <div className="relative aspect-square rounded-lg overflow-hidden order-1 md:order-2">
@@ -387,7 +388,7 @@ export default function Home() {
           <p className="text-sm sm:text-base mb-12 max-w-2xl mx-auto leading-relaxed opacity-90">
             Choose your time with Monica in just a few taps — lash lift, brow transformation, or any service on the menu. Booking is quick, and your spot is held the moment you confirm.
           </p>
-          <BookingButton variant="light" trackingId="final_cta" />
+          <BookingButton label="browse appointments" href={site.booking.url} variant="light" trackingId="final_cta" />
         </div>
       </section>
     </>
